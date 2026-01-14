@@ -137,7 +137,7 @@ export default function Collaborate() {
     },
     {
       name: "Manipal University Jaipur (MUJ)",
-      logo: "https://www.manipaldubai.com/_next/image?url=https%3A%2F%2Fmanipalblobstorage.blob.core.windows.net%2Fmanipal-azr-container%2F%2F002_Institute_MUJ_1_jpg_1296x700_3653573dc5.webp&w=1920&q=75",
+      logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
       features: [
         "Endorsed by the University Grants Commission (UGC)",
         "Convenient access to courses via EduNxt from anywhere",
@@ -167,7 +167,7 @@ export default function Collaborate() {
     },
     {
       name: "Uttaranchal University (UU)",
-      logo: "https://edukyu.com/assets/cxp-assets/imgs/new-banner/uttarachal-logo.png",
+      logo: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
       features: [
         "20+ Years of Excellence",
         "Ranked 27th In India & 1st in Uttarakhand by India Today",
@@ -177,7 +177,7 @@ export default function Collaborate() {
     },
     {
       name: "MIT University",
-      logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+      logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
       features: [
         "Prestigious institution known for excellence in engineering and technology",
         "Strong industry connections",
@@ -472,10 +472,10 @@ export default function Collaborate() {
                 Get Started
               </a>
               <a
-                href="tel:+918112592546"
+                href="tel:+917275131439"
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
               >
-                Call: +91 8112592546
+                Call: +91 7275131439
               </a>
             </div>
           </div>

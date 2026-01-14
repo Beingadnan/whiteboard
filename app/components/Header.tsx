@@ -66,7 +66,7 @@ export default function Header() {
               <Link href="/universities" onClick={closeMenu}>Universities</Link>
             </li>
             <li>
-              <Link href="/collaborate" onClick={closeMenu}>Collaborate</Link>
+              <Link href="/collaborate" onClick={closeMenu}>Partner collaboration</Link>
             </li>
             <li>
               <Link href="/contact" onClick={closeMenu}>Contact</Link>

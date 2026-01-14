@@ -2,6 +2,21 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Sora, Manrope } from "next/font/google";
+
+const sora = Sora({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const manrope = Manrope({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +55,7 @@ export default function Hero() {
 
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+              <h1 className={`${sora.className} text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-[-0.02em]`}>
                 <span className="block text-slate-900 dark:text-slate-50">Your Dream</span>
                 <span className="block bg-gradient-to-r from-[#0f4c75] via-[#1e7aa8] to-[#dc2626] bg-clip-text text-transparent">
                   University Awaits

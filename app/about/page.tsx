@@ -5,42 +5,11 @@ import Link from "next/link";
 
 export default function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<'overview' | 'vision' | 'mission' | 'milestones'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'vision' | 'mission'>('overview');
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const milestones = [
-    {
-      year: "2022",
-      stakeholders: "Started with 1 Stakeholder",
-      offices: "1 Office - Noida",
-      courses: "5+ Courses",
-      students: "100+ Students"
-    },
-    {
-      year: "2023",
-      stakeholders: "50+ Stakeholders",
-      offices: "2 Offices - Noida/Delhi",
-      courses: "15+ Specialised Courses",
-      students: "1000+ Students"
-    },
-    {
-      year: "2024",
-      stakeholders: "100+ Stakeholders",
-      offices: "3 Offices - Noida/Delhi/Mumbai",
-      courses: "30+ Specialised Courses",
-      students: "5000+ Students"
-    },
-    {
-      year: "2025",
-      stakeholders: "150+ Stakeholders",
-      offices: "4 Offices - Noida/Delhi/Mumbai/Bangalore",
-      courses: "50+ Specialised Courses",
-      students: "10000+ Students"
-    }
-  ];
 
   const teamMembers = [
     {
@@ -175,16 +144,6 @@ export default function AboutUs() {
             >
               Mission
             </button>
-            <button
-              onClick={() => setActiveTab('milestones')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'milestones'
-                  ? 'bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white shadow-lg'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              Miles Achieved
-            </button>
           </div>
 
           {/* Tab Content */}
@@ -224,38 +183,6 @@ export default function AboutUs() {
                 <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                   Our mission is to provide innovative, accessible, and technology-driven learning solutions, empowering individuals and organizations to achieve their full potential in an ever-evolving, digital and globalized world. We are committed to offering industry-relevant programs, in-demand courses, and pioneering academic solutions that pave the way for rewarding careers.
                 </p>
-              </div>
-            )}
-
-            {activeTab === 'milestones' && (
-              <div className={`space-y-6 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                {milestones.map((milestone, index) => (
-                  <div
-                    key={milestone.year}
-                    className="bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
-                    style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#0f4c75] to-[#dc2626] flex items-center justify-center text-white font-bold text-xl">
-                          {milestone.year}
-                        </div>
-                        <div>
-                          <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">{milestone.stakeholders}</div>
-                          <div className="text-sm text-slate-500 dark:text-slate-400">{milestone.offices}</div>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-4 text-sm">
-                        <div className="px-4 py-2 bg-[#0f4c75]/10 dark:bg-[#1e7aa8]/10 rounded-lg text-[#0f4c75] dark:text-[#1e7aa8] font-semibold">
-                          {milestone.courses}
-                        </div>
-                        <div className="px-4 py-2 bg-[#dc2626]/10 dark:bg-[#ea580c]/10 rounded-lg text-[#dc2626] dark:text-[#ea580c] font-semibold">
-                          {milestone.students}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             )}
           </div>
@@ -342,7 +269,7 @@ export default function AboutUs() {
               Contact Us
             </Link>
             <a
-              href="tel:+918112592546"
+              href="tel:+917275131439"
               className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-slate-800 text-[#0f4c75] dark:text-[#1e7aa8] font-semibold rounded-xl border-2 border-[#0f4c75]/20 dark:border-[#1e7aa8]/30 hover:bg-[#0f4c75]/10 dark:hover:bg-[#1e7aa8]/10 transition-all duration-300"
             >
               Call: +91 7275131439

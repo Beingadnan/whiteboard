@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: "White Board Education - Top Universities & Online Courses | Amity, MUJ, SMU, GLA, Uttaranchal",
     template: "%s | White Board Education"
   },
-  description: "Get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Online MBA, B.Tech, MCA, BBA courses with UGC approval. Free career counseling & admission guidance.",
+  description: "Get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Online MBA, MCA, BBA courses with UGC approval. Free career counseling & admission guidance.",
   keywords: [
     "Amity University admission",
     "Manipal University Jaipur admission",
@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     "MIT University admission",
     "Mangalayatan University admission",
     "online MBA India",
-    "online B.Tech",
     "online MCA",
     "online BBA",
     "online BCA",
@@ -55,7 +54,6 @@ export const metadata: Metadata = {
     "UGC approved online courses",
     "distance learning programs",
     "online MBA admission",
-    "online B.Tech admission",
     "career guidance",
     "education advisor"
   ],
@@ -79,7 +77,7 @@ export const metadata: Metadata = {
     url: '/',
     siteName: 'White Board Education',
     title: 'White Board Education - Top Universities & Online Courses',
-    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, B.Tech, MCA, BBA courses with UGC approval. Free career counseling.',
+    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval. Free career counseling.',
     images: [
       {
         url: '/Logo.png',
@@ -92,7 +90,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'White Board Education - Top Universities & Online Courses',
-    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, B.Tech, MCA, BBA courses with UGC approval.',
+    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval.',
     images: ['/Logo.png'],
   },
   alternates: {

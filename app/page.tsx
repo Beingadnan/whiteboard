@@ -3,7 +3,7 @@
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import StructuredData from "./components/StructuredData";
 import { useRouter } from "next/navigation";
 
@@ -20,6 +20,11 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContentRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const reviewsScrollRef = useRef<HTMLDivElement>(null);
+  const [isReviewsPaused, setIsReviewsPaused] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -90,7 +95,7 @@ export default function Home() {
     {
       id: 2,
       name: "Uttaranchal University (UU)",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+      image: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
       description: "Premier university offering quality education in engineering, management, and more."
     },
     {
@@ -102,10 +107,94 @@ export default function Home() {
     {
       id: 4,
       name: "Manipal University Jaipur (MUJ)",
-      image: "https://www.manipaldubai.com/_next/image?url=https%3A%2F%2Fmanipalblobstorage.blob.core.windows.net%2Fmanipal-azr-container%2F%2F002_Institute_MUJ_1_jpg_1296x700_3653573dc5.webp&w=1920&q=75",
+      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
       description: "World-class education in engineering, management, and humanities."
     }
   ];
+
+  // Auto-scroll functionality with infinite loop
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const content = scrollContentRef.current;
+    if (!container || !content) return;
+
+    let animationId: number;
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // pixels per frame
+    const cardWidth = 320; // base card width
+    const gap = 24; // gap between cards
+    const singleSetWidth = (cardWidth + gap) * featuredUniversities.length;
+
+    const scroll = () => {
+      if (!isPaused) {
+        scrollPosition += scrollSpeed;
+        
+        // When we've scrolled one full set, reset to create seamless infinite loop
+        if (scrollPosition >= singleSetWidth) {
+          scrollPosition = 0;
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft = scrollPosition;
+        }
+      }
+      
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    // Start scrolling after a brief delay
+    const timeoutId = setTimeout(() => {
+      animationId = requestAnimationFrame(scroll);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [isPaused, featuredUniversities.length]);
+
+  // Auto-scroll for reviews section
+  useEffect(() => {
+    const container = reviewsScrollRef.current;
+    if (!container) return;
+
+    let animationId: number;
+    let scrollPosition = 0;
+    const scrollSpeed = 0.4; // pixels per frame
+    const cardWidth = 350; // base card width
+    const gap = 24; // gap between cards
+    const reviewsCount = 5; // number of reviews
+    const singleSetWidth = (cardWidth + gap) * reviewsCount;
+
+    const scroll = () => {
+      if (!isReviewsPaused) {
+        scrollPosition += scrollSpeed;
+        
+        // When we've scrolled one full set, reset to create seamless infinite loop
+        if (scrollPosition >= singleSetWidth) {
+          scrollPosition = 0;
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft = scrollPosition;
+        }
+      }
+      
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    // Start scrolling after a brief delay
+    const timeoutId = setTimeout(() => {
+      animationId = requestAnimationFrame(scroll);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [isReviewsPaused]);
 
   const onlineCourses = [
     {
@@ -151,17 +240,6 @@ export default function Home() {
       payment: "EMI options available",
       image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "Bachelor of Computer Applications for tech careers."
-    },
-    {
-      id: 5,
-      title: "Online B.Tech",
-      category: "Engineering",
-      duration: "4 year | 8 semester",
-      approved: "UGC-entitled degree programme",
-      mode: "Online (Live/Recorded Lectures)",
-      payment: "EMI options available",
-      image: "https://motion.ac.in/blog/wp-content/uploads/2025/06/BTech-Bachelor-of-Technology-Courses-Subjects-Fees-Colleges.png",
-      description: "Bachelor of Technology for engineering careers."
     },
     {
       id: 6,
@@ -218,7 +296,7 @@ export default function Home() {
     "alternateName": "Whiteboard Education",
     "url": process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com",
     "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com"}/Logo.png`,
-    "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, B.Tech, MCA, BBA, BCA courses with UGC approval.",
+    "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, MCA, BBA, BCA courses with UGC approval.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "IN"
@@ -250,8 +328,8 @@ export default function Home() {
   const courseListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Online Courses - MBA, B.Tech, MCA, BBA, BCA",
-    "description": "UGC-approved online courses including MBA, B.Tech, MCA, BBA, BCA with live/recorded lectures and EMI options",
+    "name": "Online Courses - MBA, MCA, BBA, BCA",
+    "description": "UGC-approved online courses including MBA, MCA, BBA, BCA with live/recorded lectures and EMI options",
     "itemListElement": onlineCourses.map((course, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -316,63 +394,91 @@ export default function Home() {
       <main className="min-h-screen">
         <Hero />
       
-      {/* Top Universities Section */}
+      {/* Top Universities Section - Scrollable */}
       <section className="py-24 md:py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900" aria-label="Top Universities">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-4">
-              Top Universities - Amity, MUJ, SMU, GLA & More
+              Top Universities
           </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               Partner with prestigious universities offering world-class education and excellent placement opportunities.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {featuredUniversities.map((university) => (
-              <div
-                key={university.id}
-                className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-              >
-                <div className="relative w-full h-40 bg-gradient-to-br from-[#0f4c75] to-[#dc2626] overflow-hidden">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center"
+          {/* Scrollable Container */}
+          <div 
+            className="relative mb-12"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Scrollable Wrapper */}
+            <div 
+              ref={scrollContainerRef}
+              className="overflow-x-hidden scrollbar-hide pb-4 -mx-6 px-6"
+              style={{ scrollBehavior: 'auto', willChange: 'scroll-position' }}
+            >
+              <div ref={scrollContentRef} className="flex gap-6 min-w-max">
+                {/* Duplicate universities for infinite scroll - need at least 2 sets for seamless loop */}
+                {[...featuredUniversities, ...featuredUniversities].map((university, index) => (
+                  <div
+                    key={`${university.id}-${index}`}
+                    className="group flex-shrink-0 w-[320px] md:w-[380px] bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                     style={{
-                      backgroundImage: `url(${university.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
+                      animation: `fadeInUp 0.6s ease-out ${(index % featuredUniversities.length) * 100}ms both`
                     }}
-                    role="img"
-                    aria-label={`${university.name} university image`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80"></div>
+                    <div className="relative w-full h-48 bg-gradient-to-br from-[#0f4c75] to-[#dc2626] overflow-hidden">
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        style={{
+                          backgroundImage: `url(${university.image})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}
+                        role="img"
+                        aria-label={`${university.name} university image`}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80 transition-opacity duration-300 group-hover:opacity-70"></div>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4 z-10 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                        <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg">
+                          {university.name}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5 min-h-[3rem]">
+                        {university.description}
+                      </p>
+                      <button
+                        onClick={() => openModal("/universities")}
+                        className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                      >
+                        Join Now
+                      </button>
+                    </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <h3 className="text-lg font-bold text-white mb-1 drop-shadow-lg line-clamp-1">
-                      {university.name}
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 line-clamp-2">
-                    {university.description}
-                  </p>
-                  <button
-                    onClick={() => openModal("/universities")}
-                    className="block w-full text-center px-4 py-2.5 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 text-sm"
-                  >
-                    Join Now
-                  </button>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Scroll Indicators */}
+            <div className="flex items-center justify-center gap-2 mt-6">
+              <div className="h-1.5 w-12 bg-slate-300 dark:bg-slate-600 rounded-full overflow-hidden">
+                <div className={`h-full bg-gradient-to-r from-[#0f4c75] to-[#dc2626] rounded-full ${isPaused ? '' : 'animate-scroll-indicator'}`}></div>
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                {isPaused ? 'Hover to pause • Auto-scrolling' : 'Auto-scrolling'}
+              </p>
+            </div>
           </div>
 
           <div className="text-center">
             <Link
               href="/universities"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Explore All Universities
             </Link>
@@ -385,7 +491,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-4">
-              Online Courses - MBA, B.Tech, MCA, BBA
+              Online Courses - MBA, MCA, BBA
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               Explore our wide range of UGC-entitled online degree programs designed to help you achieve your career goals.
@@ -551,6 +657,48 @@ export default function Home() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="university" className="block text-sm font-bold text-slate-900 dark:text-slate-50 mb-2">
+                    University <span className="text-[#dc2626]">*</span>
+                  </label>
+                  <select
+                    id="university"
+                    name="university"
+                    value={formData.university}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
+                  >
+                    <option value="">Select a university</option>
+                    {featuredUniversities.map((university) => (
+                      <option key={university.id} value={university.name}>
+                        {university.name}
+                      </option>
+                    ))}
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="course" className="block text-sm font-bold text-slate-900 dark:text-slate-50 mb-2">
+                    Course <span className="text-[#dc2626]">*</span>
+                  </label>
+                  <select
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
+                  >
+                    <option value="">Select a course</option>
+                    {onlineCourses.map((course) => (
+                      <option key={course.id} value={course.title}>
+                        {course.title}
+                      </option>
+                    ))}
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
                   <label htmlFor="state" className="block text-sm font-bold text-slate-900 dark:text-slate-50 mb-2">
                     State/Province <span className="text-[#dc2626]">*</span>
                   </label>
@@ -639,6 +787,184 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Student Reviews Section */}
+      <section className="py-24 md:py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800" aria-label="Student Reviews">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-4">
+              What Our Students Say
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              Real experiences from students who transformed their careers with us
+            </p>
+          </div>
+
+          {/* Scrollable Reviews Container */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsReviewsPaused(true)}
+            onMouseLeave={() => setIsReviewsPaused(false)}
+          >
+            <div 
+              ref={reviewsScrollRef}
+              className="overflow-x-hidden scrollbar-hide pb-4 -mx-6 px-6"
+              style={{ scrollBehavior: 'auto', willChange: 'scroll-position' }}
+            >
+              <div className="flex gap-6 min-w-max">
+                {/* Duplicate reviews for infinite scroll */}
+                {[
+                  {
+                    id: 1,
+                    name: "Priya Sharma",
+                    course: "Online MBA",
+                    university: "Amity University",
+                    rating: 5,
+                    review: "White Board Education made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
+                    location: "Delhi"
+                  },
+                  {
+                    id: 2,
+                    name: "Rahul Kumar",
+                    course: "Online MCA",
+                    university: "Manipal University Jaipur",
+                    rating: 5,
+                    review: "Excellent support throughout the entire process. The team helped me understand all the course details and fee structure clearly. The admission was completed without any hassle. Great experience overall!",
+                    location: "Mumbai"
+                  },
+                  {
+                    id: 3,
+                    name: "Anjali Patel",
+                    course: "Online MCA",
+                    university: "Sikkim Manipal University",
+                    rating: 5,
+                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you White Board Education for your guidance!",
+                    location: "Ahmedabad"
+                  },
+                  {
+                    id: 4,
+                    name: "Vikram Singh",
+                    course: "Online BBA",
+                    university: "Uttaranchal University",
+                    rating: 5,
+                    review: "The entire team is professional and responsive. They answered all my queries promptly and helped me with document verification. The process was transparent and I got admission in my preferred course. Very satisfied!",
+                    location: "Lucknow"
+                  },
+                  {
+                    id: 5,
+                    name: "Sneha Reddy",
+                    course: "Online MBA",
+                    university: "Amity University",
+                    rating: 5,
+                    review: "Best decision I made! The counselors provided detailed information about all universities and courses. They helped me choose the best option based on my career goals. The admission process was seamless. Highly recommend!",
+                    location: "Bangalore"
+                  },
+                  // Duplicate for infinite scroll
+                  {
+                    id: 6,
+                    name: "Priya Sharma",
+                    course: "Online MBA",
+                    university: "Amity University",
+                    rating: 5,
+                    review: "White Board Education made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
+                    location: "Delhi"
+                  },
+                  {
+                    id: 7,
+                    name: "Rahul Kumar",
+                    course: "Online MCA",
+                    university: "Manipal University Jaipur",
+                    rating: 5,
+                    review: "Excellent support throughout the entire process. The team helped me understand all the course details and fee structure clearly. The admission was completed without any hassle. Great experience overall!",
+                    location: "Mumbai"
+                  },
+                  {
+                    id: 8,
+                    name: "Anjali Patel",
+                    course: "Online MCA",
+                    university: "Sikkim Manipal University",
+                    rating: 5,
+                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you White Board Education for your guidance!",
+                    location: "Ahmedabad"
+                  },
+                  {
+                    id: 9,
+                    name: "Vikram Singh",
+                    course: "Online BBA",
+                    university: "Uttaranchal University",
+                    rating: 5,
+                    review: "The entire team is professional and responsive. They answered all my queries promptly and helped me with document verification. The process was transparent and I got admission in my preferred course. Very satisfied!",
+                    location: "Lucknow"
+                  },
+                  {
+                    id: 10,
+                    name: "Sneha Reddy",
+                    course: "Online MBA",
+                    university: "Amity University",
+                    rating: 5,
+                    review: "Best decision I made! The counselors provided detailed information about all universities and courses. They helped me choose the best option based on my career goals. The admission process was seamless. Highly recommend!",
+                    location: "Bangalore"
+                  }
+                ].map((review: { id: number; name: string; course: string; university: string; rating: number; review: string; location: string }, index: number) => (
+                  <div
+                    key={review.id}
+                    className="group flex-shrink-0 w-[350px] md:w-[400px] bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                    style={{
+                      animation: `fadeInUp 0.6s ease-out ${index * 100}ms both`
+                    }}
+                  >
+                    {/* Rating Stars */}
+                    <div className="flex items-center gap-1 mb-4">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <svg
+                          key={i}
+                          className="w-5 h-5 text-yellow-400 fill-current"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                      ))}
+                    </div>
+
+                    {/* Review Text */}
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6 text-sm md:text-base">
+                      "{review.review}"
+                    </p>
+
+                    {/* Student Info */}
+                    <div className="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0f4c75] to-[#dc2626] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                        {review.name.charAt(0)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-1">
+                          {review.name}
+                        </h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
+                          {review.course} • {review.university}
+                        </p>
+                        <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+                          📍 {review.location}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="flex items-center justify-center gap-2 mt-8">
+              <div className="h-1.5 w-12 bg-slate-300 dark:bg-slate-600 rounded-full overflow-hidden">
+                <div className={`h-full bg-gradient-to-r from-[#0f4c75] to-[#dc2626] rounded-full ${isReviewsPaused ? '' : 'animate-scroll-indicator'}`}></div>
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                {isReviewsPaused ? 'Hover to pause • Auto-scrolling' : 'Auto-scrolling reviews'}
+              </p>
             </div>
           </div>
         </div>

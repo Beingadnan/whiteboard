@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CourseDetail() {
   const params = useParams();
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<'overview' | 'structure' | 'eligibility' | 'fees'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'eligibility' | 'fees'>('overview');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -731,6 +731,16 @@ export default function CourseDetail() {
   const courseId = parseInt(params.id as string);
   const course = courses.find(c => c.id === courseId);
 
+  useEffect(() => {
+    if (course) {
+      setFormData(prev => ({
+        ...prev,
+        university: course.university,
+        course: course.title
+      }));
+    }
+  }, [course]);
+
   if (!course) {
     return (
       <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
@@ -744,7 +754,7 @@ export default function CourseDetail() {
     );
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -842,16 +852,6 @@ export default function CourseDetail() {
               Overview
             </button>
             <button
-              onClick={() => setActiveTab('structure')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'structure'
-                  ? 'bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white shadow-lg'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              Program Structure
-            </button>
-            <button
               onClick={() => setActiveTab('eligibility')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                 activeTab === 'eligibility'
@@ -896,41 +896,6 @@ export default function CourseDetail() {
                     </li>
                   ))}
                 </ol>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'structure' && (
-            <div className={`transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="space-y-8">
-                {course.programStructure.map((semester, index) => (
-                  <div key={index} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white px-6 py-4">
-                      <h3 className="text-xl font-bold">{semester.semester}</h3>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead className="bg-slate-50 dark:bg-slate-700">
-                          <tr>
-                            <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Subjects</th>
-                            <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Credits</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {semester.subjects.map((subject, idx) => (
-                            <tr
-                              key={idx}
-                              className="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
-                            >
-                              <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{subject.name}</td>
-                              <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{subject.credits}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           )}
@@ -1087,14 +1052,48 @@ export default function CourseDetail() {
                 />
               </div>
               <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
+                  Phone <span className="text-[#dc2626]">*</span>
+                </label>
                 <input
                   type="tel"
+                  id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
                   placeholder="+91 Phone Number"
+                />
+              </div>
+              <div>
+                <label htmlFor="university" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
+                  University <span className="text-[#dc2626]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="university"
+                  name="university"
+                  value={formData.university || course?.university || ""}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
+                  placeholder="University Name"
+                />
+              </div>
+              <div>
+                <label htmlFor="course-field" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
+                  Course <span className="text-[#dc2626]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="course-field"
+                  name="course"
+                  value={formData.course || course?.title || ""}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
+                  placeholder="Course Name"
                 />
               </div>
               <div>

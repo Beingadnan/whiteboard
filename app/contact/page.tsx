@@ -76,12 +76,12 @@ export default function Contact() {
     {
       icon: "📞",
       title: "Phone",
-      details: ["+91 8112592546"]
+      details: ["+91 7275131439"]
     },
     {
       icon: "💬",
       title: "WhatsApp",
-      details: ["+91 8112592546"]
+      details: ["+91 7275131439"]
     },
     {
       icon: "🕒",
@@ -296,7 +296,6 @@ export default function Contact() {
                         >
                           <option value="">Select a course</option>
                           <option value="Online MBA">Online MBA</option>
-                          <option value="Online B.Tech">Online B.Tech</option>
                           <option value="Online MCA">Online MCA</option>
                           <option value="Online BBA">Online BBA</option>
                           <option value="Online BCA">Online BCA</option>

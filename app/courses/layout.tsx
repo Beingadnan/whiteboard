@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Online Courses - MBA, B.Tech, MCA, BBA | UGC Approved Programs",
-  description: "Explore online courses: Online MBA, B.Tech, MCA, BBA, BCA, M.Com, B.Com, BA, MA. UGC-entitled degree programs with live/recorded lectures. EMI options available. Get admission in top universities.",
+  title: "Online Courses - MBA, MCA, BBA | UGC Approved Programs",
+  description: "Explore online courses: Online MBA, MCA, BBA, BCA, M.Com, B.Com, BA, MA. UGC-entitled degree programs with live/recorded lectures. EMI options available. Get admission in top universities.",
   keywords: [
     "Online MBA",
-    "Online B.Tech",
     "Online MCA",
     "Online BBA",
     "Online BCA",
@@ -19,7 +18,6 @@ export const metadata: Metadata = {
     "distance education",
     "online learning",
     "online MBA India",
-    "online B.Tech India",
     "online MCA India",
     "online BBA India",
     "best online courses",
@@ -34,8 +32,8 @@ export const metadata: Metadata = {
     "online education platform"
   ],
   openGraph: {
-    title: "Online Courses - MBA, B.Tech, MCA, BBA | White Board Education",
-    description: "Explore UGC-approved online courses: MBA, B.Tech, MCA, BBA. Live/recorded lectures with EMI options.",
+    title: "Online Courses - MBA, MCA, BBA | White Board Education",
+    description: "Explore UGC-approved online courses: MBA, MCA, BBA. Live/recorded lectures with EMI options.",
     url: "/courses",
   },
   alternates: {

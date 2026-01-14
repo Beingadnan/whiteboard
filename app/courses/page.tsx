@@ -13,13 +13,7 @@ export default function Courses() {
   }, []);
 
   const categories = [
-    { id: "all", name: "All Courses", icon: "📚" },
-    { id: "engineering", name: "Engineering", icon: "⚙️" },
-    { id: "business", name: "Business", icon: "💼" },
-    { id: "arts", name: "Arts & Humanities", icon: "🎨" },
-    { id: "science", name: "Science", icon: "🔬" },
-    { id: "law", name: "Law", icon: "⚖️" },
-    { id: "medicine", name: "Medicine", icon: "🏥" }
+    { id: "all", name: "All Courses", icon: "📚" }
   ];
 
   const courses = [
@@ -173,8 +167,8 @@ export default function Courses() {
   const coursesSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Online Courses - MBA, B.Tech, MCA, BBA, BCA | UGC Approved",
-    "description": "UGC-approved online courses including MBA, B.Tech, MCA, BBA, BCA, M.Com, B.Com, BA, MA with live/recorded lectures and EMI options. Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan.",
+    "name": "Online Courses - MBA, MCA, BBA, BCA | UGC Approved",
+    "description": "UGC-approved online courses including MBA, MCA, BBA, BCA, M.Com, B.Com, BA, MA with live/recorded lectures and EMI options. Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan.",
     "itemListElement": courses.map((course, index) => ({
       "@type": "ListItem",
       "position": index + 1,

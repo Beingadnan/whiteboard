@@ -10,6 +10,8 @@ export default function CareerCounselling() {
     lastName: "",
     phone: "",
     email: "",
+    university: "",
+    course: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,7 +20,7 @@ export default function CareerCounselling() {
     setIsVisible(true);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -41,6 +43,8 @@ export default function CareerCounselling() {
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
           phone: formData.phone,
+          university: formData.university,
+          course: formData.course,
           message: formData.message,
           source: 'Career Counselling'
         }),
@@ -55,6 +59,8 @@ export default function CareerCounselling() {
           lastName: "",
           phone: "",
           email: "",
+          university: "",
+          course: "",
           message: ""
         });
       } else {
@@ -102,13 +108,13 @@ export default function CareerCounselling() {
               Call Us for Career Counselling
             </h2>
             <a
-              href="tel:+918112592546"
+              href="tel:+917275131439"
               className="inline-flex items-center gap-3 text-2xl md:text-3xl font-bold text-white hover:text-white/90 transition-colors"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              (+91) 8112592546
+              (+91) 7275131439
             </a>
           </div>
         </div>
@@ -219,6 +225,83 @@ export default function CareerCounselling() {
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* University */}
+              <div>
+                <label htmlFor="university" className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-slate-50 mb-2 uppercase tracking-wide">
+                  <span className="text-[#0f4c75] dark:text-[#1e7aa8]">🏫</span>
+                  University <span className="text-[#dc2626]">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    id="university"
+                    name="university"
+                    value={formData.university}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-5 py-4 pl-12 pr-10 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] dark:focus:ring-[#1e7aa8] dark:focus:border-[#1e7aa8] transition-all duration-200 shadow-sm hover:border-slate-300 dark:hover:border-slate-500 appearance-none cursor-pointer"
+                  >
+                    <option value="">Select a university</option>
+                    <option value="Amity University">Amity University</option>
+                    <option value="Uttaranchal University (UU)">Uttaranchal University (UU)</option>
+                    <option value="Sikkim Manipal University (SMU)">Sikkim Manipal University (SMU)</option>
+                    <option value="Manipal University Jaipur (MUJ)">Manipal University Jaipur (MUJ)</option>
+                    <option value="MIT University">MIT University</option>
+                    <option value="GLA University">GLA University</option>
+                    <option value="Mangalayatan University">Mangalayatan University</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Course */}
+              <div>
+                <label htmlFor="course" className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-slate-50 mb-2 uppercase tracking-wide">
+                  <span className="text-[#0f4c75] dark:text-[#1e7aa8]">📚</span>
+                  Course <span className="text-[#dc2626]">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-5 py-4 pl-12 pr-10 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] dark:focus:ring-[#1e7aa8] dark:focus:border-[#1e7aa8] transition-all duration-200 shadow-sm hover:border-slate-300 dark:hover:border-slate-500 appearance-none cursor-pointer"
+                  >
+                    <option value="">Select a course</option>
+                    <option value="Online MBA">Online MBA</option>
+                    <option value="Online MCA">Online MCA</option>
+                    <option value="Online BBA">Online BBA</option>
+                    <option value="Online BCA">Online BCA</option>
+                    <option value="Online M.Com">Online M.Com</option>
+                    <option value="Online B.Com">Online B.Com</option>
+                    <option value="Online BA">Online BA</option>
+                    <option value="Online MA">Online MA</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>

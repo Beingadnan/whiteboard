@@ -32,7 +32,7 @@ export default function Universities() {
       rating: 4.7,
       students: "15K+",
       established: "2002",
-      image: "https://edukyu.com/assets/cxp-assets/imgs/new-banner/uttarachal-logo.png"
+      image: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg"
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ export default function Universities() {
       rating: 4.8,
       students: "12K+",
       established: "2011",
-      image: "https://www.manipaldubai.com/_next/image?url=https%3A%2F%2Fmanipalblobstorage.blob.core.windows.net%2Fmanipal-azr-container%2F%2F002_Institute_MUJ_1_jpg_1296x700_3653573dc5.webp&w=1920&q=75"
+      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png"
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ export default function Universities() {
       rating: 4.9,
       students: "8K+",
       established: "1949",
-      image: "/universities/mit.jpg"
+      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png"
     },
     {
       id: 6,

@@ -113,7 +113,7 @@ export default function UniversityDetail() {
       rating: 4.7,
       students: "15K+",
       established: "2013",
-      image: "https://edukyu.com/assets/cxp-assets/imgs/new-banner/uttarachal-logo.png",
+      image: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
       naacGrade: "A+",
       ugcApproved: true,
       accreditations: ["UGC", "AICTE", "NAAC A+", "AIU", "WES", "ISO", "UNAI", "WURI", "ASSOCHAM"],
@@ -255,7 +255,7 @@ export default function UniversityDetail() {
       rating: 4.8,
       students: "12K+",
       established: "2011",
-      image: "https://www.manipaldubai.com/_next/image?url=https%3A%2F%2Fmanipalblobstorage.blob.core.windows.net%2Fmanipal-azr-container%2F%2F002_Institute_MUJ_1_jpg_1296x700_3653573dc5.webp&w=1920&q=75",
+      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
       naacGrade: "A++",
       ugcApproved: true,
       accreditations: ["NAAC A++", "NIRF", "UGC", "NBA", "WES", "THE WEEK", "QS-WUR", "Careers 360", "THE Impact"],
@@ -328,7 +328,7 @@ export default function UniversityDetail() {
       rating: 4.9,
       students: "8K+",
       established: "1949",
-      image: "/universities/mit.jpg",
+      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
       naacGrade: "A+",
       ugcApproved: true,
       keyFeatures: [
@@ -602,6 +602,21 @@ export default function UniversityDetail() {
                       required
                       className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
                       placeholder="+91 Phone Number"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="university-field" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
+                      University <span className="text-[#dc2626]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="university-field"
+                      name="university"
+                      value={formData.university || university?.name || ""}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
+                      placeholder="University Name"
                     />
                   </div>
                   <div>
