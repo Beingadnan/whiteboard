@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "online education platform"
   ],
   openGraph: {
-    title: "Online Courses - MBA, MCA, BBA | White Board Education",
+    title: "Online Courses - MBA, MCA, BBA | Successmentorix",
     description: "Explore UGC-approved online courses: MBA, MCA, BBA. Live/recorded lectures with EMI options.",
     url: "/courses",
   },

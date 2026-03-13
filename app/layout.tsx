@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 
@@ -13,11 +13,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://whiteboardeducation.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://successmentorix.com'),
   title: {
-    default: "White Board Education - Top Universities & Online Courses | Amity, MUJ, SMU, GLA, Uttaranchal",
-    template: "%s | White Board Education"
+    default: "Successmentorix - Top Universities & Online Courses | Amity, MUJ, SMU, GLA, Uttaranchal",
+    template: "%s | Successmentorix"
   },
   description: "Get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Online MBA, MCA, BBA courses with UGC approval. Free career counseling & admission guidance.",
   keywords: [
@@ -57,9 +63,9 @@ export const metadata: Metadata = {
     "career guidance",
     "education advisor"
   ],
-  authors: [{ name: "White Board Education" }],
-  creator: "White Board Education",
-  publisher: "White Board Education",
+  authors: [{ name: "Successmentorix" }],
+  creator: "Successmentorix",
+  publisher: "Successmentorix",
   robots: {
     index: true,
     follow: true,
@@ -75,21 +81,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: '/',
-    siteName: 'White Board Education',
-    title: 'White Board Education - Top Universities & Online Courses',
+    siteName: 'Successmentorix',
+    title: 'Successmentorix - Top Universities & Online Courses',
     description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval. Free career counseling.',
     images: [
       {
         url: '/Logo.png',
         width: 1200,
         height: 630,
-        alt: 'White Board Education',
+        alt: 'Successmentorix',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'White Board Education - Top Universities & Online Courses',
+    title: 'Successmentorix - Top Universities & Online Courses',
     description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval.',
     images: ['/Logo.png'],
   },
@@ -107,7 +113,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
       >
         <Header />
         {children}

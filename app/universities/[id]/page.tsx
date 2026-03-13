@@ -47,14 +47,36 @@ export default function UniversityDetail() {
         "With over 300 hiring partners, the university facilitates placements through exclusive virtual job fairs"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 2,99,000", discountFee: "Rs 2,99,000" },
-        { name: "Online MSC", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,50,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,65,000", discountFee: "Rs 1,65,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,70,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,50,000", discountFee: "Rs 1,50,000" },
-        { name: "Online MA", duration: "2 years", fullFee: "Rs 1,30,000", discountFee: "Rs 1,30,000" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 1,20,000", discountFee: "Rs 1,20,000" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 99,000" }
+        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,99,000", discountFee: "Rs 1,83,080" },
+        { name: "Online MBA - Dual Specialization", duration: "2 years", fullFee: "Rs 2,99,000", discountFee: "Rs 2,75,080" },
+        { name: "Online MBA - Immersion", duration: "2 years", fullFee: "Rs 4,75,000", discountFee: "Rs 4,37,000" },
+        { name: "Online MBA - Immersion International", duration: "2 years", fullFee: "Rs 5,99,000", discountFee: "Rs 5,51,080" },
+        { name: "Online MSC - Data Science", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
+        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,65,000", discountFee: "Rs 1,45,200" },
+        { name: "Online BBA - HCL Tech Data Analytics", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,56,400" },
+        { name: "Online MCA - HCL Tech Cybersecurity", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
+        { name: "Online MCA - HCL Tech Software Engineering", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
+        { name: "Online MCA - TCS iON AR/VR", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
+        { name: "Online MCA - TCS iON Machine Learning", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,50,000", discountFee: "Rs 1,32,000" },
+        { name: "Online BCA - HCL Tech Data Engineering", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
+        { name: "Online BCA - HCL Tech Software Engineering", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
+        { name: "Online BCA - TCS iON Cloud Security", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
+        { name: "Online BCA - TCS iON Data Analytics", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
+        { name: "Online MA - JNC", duration: "2 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,56,400" },
+        { name: "Online MA - PPG", duration: "2 years", fullFee: "Rs 1,30,000", discountFee: "Rs 1,19,600" },
+        { name: "Online M.Com - Financial Management", duration: "2 years", fullFee: "Rs 1,20,000", discountFee: "Rs 1,10,400" },
+        { name: "Online BA", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 87,120" },
+        { name: "Online BA - Vernacular", duration: "3 years", fullFee: "Rs 85,000", discountFee: "Rs 85,000" },
+        { name: "Online BA - JNC", duration: "3 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,49,600" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 87,120" },
+        { name: "Online B.Com - ACCA", duration: "3 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,20,000" },
+        { name: "Online B.Com - Hons", duration: "3 years", fullFee: "Rs 1,65,000", discountFee: "Rs 1,45,200" },
+        { name: "Online B.Com - Vernacular", duration: "3 years", fullFee: "Rs 85,000", discountFee: "Rs 85,000" },
+        { name: "Online BBA - MBA (Integrated)", duration: "5 years", fullFee: "Rs 3,45,800", discountFee: "Rs 3,18,130" },
+        { name: "Online B.Com - MBA (Integrated)", duration: "5 years", fullFee: "Rs 2,83,100", discountFee: "Rs 2,60,450" },
+        { name: "Online BCA - MCA (Integrated)", duration: "5 years", fullFee: "Rs 3,04,000", discountFee: "Rs 2,79,680" }
       ],
       admissionProcess: [
         "Visit the official website of Amity Online (Note: Separate websites exist for online and on-campus programs)",
@@ -124,11 +146,18 @@ export default function UniversityDetail() {
         "Online degrees are recognised by UGC & AICTE"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 98,000", discountFee: "Rs 98,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 96,000", discountFee: "Rs 96,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,02,000", discountFee: "Rs 1,02,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,02,000", discountFee: "Rs 1,02,000" },
-        { name: "Online BA", duration: "3 years", fullFee: "Rs 61,200", discountFee: "Rs 61,200" }
+        { name: "Online MBA - Marketing Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Digital Marketing", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Human Resource Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Business Analytics", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Financial Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - International Business", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Logistics and Supply Chain", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MBA - Information Technology", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,20,000", discountFee: "Rs 92,000" },
+        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 96,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 96,000" },
+        { name: "Online BA", duration: "3 years", fullFee: "Rs 72,000", discountFee: "Rs 55,200" }
       ],
       admissionProcess: [
         "Start by selecting the 'Apply Now' tab on the official website",
@@ -171,7 +200,7 @@ export default function UniversityDetail() {
         },
         {
           question: "What is the total fee for the Online MBA and is it worth it?",
-          answer: "The total fee for Online MBA at Uttaranchal University is Rs 98,000 for 2 years. Given the UGC and AICTE recognition, NAAC A+ accreditation, quality curriculum, and placement support, the program offers excellent value for money in online education."
+          answer: "The total fee for Online MBA at Uttaranchal University is Rs 1,40,000 (Rs 94,000 with scholarship) for 2 years. Given the UGC and AICTE recognition, NAAC A+ accreditation, quality curriculum, and placement support, the program offers excellent value for money in online education."
         }
       ]
     },
@@ -197,12 +226,18 @@ export default function UniversityDetail() {
         "Ranked 51st among India's Best Multidisciplinary Universities"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 1,10,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 98,000", discountFee: "Rs 98,000" },
-        { name: "Online M.COM", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 75,000" },
-        { name: "Online MA", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 75,000" },
-        { name: "Online B.COM", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 75,000" },
-        { name: "Online BA", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 75,000" }
+        { name: "Online MBA - Marketing", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
+        { name: "Online MBA - Finance", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
+        { name: "Online MBA - HR", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
+        { name: "Online MBA - Systems", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
+        { name: "Online MBA - Operation & Supply Chain Management", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
+        { name: "Online MCA", duration: "2 years", fullFee: "Rs 98,000", discountFee: "Rs 24,500/sem" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
+        { name: "Online MA - English", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
+        { name: "Online MA - Sociology", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
+        { name: "Online MA - Political Science", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 12,500/sem" },
+        { name: "Online BA", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 12,500/sem" }
       ],
       admissionProcess: [
         "Choose Your Course: Visit the university's official website to select the course you wish to apply for. Review the eligibility criteria and any entrance exam requirements for the chosen course.",
@@ -266,13 +301,13 @@ export default function UniversityDetail() {
         "Award-winning next-generation education platform"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,75,000", discountFee: "Rs 1,75,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 1,35,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,58,000", discountFee: "Rs 1,58,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 1,35,000" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 1,08,000", discountFee: "Rs 1,08,000" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 99,000" },
-        { name: "Online MA", duration: "2 years", fullFee: "Rs 80,000", discountFee: "Rs 80,000" }
+        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,75,000", discountFee: "Rs 43,750/sem" },
+        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 22,500/sem" },
+        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,58,000", discountFee: "Rs 39,500/sem" },
+        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 22,500/sem" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 1,08,000", discountFee: "Rs 27,000/sem" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 16,500/sem" },
+        { name: "Online MA - J&MC", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 35,000/sem" }
       ],
       admissionProcess: [
         "Explore the official website of Manipal University Online and complete the online application by selecting the 'Enrol Now' option",
@@ -358,8 +393,8 @@ export default function UniversityDetail() {
       id: 6,
       name: "GLA University",
       shortName: "GLA",
-      description: "A leading private university offering quality education in engineering, management, pharmacy, and applied sciences with modern facilities.",
-      fullDescription: "GLA University is a leading private university offering quality education in engineering, management, pharmacy, and applied sciences with modern facilities and infrastructure. The university is UGC and AICTE approved.",
+      description: "A leading private university offering quality education with modern facilities.",
+      fullDescription: "GLA University is a leading private university offering quality education with modern facilities and infrastructure. The university is UGC and AICTE approved.",
       programs: ["Engineering", "Management", "Pharmacy", "Applied Sciences"],
       location: "Mathura, Uttar Pradesh",
       rating: 4.7,
@@ -370,7 +405,6 @@ export default function UniversityDetail() {
       ugcApproved: true,
       keyFeatures: [
         "A leading private university offering quality education",
-        "Engineering, Management, Pharmacy, and Applied Sciences programs",
         "Modern facilities and infrastructure",
         "UGC and AICTE approved"
       ],
@@ -396,8 +430,8 @@ export default function UniversityDetail() {
       id: 7,
       name: "Mangalayatan University",
       shortName: "Mangalayatan",
-      description: "A progressive university offering diverse programs in engineering, management, law, and arts with focus on holistic development.",
-      fullDescription: "Mangalayatan University is a progressive university offering diverse programs in engineering, management, law, and arts with focus on holistic development. The university is UGC recognized.",
+      description: "A progressive university offering diverse programs with focus on holistic development.",
+      fullDescription: "Mangalayatan University is a progressive university offering diverse programs with focus on holistic development. The university is UGC recognized.",
       programs: ["Engineering", "Management", "Law", "Arts & Commerce"],
       location: "Aligarh, Uttar Pradesh",
       rating: 4.6,
@@ -408,13 +442,15 @@ export default function UniversityDetail() {
       ugcApproved: true,
       keyFeatures: [
         "A progressive university offering diverse programs",
-        "Engineering, Management, Law, and Arts programs",
         "Focus on holistic development",
         "UGC recognized"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,18,000", discountFee: "Rs 88,500" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,08,000", discountFee: "Rs 81,000" }
+        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 40,000/year" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 60,000", discountFee: "Rs 30,000/year" },
+        { name: "Online BBA", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 75,000/year" },
+        { name: "Online MBA", duration: "2 years", fullFee: "Rs 2,70,000", discountFee: "Rs 1,35,000/year" },
+        { name: "Online PGDBM", duration: "2 years", fullFee: "Rs 2,70,000", discountFee: "Rs 1,35,000/year" }
       ],
       benefits: [
         "UGC recognized programs",

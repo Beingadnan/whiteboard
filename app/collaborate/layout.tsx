@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Partner With Us - Education Business Partnership | White Board Education",
-  description: "Partner with White Board Education and grow your education business. Join our network of education partners. Earn commissions, get marketing support, and help students achieve their dreams.",
+  title: "Partner With Us - Education Business Partnership | Successmentorix",
+  description: "Partner with Successmentorix and grow your education business. Join our network of education partners. Earn commissions, get marketing support, and help students achieve their dreams.",
   keywords: [
     "education partnership",
     "education business partner",

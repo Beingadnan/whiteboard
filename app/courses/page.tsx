@@ -178,7 +178,7 @@ export default function Courses() {
         "description": course.description,
         "provider": {
           "@type": "EducationalOrganization",
-          "name": course.university || "White Board Education"
+          "name": course.university || "Successmentorix"
         },
         "educationalLevel": course.level,
         "timeRequired": course.duration,

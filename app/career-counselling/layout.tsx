@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Career Counseling - Expert Guidance for Your Future | White Board Education",
+  title: "Free Career Counseling - Expert Guidance for Your Future | Successmentorix",
   description: "Get free career counseling from expert counselors. Personalized guidance for choosing the right course and university. Book your free session today. Call us for immediate assistance.",
   keywords: [
     "free career counseling",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "career planning"
   ],
   openGraph: {
-    title: "Free Career Counseling - Expert Guidance | White Board Education",
+    title: "Free Career Counseling - Expert Guidance | Successmentorix",
     description: "Get free career counseling from expert counselors. Personalized guidance for your future.",
     url: "/career-counselling",
   },

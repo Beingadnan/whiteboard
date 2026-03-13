@@ -100,6 +100,18 @@ body {
   width: 70px;
   height: 70px;
   min-width: 70px;
+  border-radius: 16px;
+  padding: 6px;
+  background: linear-gradient(135deg, rgba(15, 76, 117, 0.12) 0%, rgba(220, 38, 38, 0.08) 100%);
+  border: 1px solid rgba(15, 76, 117, 0.2);
+  box-shadow: 0 4px 12px rgba(15, 76, 117, 0.08);
+  transition: all 0.3s ease;
+}
+
+.brand-link:hover .brand-logo-wrapper {
+  background: linear-gradient(135deg, rgba(15, 76, 117, 0.18) 0%, rgba(220, 38, 38, 0.12) 100%);
+  border-color: rgba(15, 76, 117, 0.35);
+  box-shadow: 0 6px 16px rgba(15, 76, 117, 0.15);
 }
 
 .brand-logo-img {
@@ -109,6 +121,7 @@ body {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
@@ -120,20 +133,36 @@ body {
 }
 
 .brand-name {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
-  color: #0f4c75;
-  letter-spacing: -0.03em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  letter-spacing: -0.04em;
+  font-family: var(--font-brand), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.15;
+  display: block;
+}
+
+.brand-name-gradient {
+  background: linear-gradient(135deg, #0f4c75 0%, #1a6b9a 35%, #dc2626 70%, #b91c1c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background-position 0.5s ease;
+}
+
+.brand-link:hover .brand-name-gradient {
+  background-position: 100% center;
 }
 
 .brand-tagline {
   font-size: 10px;
   font-weight: 600;
   color: #64748b;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 4px;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  opacity: 0.9;
 }
 
 /* Navigation */
@@ -323,11 +352,12 @@ body {
   }
 
   .brand-name {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .brand-tagline {
-    font-size: 10px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
   }
 
   .header-nav {
@@ -400,11 +430,12 @@ body {
   }
 
   .brand-name {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .brand-tagline {
-    font-size: 9px;
+    font-size: 8px;
+    letter-spacing: 0.12em;
   }
 
   .cta-button-primary {
@@ -425,12 +456,25 @@ body {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   }
 
-  .brand-name {
-    color: #5b9bd5;
+  .brand-name-gradient {
+    background: linear-gradient(135deg, #7dd3fc 0%, #5b9bd5 35%, #f87171 70%, #fca5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .brand-tagline {
     color: #94a3b8;
+  }
+
+  .brand-logo-wrapper {
+    background: linear-gradient(135deg, rgba(15, 76, 117, 0.25) 0%, rgba(220, 38, 38, 0.15) 100%);
+    border-color: rgba(125, 211, 252, 0.3);
+  }
+
+  .brand-link:hover .brand-logo-wrapper {
+    background: linear-gradient(135deg, rgba(15, 76, 117, 0.35) 0%, rgba(220, 38, 38, 0.2) 100%);
+    border-color: rgba(125, 211, 252, 0.5);
   }
 
   .nav-list li a {

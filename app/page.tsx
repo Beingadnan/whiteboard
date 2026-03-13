@@ -6,6 +6,143 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import StructuredData from "./components/StructuredData";
 import { useRouter } from "next/navigation";
+import { motion, useMotionValue, useMotionValueEvent, useScroll, animate, MotionValue } from "framer-motion";
+
+// Scroll overflow mask helper function
+const left = `0%`;
+const right = `100%`;
+const leftInset = `20%`;
+const rightInset = `80%`;
+const transparent = `#0000`;
+const opaque = `#000`;
+
+function useScrollOverflowMask(scrollXProgress: MotionValue<number>) {
+  const maskImage = useMotionValue(
+    `linear-gradient(90deg, ${opaque}, ${opaque} ${left}, ${opaque} ${rightInset}, ${transparent})`
+  );
+
+  useMotionValueEvent(scrollXProgress, "change", (value) => {
+    if (value === 0) {
+      animate(
+        maskImage,
+        `linear-gradient(90deg, ${opaque}, ${opaque} ${left}, ${opaque} ${rightInset}, ${transparent})`
+      );
+    } else if (value === 1) {
+      animate(
+        maskImage,
+        `linear-gradient(90deg, ${transparent}, ${opaque} ${leftInset}, ${opaque} ${right}, ${opaque})`
+      );
+    } else if (
+      scrollXProgress.getPrevious() === 0 ||
+      scrollXProgress.getPrevious() === 1
+    ) {
+      animate(
+        maskImage,
+        `linear-gradient(90deg, ${transparent}, ${opaque} ${leftInset}, ${opaque} ${rightInset}, ${transparent})`
+      );
+    }
+  });
+
+  return maskImage;
+}
+
+// Scroll-Linked Universities Component
+interface University {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
+
+function ScrollLinkedUniversities({ universities, openModal }: { universities: University[], openModal: (url: string) => void }) {
+  const ref = useRef<HTMLUListElement>(null);
+  const { scrollXProgress } = useScroll({ container: ref });
+  const maskImage = useScrollOverflowMask(scrollXProgress);
+
+  return (
+    <div className="relative w-full max-w-6xl mx-auto">
+      <svg 
+        className="absolute -top-16 -left-4 w-20 h-20 transform -rotate-90 z-10 hidden md:block" 
+        viewBox="0 0 100 100"
+        style={{ 
+          '--accent': '#0f4c75'
+        } as React.CSSProperties}
+      >
+        <circle 
+          cx="50" 
+          cy="50" 
+          r="30" 
+          pathLength="1" 
+          className="stroke-slate-200 dark:stroke-slate-700"
+          strokeWidth="10%"
+          fill="none"
+        />
+        <motion.circle
+          cx="50"
+          cy="50"
+          r="30"
+          className="stroke-[#0f4c75] dark:stroke-[#1e7aa8]"
+          style={{ 
+            pathLength: scrollXProgress,
+            strokeWidth: "10%",
+            fill: "none",
+            strokeDashoffset: 0
+          }}
+        />
+      </svg>
+      <motion.ul 
+        ref={ref} 
+        className="flex gap-6 overflow-x-scroll pb-4 px-6 -mx-6 list-none scrollbar-thin scrollbar-thumb-[#0f4c75] scrollbar-track-slate-200 dark:scrollbar-track-slate-700"
+        style={{ 
+          maskImage: maskImage,
+          height: 'auto',
+          scrollbarWidth: 'thin',
+        }}
+      >
+        {universities.map((university: University) => (
+          <li 
+            key={university.id}
+            className="flex-shrink-0 w-[320px] md:w-[380px]"
+          >
+            <div className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+              <div className="relative w-full h-48 bg-gradient-to-br from-[#0f4c75] to-[#dc2626] overflow-hidden">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url(${university.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                  role="img"
+                  aria-label={`${university.name} university image`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80 transition-opacity duration-300 group-hover:opacity-70"></div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 z-10 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                  <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg">
+                    {university.name}
+                  </h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5 min-h-[3rem]">
+                  {university.description}
+                </p>
+                <button
+                  onClick={() => openModal("/universities")}
+                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                >
+                  Join Now
+                </button>
+              </div>
+            </div>
+          </li>
+        ))}
+      </motion.ul>
+    </div>
+  );
+}
 
 export default function Home() {
   const router = useRouter();
@@ -292,10 +429,10 @@ export default function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "White Board Education",
-    "alternateName": "Whiteboard Education",
-    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com",
-    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com"}/Logo.png`,
+    "name": "Successmentorix",
+    "alternateName": "Successmentorix",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com",
+    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/Logo.png`,
     "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, MCA, BBA, BCA courses with UGC approval.",
     "address": {
       "@type": "PostalAddress",
@@ -313,13 +450,13 @@ export default function Home() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "White Board Education",
-    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com",
+    "name": "Successmentorix",
+    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": `${process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com"}/courses?search={search_term_string}`
+        "urlTemplate": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/courses?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
@@ -339,7 +476,7 @@ export default function Home() {
         "description": course.description,
         "provider": {
           "@type": "EducationalOrganization",
-          "name": "White Board Education"
+          "name": "Successmentorix"
         },
         "educationalLevel": course.duration.includes("year") ? "Undergraduate" : "Postgraduate",
         "timeRequired": course.duration,
@@ -362,7 +499,7 @@ export default function Home() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com"
+        "item": process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"
       }
     ]
   };
@@ -379,7 +516,7 @@ export default function Home() {
         "@type": "CollegeOrUniversity",
         "name": university.name,
         "description": university.description,
-        "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://whiteboardeducation.com"}/universities`
+        "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/universities`
       }
     }))
   };
@@ -394,7 +531,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Hero />
       
-      {/* Top Universities Section - Scrollable */}
+      {/* Top Universities Section - Scrollable with Animation */}
       <section className="py-24 md:py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900" aria-label="Top Universities">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -406,76 +543,10 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Scrollable Container */}
-          <div 
-            className="relative mb-12"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {/* Scrollable Wrapper */}
-            <div 
-              ref={scrollContainerRef}
-              className="overflow-x-hidden scrollbar-hide pb-4 -mx-6 px-6"
-              style={{ scrollBehavior: 'auto', willChange: 'scroll-position' }}
-            >
-              <div ref={scrollContentRef} className="flex gap-6 min-w-max">
-                {/* Duplicate universities for infinite scroll - need at least 2 sets for seamless loop */}
-                {[...featuredUniversities, ...featuredUniversities].map((university, index) => (
-                  <div
-                    key={`${university.id}-${index}`}
-                    className="group flex-shrink-0 w-[320px] md:w-[380px] bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
-                    style={{
-                      animation: `fadeInUp 0.6s ease-out ${(index % featuredUniversities.length) * 100}ms both`
-                    }}
-                  >
-                    <div className="relative w-full h-48 bg-gradient-to-br from-[#0f4c75] to-[#dc2626] overflow-hidden">
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{
-                          backgroundImage: `url(${university.image})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                        role="img"
-                        aria-label={`${university.name} university image`}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80 transition-opacity duration-300 group-hover:opacity-70"></div>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      <div className="absolute bottom-4 left-4 right-4 z-10 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                        <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg">
-                          {university.name}
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5 min-h-[3rem]">
-                        {university.description}
-                      </p>
-                      <button
-                        onClick={() => openModal("/universities")}
-                        className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
-                      >
-                        Join Now
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Scroll-Linked Animation Container */}
+          <ScrollLinkedUniversities universities={featuredUniversities} openModal={openModal} />
 
-            {/* Scroll Indicators */}
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <div className="h-1.5 w-12 bg-slate-300 dark:bg-slate-600 rounded-full overflow-hidden">
-                <div className={`h-full bg-gradient-to-r from-[#0f4c75] to-[#dc2626] rounded-full ${isPaused ? '' : 'animate-scroll-indicator'}`}></div>
-              </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                {isPaused ? 'Hover to pause • Auto-scrolling' : 'Auto-scrolling'}
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center">
+          <div className="text-center mt-12">
             <Link
               href="/universities"
               className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
@@ -824,7 +895,7 @@ export default function Home() {
                     course: "Online MBA",
                     university: "Amity University",
                     rating: 5,
-                    review: "White Board Education made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
+                    review: "Successmentorix made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
                     location: "Delhi"
                   },
                   {
@@ -842,7 +913,7 @@ export default function Home() {
                     course: "Online MCA",
                     university: "Sikkim Manipal University",
                     rating: 5,
-                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you White Board Education for your guidance!",
+                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you Successmentorix for your guidance!",
                     location: "Ahmedabad"
                   },
                   {
@@ -870,7 +941,7 @@ export default function Home() {
                     course: "Online MBA",
                     university: "Amity University",
                     rating: 5,
-                    review: "White Board Education made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
+                    review: "Successmentorix made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
                     location: "Delhi"
                   },
                   {
@@ -888,7 +959,7 @@ export default function Home() {
                     course: "Online MCA",
                     university: "Sikkim Manipal University",
                     rating: 5,
-                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you White Board Education for your guidance!",
+                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you Successmentorix for your guidance!",
                     location: "Ahmedabad"
                   },
                   {

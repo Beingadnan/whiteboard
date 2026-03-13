@@ -16,15 +16,14 @@ export default function Footer() {
               <div className="w-16 h-16 relative">
                 <Image 
                   src="/Logo.png" 
-                  alt="Whiteboard Education" 
+                  alt="Successmentorix" 
                   width={64} 
                   height={64}
                   className="object-contain"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-bold text-lg">Whiteboard</span>
-                <span className="text-slate-400 text-xs">EDUCATION</span>
+                <span className="text-white font-bold text-lg">Successmentorix</span>
               </div>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
@@ -125,8 +124,8 @@ export default function Footer() {
                 <svg className="w-5 h-5 text-[#0f4c75] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:info@whiteboardeducation.com" className="text-slate-400 hover:text-white transition-colors duration-200">
-                  info@whiteboardeducation.com
+                <a href="mailto:info@successmentorix.com" className="text-slate-400 hover:text-white transition-colors duration-200">
+                  info@successmentorix.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -144,7 +143,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-slate-400 text-center md:text-left">
-              © {currentYear} Whiteboard Education. All rights reserved.
+              © {currentYear} Successmentorix. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6 justify-center md:justify-end">
               <Link href="/privacy" className="text-sm text-slate-400 hover:text-white transition-colors duration-200">

@@ -160,7 +160,6 @@ export default function Collaborate() {
       logo: "https://gcetl.in/web2manage/images/Universities/University17187822841556781613phpNa5MIG.jpeg",
       features: [
         "A leading private university offering quality education",
-        "Engineering, Management, Pharmacy, and Applied Sciences programs",
         "Modern facilities and infrastructure",
         "UGC and AICTE approved"
       ]
@@ -190,7 +189,6 @@ export default function Collaborate() {
       logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
       features: [
         "A progressive university offering diverse programs",
-        "Engineering, Management, Law, and Arts programs",
         "Focus on holistic development",
         "UGC recognized"
       ]

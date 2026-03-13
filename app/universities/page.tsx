@@ -70,7 +70,7 @@ export default function Universities() {
     {
       id: 6,
       name: "GLA University",
-      description: "A leading private university offering quality education in engineering, management, pharmacy, and applied sciences with modern facilities.",
+      description: "A leading private university offering quality education with modern facilities.",
       programs: ["Engineering", "Management", "Pharmacy", "Applied Sciences"],
       location: "Mathura, Uttar Pradesh",
       rating: 4.7,
@@ -81,7 +81,7 @@ export default function Universities() {
     {
       id: 7,
       name: "Mangalayatan University",
-      description: "A progressive university offering diverse programs in engineering, management, law, and arts with focus on holistic development.",
+      description: "A progressive university offering diverse programs with focus on holistic development.",
       programs: ["Engineering", "Management", "Law", "Arts & Commerce"],
       location: "Aligarh, Uttar Pradesh",
       rating: 4.6,
@@ -254,22 +254,6 @@ export default function Universities() {
                     {university.description}
                   </p>
 
-                  {/* Programs */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-50 mb-3 uppercase tracking-wide">
-                      Popular Programs
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {university.programs.map((program) => (
-                        <span
-                          key={program}
-                          className="px-3 py-1.5 bg-[#0f4c75]/10 dark:bg-[#1e7aa8]/10 text-[#0f4c75] dark:text-[#1e7aa8] text-xs font-semibold rounded-lg"
-                        >
-                          {program}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Stats */}
                   <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">

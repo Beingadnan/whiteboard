@@ -57,7 +57,7 @@ export default function AboutUs() {
               </span>
             </h1>
             <p className="text-xl md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
-              We are White Board Education, the e-learning platform. Our expertise is in meeting higher educational and career development training needs of students and working professionals.
+              We are Successmentorix, the e-learning platform. Our expertise is in meeting higher educational and career development training needs of students and working professionals.
             </p>
           </div>
         </div>
@@ -98,10 +98,10 @@ export default function AboutUs() {
                   As an adept team that is passionate about bridging the gap between enthusiastic learners and world-class trainers and between diverse learning needs and excellent educational platforms; we are relentlessly driven to curate a diverse range of value-for-money, interesting and enriching learning experiences for our ever-growing global family of learners.
                 </p>
                 <p>
-                  We are at the forefront of offering industry-relevant programs, in-demand courses and pioneering academic solutions, which effectively cater to a wide gamut of learning and training requirements and pave the way for rewarding careers. White Board Education not only excels at identifying your training and educational needs for your career growth and self-development, but also provides outstanding guidance to help you choose study programs that are aligned with your career goals.
+                  We are at the forefront of offering industry-relevant programs, in-demand courses and pioneering academic solutions, which effectively cater to a wide gamut of learning and training requirements and pave the way for rewarding careers. Successmentorix not only excels at identifying your training and educational needs for your career growth and self-development, but also provides outstanding guidance to help you choose study programs that are aligned with your career goals.
                 </p>
                 <p>
-                  With a successful track record of equipping young minds with the knowledge and the requisite skills needed to succeed in today's dynamic and highly competitive world, the creative minds at White Board Education are resolutely focused on revolutionizing the Indian education sector and grooming learners for professional success.
+                  With a successful track record of equipping young minds with the knowledge and the requisite skills needed to succeed in today's dynamic and highly competitive world, the creative minds at Successmentorix are resolutely focused on revolutionizing the Indian education sector and grooming learners for professional success.
                 </p>
               </div>
             </div>
@@ -151,14 +151,14 @@ export default function AboutUs() {
             {activeTab === 'overview' && (
               <div className={`bg-white dark:bg-slate-800 rounded-3xl p-8 md:p-10 shadow-xl border border-slate-200 dark:border-slate-700 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
                 <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-slate-50 mb-6">
-                  About White Board Education
+                  About Successmentorix
                 </h3>
                 <div className="space-y-4 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                   <p>
-                    Welcome to White Board Education, your trusted partner in educational consultancy. We are passionate about revolutionizing education and empowering learners of all ages. With a deep understanding of the ever-evolving educational landscape, we strive to provide innovative solutions and personalized guidance to help you thrive in a digital and globalized world.
+                    Welcome to Successmentorix, your trusted partner in educational consultancy. We are passionate about revolutionizing education and empowering learners of all ages. With a deep understanding of the ever-evolving educational landscape, we strive to provide innovative solutions and personalized guidance to help you thrive in a digital and globalized world.
                   </p>
                   <p>
-                    At White Board Education, we believe that education is a lifelong journey, and we are committed to making that journey as enriching and fulfilling as possible. Our team of experienced consultants brings a diverse range of expertise, spanning education, technology, curriculum development, and pedagogy.
+                    At Successmentorix, we believe that education is a lifelong journey, and we are committed to making that journey as enriching and fulfilling as possible. Our team of experienced consultants brings a diverse range of expertise, spanning education, technology, curriculum development, and pedagogy.
                   </p>
                 </div>
               </div>

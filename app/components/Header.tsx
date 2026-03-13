@@ -32,11 +32,11 @@ export default function Header() {
     >
       <div className="header-container">
         <div className="header-brand">
-          <Link href="/" className="brand-link" aria-label="Whiteboard Education home">
+          <Link href="/" className="brand-link" aria-label="Successmentorix home">
             <div className="brand-logo-wrapper">
               <Image 
                 src="/Logo.png" 
-                alt="Whiteboard Education" 
+                alt="Successmentorix" 
                 width={70} 
                 height={70} 
                 className="brand-logo-img"
@@ -45,8 +45,10 @@ export default function Header() {
               />
             </div>
             <span className="brand-text">
-              <span className="brand-name">Whiteboard</span>
-              <span className="brand-tagline">EDUCATION</span>
+              <span className="brand-name">
+                <span className="brand-name-gradient">Successmentorix</span>
+              </span>
+              <span className="brand-tagline">Your Learning Partner</span>
             </span>
           </Link>
         </div>

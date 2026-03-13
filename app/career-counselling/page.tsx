@@ -125,7 +125,7 @@ export default function CareerCounselling() {
         <div className="max-w-4xl mx-auto px-6">
           <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-4">
-              White Board Education
+              Successmentorix
             </h2>
             <h3 className="text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-300 mb-2">
               Enquiry Form
