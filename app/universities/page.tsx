@@ -88,6 +88,72 @@ export default function Universities() {
       students: "10K+",
       established: "2006",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 8,
+      name: "Noida International University",
+      description: "UGC-recognized online programs in management, commerce, and computer applications with flexible fee options.",
+      programs: ["Management", "Commerce", "Computer Applications", "Arts"],
+      location: "Greater Noida, Uttar Pradesh",
+      rating: 4.5,
+      students: "12K+",
+      established: "2010",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 9,
+      name: "DPU Pune (Dr. D.Y. Patil Vidyapeeth)",
+      description: "Online BBA, MBA, and MCA for Indian and international students with semester-wise fees.",
+      programs: ["Management", "Computer Applications"],
+      location: "Pune, Maharashtra",
+      rating: 4.6,
+      students: "10K+",
+      established: "2003",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 10,
+      name: "Vivekanand Global University (VGU)",
+      description: "Affordable online programs with semester, annual, and one-shot payment options.",
+      programs: ["Arts", "Management", "Computer Applications"],
+      location: "Jaipur, Rajasthan",
+      rating: 4.5,
+      students: "8K+",
+      established: "2012",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 11,
+      name: "Sharda University Online",
+      description: "Online BBA, BCA, MBA, and MCA with semester, annual, and one-time fee options.",
+      programs: ["Management", "Computer Applications"],
+      location: "Greater Noida, Uttar Pradesh",
+      rating: 4.5,
+      students: "15K+",
+      established: "2009",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 12,
+      name: "NMIMS University",
+      description: "Online BBA, B.Com, and MBA with sem/yearly/full fee. Registration and exam fees apply.",
+      programs: ["Management", "Commerce"],
+      location: "Mumbai, Maharashtra",
+      rating: 4.8,
+      students: "25K+",
+      established: "1981",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+    },
+    {
+      id: 13,
+      name: "LPU Online (Lovely Professional University)",
+      description: "Online BA, BBA, BCA, MBA, and MCA with semester and exam fee. Registration fee ₹600.",
+      programs: ["Arts", "Management", "Computer Applications"],
+      location: "Jalandhar, Punjab",
+      rating: 4.6,
+      students: "30K+",
+      established: "2005",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
     }
   ];
 

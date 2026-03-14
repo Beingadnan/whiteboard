@@ -76,12 +76,12 @@ export default function Contact() {
     {
       icon: "📞",
       title: "Phone",
-      details: ["+91 7275131439"]
+      details: ["+91 9335512881"]
     },
     {
       icon: "💬",
       title: "WhatsApp",
-      details: ["+91 7275131439"]
+      details: ["+91 9335512881"]
     },
     {
       icon: "🕒",

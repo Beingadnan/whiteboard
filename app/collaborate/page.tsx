@@ -470,10 +470,10 @@ export default function Collaborate() {
                 Get Started
               </a>
               <a
-                href="tel:+917275131439"
+                href="tel:+919335512881"
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
               >
-                Call: +91 7275131439
+                Call: +91 9335512881
               </a>
             </div>
           </div>

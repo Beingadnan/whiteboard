@@ -46,37 +46,69 @@ export default function UniversityDetail() {
         "Programs at Amity University Online hold accreditation from WES in both the US and Canada",
         "With over 300 hiring partners, the university facilitates placements through exclusive virtual job fairs"
       ],
+      feeTables: [
+        {
+          title: "Undergraduate (UG) – General Fee Structure (INR)",
+          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee", "Total Installment (Semester Wise)", "Yearly Installment"],
+          rows: [
+            { "Program": "BA", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Total Installment (Semester Wise)": "₹99,000", "Yearly Installment": "₹31,350 per year" },
+            { "Program": "BA (Vernacular)", "Retail Price": "₹85,000", "One Time Fee": "₹85,000", "Semester Fee": "N/A", "Total Installment (Semester Wise)": "₹85,000", "Yearly Installment": "₹28,340 per year" },
+            { "Program": "BA (JNC)", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,49,600", "Semester Fee": "₹28,400 x 6", "Total Installment (Semester Wise)": "₹1,70,000", "Yearly Installment": "₹53,840 per year" },
+            { "Program": "BBA", "Retail Price": "₹1,65,000", "One Time Fee": "₹1,45,200", "Semester Fee": "₹27,500 x 6", "Total Installment (Semester Wise)": "₹1,65,000", "Yearly Installment": "₹52,250 per year" },
+            { "Program": "BBA (HCLTech Data Analytics)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
+            { "Program": "BCOM", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Total Installment (Semester Wise)": "₹99,000", "Yearly Installment": "₹31,350 per year" },
+            { "Program": "BCOM (ACCA)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,20,000", "Semester Fee": "₹41,700 x 6", "Total Installment (Semester Wise)": "₹2,50,000", "Yearly Installment": "₹79,170 per year" },
+            { "Program": "BCOM (Hons)", "Retail Price": "₹1,65,000", "One Time Fee": "₹1,45,200", "Semester Fee": "₹27,500 x 6", "Total Installment (Semester Wise)": "₹1,65,000", "Yearly Installment": "₹52,250 per year" },
+            { "Program": "BCOM (Vernacular)", "Retail Price": "₹85,000", "One Time Fee": "₹85,000", "Semester Fee": "N/A", "Total Installment (Semester Wise)": "₹85,000", "Yearly Installment": "₹28,340 per year" },
+            { "Program": "BCA", "Retail Price": "₹1,50,000", "One Time Fee": "₹1,32,000", "Semester Fee": "₹25,000 x 6", "Total Installment (Semester Wise)": "₹1,50,000", "Yearly Installment": "₹47,500 per year" },
+            { "Program": "BCA (HCLTech Data Engineering)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
+            { "Program": "BCA (HCLTech Software Engineering)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
+            { "Program": "BCA (TCS iON Cloud Security)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
+            { "Program": "BCA (TCS iON Data Analytics)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
+          ],
+        },
+        {
+          title: "Postgraduate (PG) – General Fee Structure (INR)",
+          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee"],
+          rows: [
+            { "Program": "MA (JNC)", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,56,400", "Semester Fee": "₹42,500" },
+            { "Program": "MA (PG)", "Retail Price": "₹1,30,000", "One Time Fee": "₹1,19,600", "Semester Fee": "₹32,500" },
+            { "Program": "MBA", "Retail Price": "₹1,99,000", "One Time Fee": "₹1,83,080", "Semester Fee": "₹49,750" },
+            { "Program": "MBA (ACCA)", "Retail Price": "₹2,99,000", "One Time Fee": "₹2,75,080", "Semester Fee": "₹74,750" },
+            { "Program": "MBA (Immersion)", "Retail Price": "₹4,75,000", "One Time Fee": "₹4,37,000", "Semester Fee": "₹1,18,750" },
+            { "Program": "MBA (Immersion INT)", "Retail Price": "₹5,99,000", "One Time Fee": "₹5,51,080", "Semester Fee": "₹1,49,750" },
+            { "Program": "MBA (Dual Specialization)", "Retail Price": "₹2,99,000", "One Time Fee": "₹2,75,080", "Semester Fee": "₹74,750" },
+            { "Program": "MCom (FIN)", "Retail Price": "₹1,20,000", "One Time Fee": "₹1,10,400", "Semester Fee": "₹30,000" },
+            { "Program": "MCA", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,56,400", "Semester Fee": "₹42,500" },
+            { "Program": "MCA (HCLTech Cybersecurity)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
+            { "Program": "MCA (HCLTech Software Eng)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
+            { "Program": "MCA (TCS iON ARVR)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
+            { "Program": "MCA (TCS iON ML)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
+            { "Program": "MCA (Data Science)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
+          ],
+        },
+      ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,99,000", discountFee: "Rs 1,83,080" },
-        { name: "Online MBA - Dual Specialization", duration: "2 years", fullFee: "Rs 2,99,000", discountFee: "Rs 2,75,080" },
-        { name: "Online MBA - Immersion", duration: "2 years", fullFee: "Rs 4,75,000", discountFee: "Rs 4,37,000" },
-        { name: "Online MBA - Immersion International", duration: "2 years", fullFee: "Rs 5,99,000", discountFee: "Rs 5,51,080" },
-        { name: "Online MSC - Data Science", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,65,000", discountFee: "Rs 1,45,200" },
-        { name: "Online BBA - HCL Tech Data Analytics", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,56,400" },
-        { name: "Online MCA - HCL Tech Cybersecurity", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
-        { name: "Online MCA - HCL Tech Software Engineering", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
-        { name: "Online MCA - TCS iON AR/VR", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
-        { name: "Online MCA - TCS iON Machine Learning", duration: "2 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,30,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,50,000", discountFee: "Rs 1,32,000" },
-        { name: "Online BCA - HCL Tech Data Engineering", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
-        { name: "Online BCA - HCL Tech Software Engineering", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
-        { name: "Online BCA - TCS iON Cloud Security", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
-        { name: "Online BCA - TCS iON Data Analytics", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 1,98,000" },
-        { name: "Online MA - JNC", duration: "2 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,56,400" },
-        { name: "Online MA - PPG", duration: "2 years", fullFee: "Rs 1,30,000", discountFee: "Rs 1,19,600" },
-        { name: "Online M.Com - Financial Management", duration: "2 years", fullFee: "Rs 1,20,000", discountFee: "Rs 1,10,400" },
-        { name: "Online BA", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 87,120" },
-        { name: "Online BA - Vernacular", duration: "3 years", fullFee: "Rs 85,000", discountFee: "Rs 85,000" },
-        { name: "Online BA - JNC", duration: "3 years", fullFee: "Rs 1,70,000", discountFee: "Rs 1,49,600" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 87,120" },
-        { name: "Online B.Com - ACCA", duration: "3 years", fullFee: "Rs 2,50,000", discountFee: "Rs 2,20,000" },
-        { name: "Online B.Com - Hons", duration: "3 years", fullFee: "Rs 1,65,000", discountFee: "Rs 1,45,200" },
-        { name: "Online B.Com - Vernacular", duration: "3 years", fullFee: "Rs 85,000", discountFee: "Rs 85,000" },
-        { name: "Online BBA - MBA (Integrated)", duration: "5 years", fullFee: "Rs 3,45,800", discountFee: "Rs 3,18,130" },
-        { name: "Online B.Com - MBA (Integrated)", duration: "5 years", fullFee: "Rs 2,83,100", discountFee: "Rs 2,60,450" },
-        { name: "Online BCA - MCA (Integrated)", duration: "5 years", fullFee: "Rs 3,04,000", discountFee: "Rs 2,79,680" }
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,99,000", discountFee: "One Time ₹1,83,080 / Sem ₹49,750" },
+        { name: "Online MBA (Dual Specialization)", duration: "2 years", fullFee: "₹2,99,000", discountFee: "One Time ₹2,75,080 / Sem ₹74,750" },
+        { name: "Online MBA (Immersion)", duration: "2 years", fullFee: "₹4,75,000", discountFee: "One Time ₹4,37,000" },
+        { name: "Online MBA (Immersion INT)", duration: "2 years", fullFee: "₹5,99,000", discountFee: "One Time ₹5,51,080" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,65,000", discountFee: "Sem ₹27,500 x 6" },
+        { name: "Online BBA (HCLTech Data Analytics)", duration: "3 years", fullFee: "₹2,25,000", discountFee: "Sem ₹37,500 x 6" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,70,000", discountFee: "One Time ₹1,56,400 / Sem ₹42,500" },
+        { name: "Online MCA (HCLTech/TCS iON variants)", duration: "2 years", fullFee: "₹2,50,000", discountFee: "Sem ₹62,500" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹25,000 x 6" },
+        { name: "Online BCA (HCLTech/TCS iON variants)", duration: "3 years", fullFee: "₹2,25,000", discountFee: "Sem ₹37,500 x 6" },
+        { name: "Online MA (JNC)", duration: "2 years", fullFee: "₹1,70,000", discountFee: "Sem ₹42,500" },
+        { name: "Online MA (PG)", duration: "2 years", fullFee: "₹1,30,000", discountFee: "Sem ₹32,500" },
+        { name: "Online M.Com (FIN)", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹30,000" },
+        { name: "Online BA", duration: "3 years", fullFee: "₹99,000", discountFee: "Sem ₹16,500 x 6" },
+        { name: "Online BA (Vernacular)", duration: "3 years", fullFee: "₹85,000", discountFee: "N/A" },
+        { name: "Online BA (JNC)", duration: "3 years", fullFee: "₹1,70,000", discountFee: "Sem ₹28,400 x 6" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹99,000", discountFee: "Sem ₹16,500 x 6" },
+        { name: "Online B.Com (ACCA)", duration: "3 years", fullFee: "₹2,50,000", discountFee: "Sem ₹41,700 x 6" },
+        { name: "Online B.Com (Hons)", duration: "3 years", fullFee: "₹1,65,000", discountFee: "Sem ₹27,500 x 6" },
+        { name: "Online B.Com (Vernacular)", duration: "3 years", fullFee: "₹85,000", discountFee: "N/A" },
       ],
       admissionProcess: [
         "Visit the official website of Amity Online (Note: Separate websites exist for online and on-campus programs)",
@@ -145,19 +177,26 @@ export default function UniversityDetail() {
         "Offers quality higher education through affordable online programs",
         "Online degrees are recognised by UGC & AICTE"
       ],
+      feeTables: [
+        {
+          title: "Uttaranchal University (Online) – Fee Structure (INR)",
+          headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time"],
+          rows: [
+            { "Course": "BA", "Total Fee": "₹72,000", "Semester Fee": "₹10,200", "Annual Fee": "₹18,400", "One Time": "₹55,200" },
+            { "Course": "BBA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time": "₹96,000" },
+            { "Course": "BCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time": "₹96,000" },
+            { "Course": "MBA", "Total Fee": "₹1,40,000", "Semester Fee": "₹24,500", "Annual Fee": "₹47,000", "One Time": "₹94,000" },
+            { "Course": "MCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹24,000", "Annual Fee": "₹46,000", "One Time": "₹92,000" },
+          ],
+        },
+      ],
+      feeNote: "Exam Fee: ₹2,500",
       courses: [
-        { name: "Online MBA - Marketing Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Digital Marketing", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Human Resource Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Business Analytics", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Financial Management", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - International Business", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Logistics and Supply Chain", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MBA - Information Technology", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 94,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,20,000", discountFee: "Rs 92,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 96,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 96,000" },
-        { name: "Online BA", duration: "3 years", fullFee: "Rs 72,000", discountFee: "Rs 55,200" }
+        { name: "Online BA", duration: "3 years", fullFee: "₹72,000", discountFee: "Sem ₹10,200 / One Time ₹55,200" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One Time ₹96,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One Time ₹96,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "Sem ₹24,500 / One Time ₹94,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹24,000 / One Time ₹92,000" },
       ],
       admissionProcess: [
         "Start by selecting the 'Apply Now' tab on the official website",
@@ -225,19 +264,28 @@ export default function UniversityDetail() {
         "First Public-Private Partnership (PPP) in the region",
         "Ranked 51st among India's Best Multidisciplinary Universities"
       ],
+      feeTables: [
+        {
+          title: "Sikkim Manipal University Online – Fee Structure (INR)",
+          headers: ["Program", "Semester Fee", "Annual Fee", "Total"],
+          rows: [
+            { "Program": "BA", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total": "₹75,000" },
+            { "Program": "BCOM", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total": "₹75,000" },
+            { "Program": "MA English", "Semester Fee": "₹18,750", "Annual Fee": "₹37,500", "Total": "₹75,000" },
+            { "Program": "MA Sociology", "Semester Fee": "₹18,750", "Annual Fee": "₹37,500", "Total": "₹75,000" },
+            { "Program": "MBA", "Semester Fee": "₹27,500", "Annual Fee": "₹55,000", "Total": "₹1,10,000" },
+            { "Program": "MCA", "Semester Fee": "₹24,500", "Annual Fee": "₹49,000", "Total": "₹98,000" },
+          ],
+        },
+      ],
+      feeNote: "Prospectus Fee: ₹500",
       courses: [
-        { name: "Online MBA - Marketing", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
-        { name: "Online MBA - Finance", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
-        { name: "Online MBA - HR", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
-        { name: "Online MBA - Systems", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
-        { name: "Online MBA - Operation & Supply Chain Management", duration: "2 years", fullFee: "Rs 1,10,000", discountFee: "Rs 27,500/sem" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 98,000", discountFee: "Rs 24,500/sem" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
-        { name: "Online MA - English", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
-        { name: "Online MA - Sociology", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
-        { name: "Online MA - Political Science", duration: "2 years", fullFee: "Rs 75,000", discountFee: "Rs 18,750/sem" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 12,500/sem" },
-        { name: "Online BA", duration: "3 years", fullFee: "Rs 75,000", discountFee: "Rs 12,500/sem" }
+        { name: "Online BA", duration: "3 years", fullFee: "₹75,000", discountFee: "Sem ₹12,500" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹75,000", discountFee: "Sem ₹12,500" },
+        { name: "Online MA (English)", duration: "2 years", fullFee: "₹75,000", discountFee: "Sem ₹18,750" },
+        { name: "Online MA (Sociology)", duration: "2 years", fullFee: "₹75,000", discountFee: "Sem ₹18,750" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,10,000", discountFee: "Sem ₹27,500" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹98,000", discountFee: "Sem ₹24,500" },
       ],
       admissionProcess: [
         "Choose Your Course: Visit the university's official website to select the course you wish to apply for. Review the eligibility criteria and any entrance exam requirements for the chosen course.",
@@ -300,14 +348,29 @@ export default function UniversityDetail() {
         "WES and AICTE Approved",
         "Award-winning next-generation education platform"
       ],
+      feeTables: [
+        {
+          title: "Manipal University Online (MUJ) – Fee Structure (INR)",
+          headers: ["Program", "Course Fee", "Sem Fee"],
+          rows: [
+            { "Program": "BCA", "Course Fee": "₹1,35,000", "Sem Fee": "₹22,500" },
+            { "Program": "BBA", "Course Fee": "₹1,35,000", "Sem Fee": "₹22,500" },
+            { "Program": "MBA", "Course Fee": "₹1,75,000", "Sem Fee": "₹43,750" },
+            { "Program": "BCom", "Course Fee": "₹99,000", "Sem Fee": "₹16,500" },
+            { "Program": "MCA", "Course Fee": "₹1,58,000", "Sem Fee": "₹39,500" },
+            { "Program": "MCom", "Course Fee": "₹1,08,000", "Sem Fee": "₹27,000" },
+            { "Program": "MA J&MC", "Course Fee": "₹1,40,000", "Sem Fee": "₹35,000" },
+          ],
+        },
+      ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,75,000", discountFee: "Rs 43,750/sem" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 22,500/sem" },
-        { name: "Online MCA", duration: "2 years", fullFee: "Rs 1,58,000", discountFee: "Rs 39,500/sem" },
-        { name: "Online BCA", duration: "3 years", fullFee: "Rs 1,35,000", discountFee: "Rs 22,500/sem" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 1,08,000", discountFee: "Rs 27,000/sem" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 99,000", discountFee: "Rs 16,500/sem" },
-        { name: "Online MA - J&MC", duration: "2 years", fullFee: "Rs 1,40,000", discountFee: "Rs 35,000/sem" }
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,35,000", discountFee: "₹22,500/sem" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,35,000", discountFee: "₹22,500/sem" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,75,000", discountFee: "₹43,750/sem" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹99,000", discountFee: "₹16,500/sem" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,58,000", discountFee: "₹39,500/sem" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "₹1,08,000", discountFee: "₹27,000/sem" },
+        { name: "Online MA (J&MC)", duration: "2 years", fullFee: "₹1,40,000", discountFee: "₹35,000/sem" },
       ],
       admissionProcess: [
         "Explore the official website of Manipal University Online and complete the online application by selecting the 'Enrol Now' option",
@@ -446,11 +509,11 @@ export default function UniversityDetail() {
         "UGC recognized"
       ],
       courses: [
-        { name: "Online B.Com", duration: "3 years", fullFee: "Rs 1,20,000", discountFee: "Rs 40,000/year" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "Rs 60,000", discountFee: "Rs 30,000/year" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 2,25,000", discountFee: "Rs 75,000/year" },
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 2,70,000", discountFee: "Rs 1,35,000/year" },
-        { name: "Online PGDBM", duration: "2 years", fullFee: "Rs 2,70,000", discountFee: "Rs 1,35,000/year" }
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹1,20,000", discountFee: "₹40,000/year" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "₹60,000", discountFee: "₹30,000/year" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹2,25,000", discountFee: "₹75,000/year" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹2,70,000", discountFee: "₹1,35,000/year" },
+        { name: "Online PGDBM", duration: "2 years", fullFee: "₹2,70,000", discountFee: "₹1,35,000/year" }
       ],
       benefits: [
         "UGC recognized programs",
@@ -465,6 +528,310 @@ export default function UniversityDetail() {
           answer: "Yes, Mangalayatan University is UGC recognized and offers diverse programs with focus on holistic development."
         }
       ]
+    },
+    {
+      id: 8,
+      name: "Noida International University",
+      shortName: "NIU",
+      description: "Noida International University offers UGC-recognized online programs in management, commerce, and computer applications with flexible fee payment options.",
+      fullDescription: "Noida International University offers UGC-recognized online degree programs with semester-wise, annual, and one-time payment options. Programs include BBA, BCA, B.Com, MA, MBA, MCA, and M.Com.",
+      programs: ["Management", "Commerce", "Computer Applications", "Arts"],
+      location: "Greater Noida, Uttar Pradesh",
+      rating: 4.5,
+      students: "12K+",
+      established: "2010",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A",
+      ugcApproved: true,
+      keyFeatures: ["UGC recognized", "Flexible fee payment", "Online learning", "Placement support"],
+      feeTables: [
+        {
+          title: "Noida International University – Fee Structure (INR)",
+          headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time"],
+          rows: [
+            { "Course": "BBA", "Total Fee": "₹1,08,000", "Semester Fee": "₹13,500", "Annual Fee": "₹27,000", "One Time": "₹81,000" },
+            { "Course": "BCA", "Total Fee": "₹1,08,000", "Semester Fee": "₹13,500", "Annual Fee": "₹27,000", "One Time": "₹81,000" },
+            { "Course": "BCOM", "Total Fee": "₹75,000", "Semester Fee": "₹9,375", "Annual Fee": "₹18,750", "One Time": "₹56,250" },
+            { "Course": "MA", "Total Fee": "₹1,08,000", "Semester Fee": "₹20,250", "Annual Fee": "₹40,500", "One Time": "₹81,000" },
+            { "Course": "MBA", "Total Fee": "₹1,18,000", "Semester Fee": "₹22,125", "Annual Fee": "₹44,250", "One Time": "₹88,500" },
+            { "Course": "MCA", "Total Fee": "₹1,18,000", "Semester Fee": "₹22,125", "Annual Fee": "₹44,250", "One Time": "₹88,500" },
+            { "Course": "MCOM", "Total Fee": "₹80,000", "Semester Fee": "₹15,000", "Annual Fee": "₹30,000", "One Time": "₹60,000" },
+          ],
+        },
+      ],
+      feeNote: "Prospectus Fee: ₹1,100",
+      courses: [
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,08,000", discountFee: "Sem ₹13,500 / One Time ₹81,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,08,000", discountFee: "Sem ₹13,500 / One Time ₹81,000" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹75,000", discountFee: "One Time ₹56,250" },
+        { name: "Online MA", duration: "2 years", fullFee: "₹1,08,000", discountFee: "One Time ₹81,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,18,000", discountFee: "One Time ₹88,500" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,18,000", discountFee: "One Time ₹88,500" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "₹80,000", discountFee: "One Time ₹60,000" },
+      ],
+      admissionProcess: ["Visit official website", "Fill application", "Upload documents", "Pay fee"],
+      benefits: ["UGC recognized", "Flexible payments", "Online learning"],
+      placementPartners: ["Tech Mahindra", "Wipro", "Infosys"],
+      faqs: [{ question: "Is NIU UGC approved?", answer: "Yes, Noida International University is UGC recognized and offers online degree programs." }]
+    },
+    {
+      id: 9,
+      name: "DPU Pune (Dr. D.Y. Patil Vidyapeeth)",
+      shortName: "DPU",
+      description: "DPU Pune offers online BBA, MBA, and MCA programs for Indian and international students with semester-wise fee structure.",
+      fullDescription: "Dr. D.Y. Patil Vidyapeeth, Pune offers UGC-entitled online programs. Indian students pay in INR; international students in USD with semester-wise breakdown.",
+      programs: ["Management", "Computer Applications"],
+      location: "Pune, Maharashtra",
+      rating: 4.6,
+      students: "10K+",
+      established: "2003",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A+",
+      ugcApproved: true,
+      keyFeatures: ["UGC entitled", "Indian & International fees", "Semester-wise payment"],
+      feeTables: [
+        {
+          title: "Online BBA – Indian Civilian (INR)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "₹35,000" },
+            { "Semester": "Sem 2", "Fee": "₹35,000" },
+            { "Semester": "Sem 3", "Fee": "₹30,000" },
+            { "Semester": "Sem 4", "Fee": "₹30,000" },
+            { "Semester": "Sem 5", "Fee": "₹15,000" },
+            { "Semester": "Sem 6", "Fee": "₹15,000" },
+            { "Semester": "Total", "Fee": "₹1,45,400" },
+          ],
+        },
+        {
+          title: "Online BBA – International (USD)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "$600" },
+            { "Semester": "Sem 2", "Fee": "$600" },
+            { "Semester": "Sem 3", "Fee": "$600" },
+            { "Semester": "Sem 4", "Fee": "$600" },
+            { "Semester": "Sem 5", "Fee": "$400" },
+            { "Semester": "Total", "Fee": "$2,800" },
+          ],
+        },
+        {
+          title: "Online MBA – Indian Civilian (INR)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "₹50,000" },
+            { "Semester": "Sem 2", "Fee": "₹50,000" },
+            { "Semester": "Sem 3", "Fee": "₹45,000" },
+            { "Semester": "Sem 4", "Fee": "₹44,400" },
+            { "Semester": "Total", "Fee": "₹1,89,400" },
+          ],
+        },
+        {
+          title: "Online MBA – International (USD)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "$1,000" },
+            { "Semester": "Sem 2", "Fee": "$1,000" },
+            { "Semester": "Sem 3", "Fee": "$800" },
+            { "Semester": "Sem 4", "Fee": "$800" },
+            { "Semester": "Total", "Fee": "$3,600" },
+          ],
+        },
+        {
+          title: "Online MCA – Indian Civilian (INR)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "₹40,000" },
+            { "Semester": "Sem 2", "Fee": "₹40,000" },
+            { "Semester": "Sem 3", "Fee": "₹30,000" },
+            { "Semester": "Sem 4", "Fee": "₹30,000" },
+            { "Semester": "Total", "Fee": "₹1,40,000" },
+          ],
+        },
+        {
+          title: "Online MCA – International (USD)",
+          headers: ["Semester", "Fee"],
+          rows: [
+            { "Semester": "Sem 1", "Fee": "$750" },
+            { "Semester": "Sem 2", "Fee": "$750" },
+            { "Semester": "Sem 3", "Fee": "$600" },
+            { "Semester": "Sem 4", "Fee": "$600" },
+            { "Semester": "Total", "Fee": "$2,700" },
+          ],
+        },
+      ],
+      courses: [
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,45,400", discountFee: "Sem-wise (Indian) / $2,800 (Intl)" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,89,400", discountFee: "Sem-wise (Indian) / $3,600 (Intl)" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "Sem-wise (Indian) / $2,700 (Intl)" },
+      ],
+      admissionProcess: ["Apply online", "Submit documents", "Pay semester fee"],
+      benefits: ["UGC entitled", "Indian & International", "Flexible sem-wise"],
+      placementPartners: ["Wipro", "Infosys", "TCS"],
+      faqs: [{ question: "Does DPU offer international student fees?", answer: "Yes, DPU Pune offers separate fee structure in USD for international students for BBA, MBA, and MCA." }]
+    },
+    {
+      id: 10,
+      name: "Vivekanand Global University (VGU)",
+      shortName: "VGU",
+      description: "VGU offers affordable online programs with semester, annual, and one-shot payment options.",
+      fullDescription: "Vivekanand Global University offers UGC-recognized online degrees with flexible payment: semester fee, annual fee, or one-shot payment.",
+      programs: ["Arts", "Management", "Computer Applications"],
+      location: "Jaipur, Rajasthan",
+      rating: 4.5,
+      students: "8K+",
+      established: "2012",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A",
+      ugcApproved: true,
+      keyFeatures: ["Sem/Annual/One-shot payment", "UGC recognized", "Affordable"],
+      feeTables: [
+        {
+          title: "Vivekanand Global University (VGU) – Fee Structure (INR)",
+          headers: ["Program", "Semester Fee", "Annual Fee", "One Shot"],
+          rows: [
+            { "Program": "BA", "Semester Fee": "₹10,800", "Annual Fee": "₹20,400", "One Shot": "₹57,600" },
+            { "Program": "BBA", "Semester Fee": "₹19,800", "Annual Fee": "₹37,400", "One Shot": "₹1,05,600" },
+            { "Program": "BCA", "Semester Fee": "₹19,800", "Annual Fee": "₹37,400", "One Shot": "₹1,05,600" },
+            { "Program": "MA", "Semester Fee": "₹16,200", "Annual Fee": "₹30,600", "One Shot": "₹57,600" },
+            { "Program": "MBA", "Semester Fee": "₹33,750", "Annual Fee": "₹63,750", "One Shot": "₹1,20,000" },
+            { "Program": "MCA", "Semester Fee": "₹33,750", "Annual Fee": "₹63,750", "One Shot": "₹1,20,000" },
+          ],
+        },
+      ],
+      courses: [
+        { name: "Online BA", duration: "3 years", fullFee: "₹57,600 (one shot)", discountFee: "Sem ₹10,800 / Annual ₹20,400" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,05,600 (one shot)", discountFee: "Sem ₹19,800 / Annual ₹37,400" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,05,600 (one shot)", discountFee: "Sem ₹19,800 / Annual ₹37,400" },
+        { name: "Online MA", duration: "2 years", fullFee: "₹57,600 (one shot)", discountFee: "Sem ₹16,200 / Annual ₹30,600" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,20,000 (one shot)", discountFee: "Sem ₹33,750 / Annual ₹63,750" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000 (one shot)", discountFee: "Sem ₹33,750 / Annual ₹63,750" },
+      ],
+      admissionProcess: ["Apply online", "Submit documents", "Choose payment option"],
+      benefits: ["One-shot discount", "UGC recognized", "Flexible payment"],
+      placementPartners: ["Wipro", "Infosys"],
+      faqs: [{ question: "What payment options does VGU offer?", answer: "VGU offers semester-wise, annual, or one-time (one-shot) payment with lower total cost for one-shot." }]
+    },
+    {
+      id: 11,
+      name: "Sharda University Online",
+      shortName: "Sharda",
+      description: "Sharda University offers online BBA, BCA, MBA, and MCA with semester, annual, and one-time fee options.",
+      fullDescription: "Sharda University Online offers UGC-recognized programs. Exam fee applies as per university norms.",
+      programs: ["Management", "Computer Applications"],
+      location: "Greater Noida, Uttar Pradesh",
+      rating: 4.5,
+      students: "15K+",
+      established: "2009",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A+",
+      ugcApproved: true,
+      keyFeatures: ["UGC recognized", "MBA Data Science", "Exam fee separate"],
+      feeTables: [
+        {
+          title: "Sharda University Online – Fee Structure (INR)",
+          headers: ["Course", "Semester Fee", "Annual Fee", "One Time"],
+          rows: [
+            { "Course": "BBA", "Semester Fee": "₹20,000", "Annual Fee": "₹40,000", "One Time": "₹1,20,000" },
+            { "Course": "BCA", "Semester Fee": "₹20,000", "Annual Fee": "₹40,000", "One Time": "₹1,20,000" },
+            { "Course": "MBA", "Semester Fee": "₹35,000", "Annual Fee": "₹70,000", "One Time": "₹1,40,000" },
+            { "Course": "MBA (Data Science)", "Semester Fee": "₹49,000", "Annual Fee": "₹98,000", "One Time": "₹1,96,000" },
+            { "Course": "MCA", "Semester Fee": "₹30,000", "Annual Fee": "₹60,000", "One Time": "₹1,20,000" },
+          ],
+        },
+      ],
+      feeNote: "Exam Fee: ₹7,000",
+      courses: [
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹20,000 / Annual ₹40,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹20,000 / Annual ₹40,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "One Time ₹1,40,000" },
+        { name: "Online MBA (Data Science)", duration: "2 years", fullFee: "₹1,96,000", discountFee: "One Time ₹1,96,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000", discountFee: "One Time ₹1,20,000" },
+      ],
+      admissionProcess: ["Apply online", "Submit documents", "Pay fee"],
+      benefits: ["UGC recognized", "MBA Data Science", "Placement support"],
+      placementPartners: ["Tech Mahindra", "Wipro", "Infosys"],
+      faqs: [{ question: "Is there an exam fee at Sharda?", answer: "Yes, exam fee of ₹7,000 applies as per university norms." }]
+    },
+    {
+      id: 12,
+      name: "NMIMS University",
+      shortName: "NMIMS",
+      description: "NMIMS offers online BBA, B.Com, and MBA with semester and yearly fee options. Registration and exam fees apply.",
+      fullDescription: "NMIMS School of Distance Learning offers UGC-recognized online programs. Registration fee ₹1,200; exam fee per subject ₹800; project fee ₹800.",
+      programs: ["Management", "Commerce"],
+      location: "Mumbai, Maharashtra",
+      rating: 4.8,
+      students: "25K+",
+      established: "1981",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A+",
+      ugcApproved: true,
+      keyFeatures: ["Sem/Yearly/Full fee", "Registration & exam fees", "MBA WX program"],
+      feeTables: [
+        {
+          title: "NMIMS University – Fee Structure (INR)",
+          headers: ["Program", "Sem Fee", "Yearly Fee", "Full Fee"],
+          rows: [
+            { "Program": "BBA", "Sem Fee": "₹25,000", "Yearly Fee": "₹47,000", "Full Fee": "₹1,31,000" },
+            { "Program": "BCOM", "Sem Fee": "₹18,000", "Yearly Fee": "₹33,000", "Full Fee": "₹94,000" },
+            { "Program": "MBA", "Sem Fee": "₹55,000", "Yearly Fee": "₹1,05,000", "Full Fee": "₹1,96,000" },
+            { "Program": "MBA WX", "Sem Fee": "—", "Yearly Fee": "—", "Full Fee": "₹4,00,000" },
+          ],
+        },
+      ],
+      feeNote: "Registration Fee: ₹1,200 | Exam Fee per subject: ₹800 | Project Fee: ₹800",
+      courses: [
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,31,000", discountFee: "Sem ₹25,000 / Yearly ₹47,000" },
+        { name: "Online B.Com", duration: "3 years", fullFee: "₹94,000", discountFee: "Sem ₹18,000 / Yearly ₹33,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,96,000", discountFee: "Sem ₹55,000 / Yearly ₹1,05,000" },
+        { name: "Online MBA WX", duration: "2 years", fullFee: "₹4,00,000", discountFee: "Full fee" },
+      ],
+      admissionProcess: ["Register online", "Pay registration fee", "Submit documents", "Pay semester/yearly fee"],
+      benefits: ["NMIMS brand", "UGC recognized", "Flexible payment"],
+      placementPartners: ["Amazon", "Deloitte", "TCS", "Wipro", "Infosys"],
+      faqs: [{ question: "What extra fees apply at NMIMS?", answer: "Registration fee ₹1,200, exam fee ₹800 per subject, and project fee ₹800 as applicable." }]
+    },
+    {
+      id: 13,
+      name: "LPU Online (Lovely Professional University)",
+      shortName: "LPU",
+      description: "LPU Online offers BA, BBA, BCA, MBA, and MCA with semester fee and exam fee. Registration fee applies.",
+      fullDescription: "Lovely Professional University offers UGC-recognized online programs. Registration fee ₹600; exam fee ₹2,000 per semester (example).",
+      programs: ["Arts", "Management", "Computer Applications"],
+      location: "Jalandhar, Punjab",
+      rating: 4.6,
+      students: "30K+",
+      established: "2005",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      naacGrade: "A++",
+      ugcApproved: true,
+      keyFeatures: ["Sem fee + exam fee", "UGC recognized", "NAAC A++"],
+      feeTables: [
+        {
+          title: "LPU Online – Example Fee Structure (INR)",
+          headers: ["Program", "Sem Fee", "Exam Fee", "Total Program"],
+          rows: [
+            { "Program": "BA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
+            { "Program": "BBA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
+            { "Program": "BCA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
+            { "Program": "MBA", "Sem Fee": "₹48,000", "Exam Fee": "₹2,000", "Total Program": "₹2,00,000" },
+            { "Program": "MCA", "Sem Fee": "₹35,000", "Exam Fee": "₹2,000", "Total Program": "₹1,48,000" },
+          ],
+        },
+      ],
+      feeNote: "Registration Fee: ₹600",
+      courses: [
+        { name: "Online BA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹2,00,000", discountFee: "Sem ₹48,000 + Exam ₹2,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,48,000", discountFee: "Sem ₹35,000 + Exam ₹2,000" },
+      ],
+      admissionProcess: ["Apply online", "Pay registration fee ₹600", "Submit documents", "Pay semester fee"],
+      benefits: ["NAAC A++", "UGC recognized", "Affordable"],
+      placementPartners: ["Wipro", "Infosys", "TCS", "Capgemini"],
+      faqs: [{ question: "What is the registration fee at LPU?", answer: "Registration fee is ₹600. Exam fee per semester is as per program (e.g. ₹2,000)." }]
     }
   ];
 
@@ -759,12 +1126,44 @@ export default function UniversityDetail() {
         <div className="max-w-7xl mx-auto px-6">
           <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              Updated Fees for Each Courses in 2025
+              Updated Fees for Each Course in 2025
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Unlimited access to world class courses, hands-on projects, and job-ready certificate programs.
+              Fee structure in INR. Semester-wise and one-time payment options available.
             </p>
           </div>
+
+          {/* Detailed fee tables (when provided) */}
+          {"feeTables" in university && Array.isArray((university as { feeTables?: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables) && (university as { feeTables: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables.map((tbl: { title: string; headers: string[]; rows: Record<string, string>[] }, ti: number) => (
+            <div key={ti} className="mb-12">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4">{tbl.title}</h3>
+              <div className="overflow-x-auto rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+                <table className="w-full bg-white dark:bg-slate-800 text-sm">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white">
+                      {tbl.headers.map((h: string, i: number) => (
+                        <th key={i} className="px-4 py-3 text-left font-semibold whitespace-nowrap">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tbl.rows.map((row: Record<string, string>, ri: number) => (
+                      <tr
+                        key={ri}
+                        className={`border-b border-slate-200 dark:border-slate-700 ${ri % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-700/30"}`}
+                      >
+                        {tbl.headers.map((h: string, i: number) => (
+                          <td key={i} className="px-4 py-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">{row[h] ?? "—"}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+
+          {/* Simple courses overview table */}
           <div className="overflow-x-auto rounded-2xl shadow-2xl border-2 border-slate-200 dark:border-slate-700">
             <table className="w-full bg-white dark:bg-slate-800">
               <thead>
@@ -778,16 +1177,19 @@ export default function UniversityDetail() {
                 {university.courses.map((course, index) => (
                   <tr
                     key={index}
-                    className={`border-b-2 border-slate-200 dark:border-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all duration-300 ${index % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-700/30'}`}
+                    className={`border-b-2 border-slate-200 dark:border-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all duration-300 ${index % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-700/30"}`}
                   >
                     <td className="px-8 py-5 font-bold text-lg text-slate-900 dark:text-slate-50">{course.name}</td>
-                    <td className="px-8 py-5 text-slate-700 dark:text-slate-300 font-bold text-lg">{course.fullFee}</td>
+                    <td className="px-8 py-5 text-slate-700 dark:text-slate-300 font-bold text-lg">{course.fullFee}{course.discountFee ? ` (${course.discountFee})` : ""}</td>
                     <td className="px-8 py-5 text-slate-700 dark:text-slate-300 font-semibold">{course.duration}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {"feeNote" in university && (university as { feeNote?: string }).feeNote && (
+            <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">{(university as { feeNote: string }).feeNote}</p>
+          )}
         </div>
       </section>
 
@@ -920,7 +1322,7 @@ export default function UniversityDetail() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/917275131439"
+        href="https://wa.me/919335512881"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce hover:animate-none group"

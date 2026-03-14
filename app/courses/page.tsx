@@ -28,7 +28,7 @@ export default function Courses() {
       highlights: ["UGC Accredited", "Top 3% Globally", "Industry Projects", "Career Services"],
       rating: 4.9,
       students: "3K+",
-      fee: "₹2,99,000",
+      fee: "₹1,99,000",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -70,7 +70,7 @@ export default function Courses() {
       highlights: ["NAAC A+", "UGC Recognized", "Affordable", "AICTE Approved"],
       rating: 4.7,
       students: "1K+",
-      fee: "₹98,000",
+      fee: "₹1,40,000",
       image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {

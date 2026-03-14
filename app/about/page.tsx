@@ -269,10 +269,10 @@ export default function AboutUs() {
               Contact Us
             </Link>
             <a
-              href="tel:+917275131439"
+              href="tel:+919335512881"
               className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-slate-800 text-[#0f4c75] dark:text-[#1e7aa8] font-semibold rounded-xl border-2 border-[#0f4c75]/20 dark:border-[#1e7aa8]/30 hover:bg-[#0f4c75]/10 dark:hover:bg-[#1e7aa8]/10 transition-all duration-300"
             >
-              Call: +91 7275131439
+              Call: +91 9335512881
             </a>
           </div>
         </div>
