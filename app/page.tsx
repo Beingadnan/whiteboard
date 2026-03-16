@@ -6,144 +6,6 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import StructuredData from "./components/StructuredData";
 import { useRouter } from "next/navigation";
-import { motion, useMotionValue, useMotionValueEvent, useScroll, animate, MotionValue } from "framer-motion";
-
-// Scroll overflow mask helper function
-const left = `0%`;
-const right = `100%`;
-const leftInset = `20%`;
-const rightInset = `80%`;
-const transparent = `#0000`;
-const opaque = `#000`;
-
-function useScrollOverflowMask(scrollXProgress: MotionValue<number>) {
-  const maskImage = useMotionValue(
-    `linear-gradient(90deg, ${opaque}, ${opaque} ${left}, ${opaque} ${rightInset}, ${transparent})`
-  );
-
-  useMotionValueEvent(scrollXProgress, "change", (value) => {
-    if (value === 0) {
-      animate(
-        maskImage,
-        `linear-gradient(90deg, ${opaque}, ${opaque} ${left}, ${opaque} ${rightInset}, ${transparent})`
-      );
-    } else if (value === 1) {
-      animate(
-        maskImage,
-        `linear-gradient(90deg, ${transparent}, ${opaque} ${leftInset}, ${opaque} ${right}, ${opaque})`
-      );
-    } else if (
-      scrollXProgress.getPrevious() === 0 ||
-      scrollXProgress.getPrevious() === 1
-    ) {
-      animate(
-        maskImage,
-        `linear-gradient(90deg, ${transparent}, ${opaque} ${leftInset}, ${opaque} ${rightInset}, ${transparent})`
-      );
-    }
-  });
-
-  return maskImage;
-}
-
-// Scroll-Linked Universities Component
-interface University {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-}
-
-function ScrollLinkedUniversities({ universities, openModal }: { universities: University[], openModal: (url: string) => void }) {
-  const ref = useRef<HTMLUListElement>(null);
-  const { scrollXProgress } = useScroll({ container: ref });
-  const maskImage = useScrollOverflowMask(scrollXProgress);
-
-  return (
-    <div className="relative w-full max-w-6xl mx-auto">
-      <svg 
-        className="absolute -top-16 -left-4 w-20 h-20 transform -rotate-90 z-10 hidden md:block" 
-        viewBox="0 0 100 100"
-        style={{ 
-          '--accent': '#0f4c75'
-        } as React.CSSProperties}
-      >
-        <circle 
-          cx="50" 
-          cy="50" 
-          r="30" 
-          pathLength="1" 
-          className="stroke-slate-200 dark:stroke-slate-700"
-          strokeWidth="10%"
-          fill="none"
-        />
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="30"
-          className="stroke-[#0f4c75] dark:stroke-[#1e7aa8]"
-          style={{ 
-            pathLength: scrollXProgress,
-            strokeWidth: "10%",
-            fill: "none",
-            strokeDashoffset: 0
-          }}
-        />
-      </svg>
-      <motion.ul 
-        ref={ref} 
-        className="flex gap-6 overflow-x-scroll pb-4 px-6 -mx-6 list-none scrollbar-thin scrollbar-thumb-[#0f4c75] scrollbar-track-slate-200 dark:scrollbar-track-slate-700"
-        style={{ 
-          maskImage: maskImage,
-          height: 'auto',
-          scrollbarWidth: 'thin',
-        }}
-      >
-        {universities.map((university: University) => (
-          <li 
-            key={university.id}
-            className="flex-shrink-0 w-[320px] md:w-[380px]"
-          >
-            <div className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-              <div className="relative w-full h-48 bg-gradient-to-br from-[#0f4c75] to-[#dc2626] overflow-hidden">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url(${university.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                  role="img"
-                  aria-label={`${university.name} university image`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80 transition-opacity duration-300 group-hover:opacity-70"></div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 z-10 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                  <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg">
-                    {university.name}
-                  </h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5 min-h-[3rem]">
-                  {university.description}
-                </p>
-                <button
-                  onClick={() => openModal("/universities")}
-                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
-                >
-                  Join Now
-                </button>
-              </div>
-            </div>
-          </li>
-        ))}
-      </motion.ul>
-    </div>
-  );
-}
-
 export default function Home() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -162,6 +24,8 @@ export default function Home() {
   const [isPaused, setIsPaused] = useState(false);
   const reviewsScrollRef = useRef<HTMLDivElement>(null);
   const [isReviewsPaused, setIsReviewsPaused] = useState(false);
+  const universitiesScrollRef = useRef<HTMLDivElement>(null);
+  const [isUniversitiesPaused, setIsUniversitiesPaused] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -226,13 +90,13 @@ export default function Home() {
     {
       id: 1,
       name: "Amity University",
-      image: "https://collegesgyan.com/wp-content/uploads/2024/03/Untitled-design-10-e1710144513893.webp",
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
       description: "Leading private university with diverse programs and state-of-the-art facilities."
     },
     {
       id: 2,
       name: "Uttaranchal University (UU)",
-      image: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
+      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
       description: "Premier university offering quality education in engineering, management, and more."
     },
     {
@@ -244,7 +108,7 @@ export default function Home() {
     {
       id: 4,
       name: "Manipal University Jaipur (MUJ)",
-      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
+      image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&q=80",
       description: "World-class education in engineering, management, and humanities."
     }
   ];
@@ -301,7 +165,7 @@ export default function Home() {
     const scrollSpeed = 0.4; // pixels per frame
     const cardWidth = 350; // base card width
     const gap = 24; // gap between cards
-    const reviewsCount = 5; // number of reviews
+    const reviewsCount = 8; // number of reviews
     const singleSetWidth = (cardWidth + gap) * reviewsCount;
 
     const scroll = () => {
@@ -332,6 +196,42 @@ export default function Home() {
       }
     };
   }, [isReviewsPaused]);
+
+  // Auto-scroll for Top Universities section
+  useEffect(() => {
+    const container = universitiesScrollRef.current;
+    if (!container) return;
+
+    let animationId: number;
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5;
+    const cardWidth = 320;
+    const gap = 24;
+    const count = featuredUniversities.length;
+    const singleSetWidth = (cardWidth + gap) * count;
+
+    const scroll = () => {
+      if (!isUniversitiesPaused) {
+        scrollPosition += scrollSpeed;
+        if (scrollPosition >= singleSetWidth) {
+          scrollPosition = 0;
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft = scrollPosition;
+        }
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    const timeoutId = setTimeout(() => {
+      animationId = requestAnimationFrame(scroll);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [isUniversitiesPaused, featuredUniversities.length]);
 
   const onlineCourses = [
     {
@@ -433,7 +333,7 @@ export default function Home() {
     "alternateName": "Successmentorix",
     "url": process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com",
     "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/Logo.png`,
-    "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, MCA, BBA, BCA courses with UGC approval.",
+    "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, MCA, BBA, BCA courses with UGC approval.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "IN"
@@ -507,8 +407,8 @@ export default function Home() {
   const universityListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Top Universities - Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan",
-    "description": "List of top partner universities including Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, and Mangalayatan University",
+    "name": "Top Universities - Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan",
+    "description": "List of top partner universities including Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, and Mangalayatan University",
     "itemListElement": featuredUniversities.map((university, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -531,20 +431,69 @@ export default function Home() {
       <main className="min-h-screen">
         <Hero />
       
-      {/* Top Universities Section - Scrollable with Animation */}
+      {/* Top Universities Section - Auto-scroll like reviews */}
       <section className="py-24 md:py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900" aria-label="Top Universities">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-4">
               Top Universities
-          </h1>
+            </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               Partner with prestigious universities offering world-class education and excellent placement opportunities.
             </p>
           </div>
 
-          {/* Scroll-Linked Animation Container */}
-          <ScrollLinkedUniversities universities={featuredUniversities} openModal={openModal} />
+          <div
+            className="relative"
+            onMouseEnter={() => setIsUniversitiesPaused(true)}
+            onMouseLeave={() => setIsUniversitiesPaused(false)}
+          >
+            <div
+              ref={universitiesScrollRef}
+              className="overflow-x-hidden scrollbar-hide pb-4 -mx-6 px-6"
+              style={{ scrollBehavior: "auto", willChange: "scroll-position" }}
+            >
+              <div className="flex gap-6 min-w-max">
+                {[...featuredUniversities, ...featuredUniversities].map((university, index) => (
+                  <div
+                    key={`uni-${university.id}-${index}`}
+                    className="flex-shrink-0 w-[320px] md:w-[380px]"
+                  >
+                    <div className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl transition-all duration-500">
+                      <div className="relative w-full h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                        <div
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                          style={{
+                            backgroundImage: `url(${university.image})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
+                          }}
+                          role="img"
+                          aria-label={`${university.name} university`}
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden />
+                        </div>
+                        <div className="absolute bottom-4 left-4 right-4 z-10">
+                          <h3 className="text-xl font-bold text-white drop-shadow-lg">{university.name}</h3>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-5 min-h-[3rem]">
+                          {university.description}
+                        </p>
+                        <button
+                          onClick={() => openModal("/universities")}
+                          className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-md hover:shadow-lg"
+                        >
+                          Join Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <div className="text-center mt-12">
             <Link
@@ -887,102 +836,20 @@ export default function Home() {
               style={{ scrollBehavior: 'auto', willChange: 'scroll-position' }}
             >
               <div className="flex gap-6 min-w-max">
-                {/* Duplicate reviews for infinite scroll */}
-                {[
-                  {
-                    id: 1,
-                    name: "Priya Sharma",
-                    course: "Online MBA",
-                    university: "Amity University",
-                    rating: 5,
-                    review: "Successmentorix made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
-                    location: "Delhi"
-                  },
-                  {
-                    id: 2,
-                    name: "Rahul Kumar",
-                    course: "Online MCA",
-                    university: "Manipal University Jaipur",
-                    rating: 5,
-                    review: "Excellent support throughout the entire process. The team helped me understand all the course details and fee structure clearly. The admission was completed without any hassle. Great experience overall!",
-                    location: "Mumbai"
-                  },
-                  {
-                    id: 3,
-                    name: "Anjali Patel",
-                    course: "Online MCA",
-                    university: "Sikkim Manipal University",
-                    rating: 5,
-                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you Successmentorix for your guidance!",
-                    location: "Ahmedabad"
-                  },
-                  {
-                    id: 4,
-                    name: "Vikram Singh",
-                    course: "Online BBA",
-                    university: "Uttaranchal University",
-                    rating: 5,
-                    review: "The entire team is professional and responsive. They answered all my queries promptly and helped me with document verification. The process was transparent and I got admission in my preferred course. Very satisfied!",
-                    location: "Lucknow"
-                  },
-                  {
-                    id: 5,
-                    name: "Sneha Reddy",
-                    course: "Online MBA",
-                    university: "Amity University",
-                    rating: 5,
-                    review: "Best decision I made! The counselors provided detailed information about all universities and courses. They helped me choose the best option based on my career goals. The admission process was seamless. Highly recommend!",
-                    location: "Bangalore"
-                  },
-                  // Duplicate for infinite scroll
-                  {
-                    id: 6,
-                    name: "Priya Sharma",
-                    course: "Online MBA",
-                    university: "Amity University",
-                    rating: 5,
-                    review: "Successmentorix made my admission process so smooth! The counselors were extremely helpful and guided me through every step. I'm now pursuing my MBA from Amity University and couldn't be happier. Highly recommend their services!",
-                    location: "Delhi"
-                  },
-                  {
-                    id: 7,
-                    name: "Rahul Kumar",
-                    course: "Online MCA",
-                    university: "Manipal University Jaipur",
-                    rating: 5,
-                    review: "Excellent support throughout the entire process. The team helped me understand all the course details and fee structure clearly. The admission was completed without any hassle. Great experience overall!",
-                    location: "Mumbai"
-                  },
-                  {
-                    id: 8,
-                    name: "Anjali Patel",
-                    course: "Online MCA",
-                    university: "Sikkim Manipal University",
-                    rating: 5,
-                    review: "I was confused about which university to choose, but the career counseling session helped me make the right decision. The counselors are knowledgeable and patient. Thank you Successmentorix for your guidance!",
-                    location: "Ahmedabad"
-                  },
-                  {
-                    id: 9,
-                    name: "Vikram Singh",
-                    course: "Online BBA",
-                    university: "Uttaranchal University",
-                    rating: 5,
-                    review: "The entire team is professional and responsive. They answered all my queries promptly and helped me with document verification. The process was transparent and I got admission in my preferred course. Very satisfied!",
-                    location: "Lucknow"
-                  },
-                  {
-                    id: 10,
-                    name: "Sneha Reddy",
-                    course: "Online MBA",
-                    university: "Amity University",
-                    rating: 5,
-                    review: "Best decision I made! The counselors provided detailed information about all universities and courses. They helped me choose the best option based on my career goals. The admission process was seamless. Highly recommend!",
-                    location: "Bangalore"
-                  }
-                ].map((review: { id: number; name: string; course: string; university: string; rating: number; review: string; location: string }, index: number) => (
+                {(() => {
+                  const reviewsList = [
+                    { id: 1, name: "Priya Sharma", course: "Online MBA", university: "Amity University", rating: 5, review: "SuccessMentorix made my admission process so smooth. The counselors guided me through every step and I got into Amity for MBA. Transparent fee breakdown and no hidden charges. Highly recommend!", location: "Delhi" },
+                    { id: 2, name: "Rahul Kumar", course: "Online MCA", university: "Manipal University Jaipur", rating: 5, review: "I was skeptical about online degrees until I spoke to their team. They explained UGC recognition and placement support clearly. Enrolled in MCA and the support didn't stop after admission.", location: "Mumbai" },
+                    { id: 3, name: "Anjali Patel", course: "Online MCA", university: "Sikkim Manipal University", rating: 5, review: "Career counselling helped me choose the right university. They compared fees, duration and placement records. Got admission in SMU MCA without any hassle. Thank you!", location: "Ahmedabad" },
+                    { id: 4, name: "Vikram Singh", course: "Online BBA", university: "Uttaranchal University", rating: 5, review: "Document verification and application was handled smoothly. The team responded to every query within hours. Got my admission confirmation in 10 days. Very professional.", location: "Lucknow" },
+                    { id: 5, name: "Sneha Reddy", course: "Online MBA", university: "Amity University", rating: 5, review: "Best decision for my career. I could continue my job and pursue MBA. The counselors understood my constraints and suggested the right program. Fee structure was clear from day one.", location: "Bangalore" },
+                    { id: 6, name: "Karthik Mehta", course: "Online B.Com", university: "Mangalayatan University", rating: 5, review: "I needed an affordable option and they suggested Mangalayatan. The admission process was quick and I received my study material on time. Genuine guidance, no pushy sales.", location: "Hyderabad" },
+                    { id: 7, name: "Divya Nair", course: "Online MBA", university: "Uttaranchal University", rating: 5, review: "From enquiry to enrollment, everything was seamless. They helped with document preparation and even followed up after admission. Feels good to have a partner in your education journey.", location: "Kochi" },
+                    { id: 8, name: "Arjun Verma", course: "Online BBA", university: "Amity University", rating: 5, review: "As a working professional I needed flexibility. SuccessMentorix explained the online mode and exam pattern clearly. Now in my final year and very satisfied with the support I received.", location: "Pune" },
+                  ];
+                  return [...reviewsList, ...reviewsList].map((review: { id: number; name: string; course: string; university: string; rating: number; review: string; location: string }, index: number) => (
                   <div
-                    key={review.id}
+                    key={`review-${index}`}
                     className="group flex-shrink-0 w-[350px] md:w-[400px] bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                     style={{
                       animation: `fadeInUp 0.6s ease-out ${index * 100}ms both`
@@ -1024,7 +891,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                ))}
+                ));
+                })()}
               </div>
             </div>
 

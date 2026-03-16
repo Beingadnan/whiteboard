@@ -72,11 +72,11 @@ body {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  transition: transform 0.2s ease;
 }
 
-.brand-link:hover {
-  transform: translateY(-1px);
+.brand-link.brand-link-text-only .brand-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-logo {
@@ -143,15 +143,9 @@ body {
 
 .brand-name-gradient {
   background: linear-gradient(135deg, #0f4c75 0%, #1a6b9a 35%, #dc2626 70%, #b91c1c 100%);
-  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: background-position 0.5s ease;
-}
-
-.brand-link:hover .brand-name-gradient {
-  background-position: 100% center;
 }
 
 .brand-tagline {
@@ -189,30 +183,10 @@ body {
   font-weight: 500;
   font-size: 15px;
   border-radius: 8px;
-  transition: all 0.2s ease;
-  position: relative;
 }
 
 .nav-list li a:hover {
   color: #0f4c75;
-  background: rgba(15, 76, 117, 0.08);
-}
-
-.nav-list li a::after {
-  content: "";
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #0f4c75, #dc2626);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-}
-
-.nav-list li a:hover::after {
-  width: calc(100% - 32px);
 }
 
 /* Header Actions */
@@ -1923,13 +1897,20 @@ body {
   animation-play-state: paused;
 }
 
-/* Footer - EduKyu-style (dark teal, white text, columns, FAB, popup) */
+/* Footer - matches site theme (white/slate, same as rest of app) */
 .footer-edukyu {
   position: relative;
-  background: #1f575c;
-  color: #fff;
+  background: #ffffff;
+  color: #0f172a;
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   padding: 48px 24px 32px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.dark .footer-edukyu {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-top-color: #334155;
 }
 
 .footer-edukyu-container {
@@ -1939,7 +1920,7 @@ body {
 
 .footer-edukyu-grid {
   display: grid;
-  grid-template-columns: 1.2fr repeat(4, 1fr);
+  grid-template-columns: 1.2fr repeat(3, 1fr);
   gap: 40px 32px;
   margin-bottom: 40px;
 }
@@ -1952,48 +1933,61 @@ body {
 
 .footer-edukyu-logo {
   text-decoration: none;
-  color: #fff;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 4px;
+  transition: opacity 0.2s;
+}
+
+.footer-edukyu-logo:hover {
+  opacity: 0.9;
+}
+
+/* Emoji above the M: centered above the word SuccessMentorix */
+.footer-edukyu-logo-emoji {
+  font-size: 28px;
+  line-height: 1;
+  display: block;
+  margin-bottom: 2px;
 }
 
 .footer-edukyu-logo-text {
   font-size: 26px;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: -0.04em;
+  font-family: var(--font-brand), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: inline-block;
 }
 
-.footer-edukyu-logo-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-edukyu-cap {
-  width: 28px;
-  height: 28px;
-  color: #fff;
-  flex-shrink: 0;
+.footer-edukyu-logo-gradient {
+  background: linear-gradient(135deg, #0f4c75 0%, #1a6b9a 35%, #dc2626 70%, #b91c1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .footer-edukyu-desc {
   font-size: 14px;
   line-height: 1.6;
-  color: #fff;
-  opacity: 0.95;
+  color: #475569;
   max-width: 320px;
   margin: 0;
+}
+
+.dark .footer-edukyu-desc {
+  color: #94a3b8;
 }
 
 .footer-edukyu-heading {
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
+  color: #0f172a;
   margin: 16px 0 10px;
+}
+
+.dark .footer-edukyu-heading {
+  color: #f1f5f9;
 }
 
 .footer-edukyu-heading:first-of-type {
@@ -2019,15 +2013,22 @@ body {
 }
 
 .footer-edukyu-link {
-  color: #fff;
+  color: #0f4c75;
   text-decoration: none;
   font-size: 14px;
-  opacity: 0.95;
 }
 
 .footer-edukyu-link:hover {
   text-decoration: underline;
-  opacity: 1;
+  color: #0a3d5c;
+}
+
+.dark .footer-edukyu-link {
+  color: #7dd3fc;
+}
+
+.dark .footer-edukyu-link:hover {
+  color: #bae6fd;
 }
 
 .footer-edukyu-social {
@@ -2040,17 +2041,17 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #0f4c75 0%, #dc2626 100%);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .footer-edukyu-social-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(15, 76, 117, 0.4);
 }
 
 .footer-edukyu-nav-col {
@@ -2069,10 +2070,9 @@ body {
 }
 
 .footer-edukyu-nav-link {
-  color: #fff;
+  color: #475569;
   text-decoration: none;
   font-size: 14px;
-  opacity: 0.95;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -2080,8 +2080,16 @@ body {
 }
 
 .footer-edukyu-nav-link:hover {
-  opacity: 1;
+  color: #0f4c75;
   text-decoration: underline;
+}
+
+.dark .footer-edukyu-nav-link {
+  color: #94a3b8;
+}
+
+.dark .footer-edukyu-nav-link:hover {
+  color: #7dd3fc;
 }
 
 .footer-edukyu-nav-link-arrow {
@@ -2095,14 +2103,22 @@ body {
 }
 
 .footer-edukyu-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #e2e8f0;
   padding-top: 24px;
+}
+
+.dark .footer-edukyu-bottom {
+  border-top-color: #334155;
 }
 
 .footer-edukyu-copy {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #64748b;
   margin: 0;
+}
+
+.dark .footer-edukyu-copy {
+  color: #94a3b8;
 }
 
 /* Floating action buttons */
@@ -2120,18 +2136,18 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: linear-gradient(135deg, #0f4c75 0%, #dc2626 100%);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 4px 14px rgba(15, 76, 117, 0.45);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .footer-edukyu-fab:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+  box-shadow: 0 6px 20px rgba(15, 76, 117, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .footer-edukyu-fab-icon {
@@ -2146,10 +2162,11 @@ body {
   right: 24px;
   width: 280px;
   background: #fff;
-  color: #1a1a1a;
+  color: #0f172a;
   border-radius: 12px;
   padding: 20px 40px 20px 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(15, 76, 117, 0.2);
+  border: 1px solid rgba(15, 76, 117, 0.15);
   z-index: 1000;
   animation: footer-popup-in 0.3s ease;
 }
@@ -2190,17 +2207,18 @@ body {
 }
 
 .footer-edukyu-popup-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f4c75;
   margin: 0 0 4px;
 }
 
 .footer-edukyu-popup-text {
-  font-size: 16px;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
   margin: 0;
+  line-height: 1.4;
 }
 
 /* Footer responsive */
@@ -2218,11 +2236,6 @@ body {
 
   .footer-edukyu-logo-text {
     font-size: 22px;
-  }
-
-  .footer-edukyu-cap {
-    width: 24px;
-    height: 24px;
   }
 }
 
@@ -2247,6 +2260,10 @@ body {
 
   .footer-edukyu-logo-text {
     font-size: 24px;
+  }
+
+  .footer-edukyu-heading {
+    margin-top: 12px;
   }
 
   .footer-edukyu-fab-wrap {

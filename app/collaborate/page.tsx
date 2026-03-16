@@ -156,15 +156,6 @@ export default function Collaborate() {
       ]
     },
     {
-      name: "GLA University",
-      logo: "https://gcetl.in/web2manage/images/Universities/University17187822841556781613phpNa5MIG.jpeg",
-      features: [
-        "A leading private university offering quality education",
-        "Modern facilities and infrastructure",
-        "UGC and AICTE approved"
-      ]
-    },
-    {
       name: "Uttaranchal University (UU)",
       logo: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
       features: [
@@ -211,6 +202,9 @@ export default function Collaborate() {
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
                 Join our network of education partners and grow your business. Earn commissions, get marketing support, and help students achieve their dreams.
+              </p>
+              <p className="text-sm font-semibold text-[#0f4c75] dark:text-[#1e7aa8] mb-6">
+                Established 2022 — Trusted by students and institutions nationwide.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">

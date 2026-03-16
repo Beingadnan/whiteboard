@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Top Universities - Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan | Successmentorix",
-  description: "Explore top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Get admission guidance, course details, and placement information. UGC approved programs.",
+  title: "Top Universities - Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan | Successmentorix",
+  description: "Explore top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, Mangalayatan University. Get admission guidance, course details, and placement information. UGC approved programs.",
   keywords: [
     "Amity University",
     "Manipal University Jaipur",
     "MUJ",
     "Sikkim Manipal University",
     "SMU",
-    "GLA University",
+    "Uttaranchal University",
     "Uttaranchal University",
     "UU",
     "MIT University",
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     "university admission 2025"
   ],
   openGraph: {
-    title: "Top Universities - Amity, MUJ, SMU, GLA, Uttaranchal | Successmentorix",
-    description: "Explore top universities like Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan. Get admission guidance and course details.",
+    title: "Top Universities - Amity, MUJ, SMU, Uttaranchal | Successmentorix",
+    description: "Explore top universities like Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan. Get admission guidance and course details.",
     url: "/universities",
   },
   alternates: {

@@ -8,12 +8,8 @@ const FOOTER_UNIVERSITIES = [
   "Uttaranchal University",
   "Sikkim Manipal University",
   "Manipal University Jaipur",
-  "GLA University",
   "MIT University",
   "Mangalayatan University",
-  "NMIMS University",
-  "Jain University",
-  "Noida International University",
 ];
 
 const FOOTER_COURSES = [
@@ -38,21 +34,6 @@ const FOOTER_QUICK_LINKS = [
   { name: "Refund Policy", href: "/refund" },
 ];
 
-const FOOTER_CITIES = ["Bangalore", "Lucknow", "Kolkata", "Noida"];
-
-function GraduationCapIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
-    </svg>
-  );
-}
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [showWelcomePopup, setShowWelcomePopup] = useState(false);
@@ -76,17 +57,11 @@ export default function Footer() {
           {/* Brand + Contact + Follow */}
           <div className="footer-edukyu-brand-col">
             <Link href="/" className="footer-edukyu-logo">
-              <span className="footer-edukyu-logo-text">
-                Successmentorix
-                <span className="footer-edukyu-logo-icon" aria-hidden>
-                  <GraduationCapIcon className="footer-edukyu-cap" />
-                </span>
-              </span>
+              <span className="footer-edukyu-logo-emoji" aria-hidden>🎓</span>
+              <span className="footer-edukyu-logo-text footer-edukyu-logo-gradient">SuccessMentorix</span>
             </Link>
             <p className="footer-edukyu-desc">
-              Successmentorix, your trusted partner for online education. We are a
-              premier aggregator platform, bringing together a diverse range of
-              specialized online courses from renowned Indian universities.
+              SuccessMentorix – Your Path to Extraordinary Success.
             </p>
             <h3 className="footer-edukyu-heading">Contact Us</h3>
             <ul className="footer-edukyu-contact-list">
@@ -166,26 +141,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Find us at */}
-          <div className="footer-edukyu-nav-col">
-            <h3 className="footer-edukyu-heading">Find us at</h3>
-            <ul className="footer-edukyu-nav-list">
-              {FOOTER_CITIES.map((city) => (
-                <li key={city}>
-                  <span className="footer-edukyu-nav-link footer-edukyu-nav-link-arrow">
-                    {city}
-                    <span className="footer-edukyu-arrow" aria-hidden>›</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         {/* Bottom bar */}
         <div className="footer-edukyu-bottom">
           <p className="footer-edukyu-copy">
-            © {currentYear} Successmentorix. All rights reserved.
+            © {currentYear} SuccessMentorix. All rights reserved.
           </p>
         </div>
       </div>
@@ -225,8 +186,8 @@ export default function Footer() {
           >
             ×
           </button>
-          <p className="footer-edukyu-popup-title">Successmentorix</p>
-          <p className="footer-edukyu-popup-text">Welcome to Successmentorix!</p>
+          <p className="footer-edukyu-popup-title">SuccessMentorix</p>
+          <p className="footer-edukyu-popup-text">SuccessMentorix – Your Path to Extraordinary Success.</p>
         </div>
       )}
     </footer>

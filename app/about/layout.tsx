@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us - Successmentorix | Education Counseling & Admission Guidance",
-  description: "Learn about Successmentorix - your trusted partner for education counseling and admission guidance. We help students get admission in top universities like Amity, NMIMS, Manipal with personalized support.",
+  description: "Learn about Successmentorix - your trusted partner for education counseling and admission guidance. We help students get admission in top universities like Amity, Manipal, SMU with personalized support.",
   keywords: [
     "about successmentorix",
     "education counseling",

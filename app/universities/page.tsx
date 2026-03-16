@@ -21,7 +21,7 @@ export default function Universities() {
       rating: 4.8,
       students: "50K+",
       established: "2005",
-      image: "https://collegesgyan.com/wp-content/uploads/2024/03/Untitled-design-10-e1710144513893.webp"
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80"
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ export default function Universities() {
       rating: 4.7,
       students: "15K+",
       established: "2002",
-      image: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg"
+      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80"
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ export default function Universities() {
       rating: 4.6,
       students: "35K+",
       established: "1995",
-      image: "https://upload.wikimedia.org/wikipedia/en/3/30/Logo_of_Sikkim_Manipal_University.jpg"
+      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80"
     },
     {
       id: 4,
@@ -54,7 +54,7 @@ export default function Universities() {
       rating: 4.8,
       students: "12K+",
       established: "2011",
-      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png"
+      image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&q=80"
     },
     {
       id: 5,
@@ -65,18 +65,7 @@ export default function Universities() {
       rating: 4.9,
       students: "8K+",
       established: "1949",
-      image: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png"
-    },
-    {
-      id: 6,
-      name: "GLA University",
-      description: "A leading private university offering quality education with modern facilities.",
-      programs: ["Engineering", "Management", "Pharmacy", "Applied Sciences"],
-      location: "Mathura, Uttar Pradesh",
-      rating: 4.7,
-      students: "20K+",
-      established: "2010",
-      image: "https://gcetl.in/web2manage/images/Universities/University17187822841556781613phpNa5MIG.jpeg"
+      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
     },
     {
       id: 7,
@@ -87,18 +76,7 @@ export default function Universities() {
       rating: 4.6,
       students: "10K+",
       established: "2006",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
-    },
-    {
-      id: 8,
-      name: "Noida International University",
-      description: "UGC-recognized online programs in management, commerce, and computer applications with flexible fee options.",
-      programs: ["Management", "Commerce", "Computer Applications", "Arts"],
-      location: "Greater Noida, Uttar Pradesh",
-      rating: 4.5,
-      students: "12K+",
-      established: "2010",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+      image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80"
     },
     {
       id: 9,
@@ -109,7 +87,7 @@ export default function Universities() {
       rating: 4.6,
       students: "10K+",
       established: "2003",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+      image: "https://images.unsplash.com/photo-1498243691587-b319a4e40505?w=800&q=80"
     },
     {
       id: 10,
@@ -120,7 +98,7 @@ export default function Universities() {
       rating: 4.5,
       students: "8K+",
       established: "2012",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+      image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=800&q=80"
     },
     {
       id: 11,
@@ -131,18 +109,7 @@ export default function Universities() {
       rating: 4.5,
       students: "15K+",
       established: "2009",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
-    },
-    {
-      id: 12,
-      name: "NMIMS University",
-      description: "Online BBA, B.Com, and MBA with sem/yearly/full fee. Registration and exam fees apply.",
-      programs: ["Management", "Commerce"],
-      location: "Mumbai, Maharashtra",
-      rating: 4.8,
-      students: "25K+",
-      established: "1981",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+      image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
     },
     {
       id: 13,
@@ -153,7 +120,7 @@ export default function Universities() {
       rating: 4.6,
       students: "30K+",
       established: "2005",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s"
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
     }
   ];
 
@@ -184,8 +151,8 @@ export default function Universities() {
   const universitiesSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Top Universities - Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan",
-    "description": "List of top universities including Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, and Mangalayatan University",
+    "name": "Top Universities - Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan",
+    "description": "List of top universities including Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, and Mangalayatan University",
     "itemListElement": universities.map((university, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -278,7 +245,7 @@ export default function Universities() {
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 {/* University Image */}
-                <div className="relative w-full h-48 bg-gradient-to-br from-[#1e7aa8] to-[#dc2626] overflow-hidden">
+                <div className="relative w-full h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
                   <div 
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
@@ -287,9 +254,8 @@ export default function Universities() {
                       backgroundPosition: 'center'
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/80 to-[#dc2626]/80"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden></div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-6 right-6 z-10">
                     <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
                       {university.name}

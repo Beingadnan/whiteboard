@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,23 +31,12 @@ export default function Header() {
     >
       <div className="header-container">
         <div className="header-brand">
-          <Link href="/" className="brand-link" aria-label="Successmentorix home">
-            <div className="brand-logo-wrapper">
-              <Image 
-                src="/Logo.png" 
-                alt="Successmentorix" 
-                width={70} 
-                height={70} 
-                className="brand-logo-img"
-                priority
-                quality={100}
-              />
-            </div>
+          <Link href="/" className="brand-link brand-link-text-only" aria-label="SuccessMentorix home">
             <span className="brand-text">
               <span className="brand-name">
-                <span className="brand-name-gradient">Successmentorix</span>
+                <span className="brand-name-gradient">SuccessMentorix</span>
               </span>
-              <span className="brand-tagline">Your Learning Partner</span>
+              <span className="brand-tagline">Your Path to Extraordinary Success.</span>
             </span>
           </Link>
         </div>

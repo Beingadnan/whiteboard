@@ -168,7 +168,7 @@ export default function Courses() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Online Courses - MBA, MCA, BBA, BCA | UGC Approved",
-    "description": "UGC-approved online courses including MBA, MCA, BBA, BCA, M.Com, B.Com, BA, MA with live/recorded lectures and EMI options. Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal, MIT, Mangalayatan.",
+    "description": "UGC-approved online courses including MBA, MCA, BBA, BCA, M.Com, B.Com, BA, MA with live/recorded lectures and EMI options. Get admission in top universities like Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan.",
     "itemListElement": courses.map((course, index) => ({
       "@type": "ListItem",
       "position": index + 1,

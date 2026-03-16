@@ -22,15 +22,15 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://successmentorix.com'),
   title: {
-    default: "Successmentorix - Top Universities & Online Courses | Amity, MUJ, SMU, GLA, Uttaranchal",
+    default: "Successmentorix - Top Universities & Online Courses | Amity, MUJ, SMU, Uttaranchal",
     template: "%s | Successmentorix"
   },
-  description: "Get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), GLA University, Uttaranchal University, MIT University, Mangalayatan University. Online MBA, MCA, BBA courses with UGC approval. Free career counseling & admission guidance.",
+  description: "Get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, Mangalayatan University. Online MBA, MCA, BBA courses with UGC approval. Free career counseling & admission guidance.",
   keywords: [
     "Amity University admission",
     "Manipal University Jaipur admission",
     "Sikkim Manipal University admission",
-    "GLA University admission",
+    "university admission",
     "Uttaranchal University admission",
     "MIT University admission",
     "Mangalayatan University admission",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "Amity University courses",
     "MUJ courses",
     "SMU courses",
-    "GLA University courses",
+    "online university courses",
     "Uttaranchal University courses",
     "education consultant",
     "admission guidance",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     url: '/',
     siteName: 'Successmentorix',
     title: 'Successmentorix - Top Universities & Online Courses',
-    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval. Free career counseling.',
+    description: 'Get admission in top universities like Amity, MUJ, SMU, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval. Free career counseling.',
     images: [
       {
         url: '/Logo.png',
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Successmentorix - Top Universities & Online Courses',
-    description: 'Get admission in top universities like Amity, MUJ, SMU, GLA, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval.',
+    description: 'Get admission in top universities like Amity, MUJ, SMU, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval.',
     images: ['/Logo.png'],
   },
   alternates: {

@@ -90,7 +90,13 @@ export default function Hero() {
             </div>
 
             {/* Social Proof Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-slate-700">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-slate-200 dark:border-slate-700">
+              <div>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent">
+                  2022
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">Established</div>
+              </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent">
                   10K+

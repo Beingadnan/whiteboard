@@ -21,6 +21,10 @@ export default function AboutUs() {
 
   const stats = [
     {
+      number: "2022",
+      label: "Established"
+    },
+    {
       number: "50+",
       label: "Courses"
     },
@@ -31,10 +35,6 @@ export default function AboutUs() {
     {
       number: "7",
       label: "Partner Universities"
-    },
-    {
-      number: "3+",
-      label: "Years of Excellence"
     }
   ];
 

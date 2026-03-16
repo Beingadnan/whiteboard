@@ -453,43 +453,6 @@ export default function UniversityDetail() {
       ]
     },
     {
-      id: 6,
-      name: "GLA University",
-      shortName: "GLA",
-      description: "A leading private university offering quality education with modern facilities.",
-      fullDescription: "GLA University is a leading private university offering quality education with modern facilities and infrastructure. The university is UGC and AICTE approved.",
-      programs: ["Engineering", "Management", "Pharmacy", "Applied Sciences"],
-      location: "Mathura, Uttar Pradesh",
-      rating: 4.7,
-      students: "20K+",
-      established: "2010",
-      image: "https://gcetl.in/web2manage/images/Universities/University17187822841556781613phpNa5MIG.jpeg",
-      naacGrade: "A+",
-      ugcApproved: true,
-      keyFeatures: [
-        "A leading private university offering quality education",
-        "Modern facilities and infrastructure",
-        "UGC and AICTE approved"
-      ],
-      courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,18,000", discountFee: "Rs 88,500" },
-        { name: "Online BBA", duration: "3 years", fullFee: "Rs 1,08,000", discountFee: "Rs 81,000" }
-      ],
-      benefits: [
-        "UGC and AICTE approved programs",
-        "Modern facilities and infrastructure",
-        "Quality education across multiple disciplines",
-        "Strong placement support"
-      ],
-      placementPartners: ["Tech Mahindra", "Wipro"],
-      faqs: [
-        {
-          question: "Is GLA University UGC Approved?",
-          answer: "Yes, GLA University is UGC and AICTE approved and offers quality education across multiple disciplines."
-        }
-      ]
-    },
-    {
       id: 7,
       name: "Mangalayatan University",
       shortName: "Mangalayatan",
@@ -528,51 +491,6 @@ export default function UniversityDetail() {
           answer: "Yes, Mangalayatan University is UGC recognized and offers diverse programs with focus on holistic development."
         }
       ]
-    },
-    {
-      id: 8,
-      name: "Noida International University",
-      shortName: "NIU",
-      description: "Noida International University offers UGC-recognized online programs in management, commerce, and computer applications with flexible fee payment options.",
-      fullDescription: "Noida International University offers UGC-recognized online degree programs with semester-wise, annual, and one-time payment options. Programs include BBA, BCA, B.Com, MA, MBA, MCA, and M.Com.",
-      programs: ["Management", "Commerce", "Computer Applications", "Arts"],
-      location: "Greater Noida, Uttar Pradesh",
-      rating: 4.5,
-      students: "12K+",
-      established: "2010",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
-      naacGrade: "A",
-      ugcApproved: true,
-      keyFeatures: ["UGC recognized", "Flexible fee payment", "Online learning", "Placement support"],
-      feeTables: [
-        {
-          title: "Noida International University – Fee Structure (INR)",
-          headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time"],
-          rows: [
-            { "Course": "BBA", "Total Fee": "₹1,08,000", "Semester Fee": "₹13,500", "Annual Fee": "₹27,000", "One Time": "₹81,000" },
-            { "Course": "BCA", "Total Fee": "₹1,08,000", "Semester Fee": "₹13,500", "Annual Fee": "₹27,000", "One Time": "₹81,000" },
-            { "Course": "BCOM", "Total Fee": "₹75,000", "Semester Fee": "₹9,375", "Annual Fee": "₹18,750", "One Time": "₹56,250" },
-            { "Course": "MA", "Total Fee": "₹1,08,000", "Semester Fee": "₹20,250", "Annual Fee": "₹40,500", "One Time": "₹81,000" },
-            { "Course": "MBA", "Total Fee": "₹1,18,000", "Semester Fee": "₹22,125", "Annual Fee": "₹44,250", "One Time": "₹88,500" },
-            { "Course": "MCA", "Total Fee": "₹1,18,000", "Semester Fee": "₹22,125", "Annual Fee": "₹44,250", "One Time": "₹88,500" },
-            { "Course": "MCOM", "Total Fee": "₹80,000", "Semester Fee": "₹15,000", "Annual Fee": "₹30,000", "One Time": "₹60,000" },
-          ],
-        },
-      ],
-      feeNote: "Prospectus Fee: ₹1,100",
-      courses: [
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,08,000", discountFee: "Sem ₹13,500 / One Time ₹81,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "₹1,08,000", discountFee: "Sem ₹13,500 / One Time ₹81,000" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "₹75,000", discountFee: "One Time ₹56,250" },
-        { name: "Online MA", duration: "2 years", fullFee: "₹1,08,000", discountFee: "One Time ₹81,000" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,18,000", discountFee: "One Time ₹88,500" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,18,000", discountFee: "One Time ₹88,500" },
-        { name: "Online M.Com", duration: "2 years", fullFee: "₹80,000", discountFee: "One Time ₹60,000" },
-      ],
-      admissionProcess: ["Visit official website", "Fill application", "Upload documents", "Pay fee"],
-      benefits: ["UGC recognized", "Flexible payments", "Online learning"],
-      placementPartners: ["Tech Mahindra", "Wipro", "Infosys"],
-      faqs: [{ question: "Is NIU UGC approved?", answer: "Yes, Noida International University is UGC recognized and offers online degree programs." }]
     },
     {
       id: 9,
@@ -752,45 +670,6 @@ export default function UniversityDetail() {
       benefits: ["UGC recognized", "MBA Data Science", "Placement support"],
       placementPartners: ["Tech Mahindra", "Wipro", "Infosys"],
       faqs: [{ question: "Is there an exam fee at Sharda?", answer: "Yes, exam fee of ₹7,000 applies as per university norms." }]
-    },
-    {
-      id: 12,
-      name: "NMIMS University",
-      shortName: "NMIMS",
-      description: "NMIMS offers online BBA, B.Com, and MBA with semester and yearly fee options. Registration and exam fees apply.",
-      fullDescription: "NMIMS School of Distance Learning offers UGC-recognized online programs. Registration fee ₹1,200; exam fee per subject ₹800; project fee ₹800.",
-      programs: ["Management", "Commerce"],
-      location: "Mumbai, Maharashtra",
-      rating: 4.8,
-      students: "25K+",
-      established: "1981",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
-      naacGrade: "A+",
-      ugcApproved: true,
-      keyFeatures: ["Sem/Yearly/Full fee", "Registration & exam fees", "MBA WX program"],
-      feeTables: [
-        {
-          title: "NMIMS University – Fee Structure (INR)",
-          headers: ["Program", "Sem Fee", "Yearly Fee", "Full Fee"],
-          rows: [
-            { "Program": "BBA", "Sem Fee": "₹25,000", "Yearly Fee": "₹47,000", "Full Fee": "₹1,31,000" },
-            { "Program": "BCOM", "Sem Fee": "₹18,000", "Yearly Fee": "₹33,000", "Full Fee": "₹94,000" },
-            { "Program": "MBA", "Sem Fee": "₹55,000", "Yearly Fee": "₹1,05,000", "Full Fee": "₹1,96,000" },
-            { "Program": "MBA WX", "Sem Fee": "—", "Yearly Fee": "—", "Full Fee": "₹4,00,000" },
-          ],
-        },
-      ],
-      feeNote: "Registration Fee: ₹1,200 | Exam Fee per subject: ₹800 | Project Fee: ₹800",
-      courses: [
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,31,000", discountFee: "Sem ₹25,000 / Yearly ₹47,000" },
-        { name: "Online B.Com", duration: "3 years", fullFee: "₹94,000", discountFee: "Sem ₹18,000 / Yearly ₹33,000" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,96,000", discountFee: "Sem ₹55,000 / Yearly ₹1,05,000" },
-        { name: "Online MBA WX", duration: "2 years", fullFee: "₹4,00,000", discountFee: "Full fee" },
-      ],
-      admissionProcess: ["Register online", "Pay registration fee", "Submit documents", "Pay semester/yearly fee"],
-      benefits: ["NMIMS brand", "UGC recognized", "Flexible payment"],
-      placementPartners: ["Amazon", "Deloitte", "TCS", "Wipro", "Infosys"],
-      faqs: [{ question: "What extra fees apply at NMIMS?", answer: "Registration fee ₹1,200, exam fee ₹800 per subject, and project fee ₹800 as applicable." }]
     },
     {
       id: 13,
