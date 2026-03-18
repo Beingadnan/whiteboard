@@ -21,7 +21,7 @@ export default function Universities() {
       rating: 4.8,
       students: "50K+",
       established: "2005",
-      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80"
+      image: "/university/AmityUniversity.webp"
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ export default function Universities() {
       rating: 4.7,
       students: "15K+",
       established: "2002",
-      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80"
+      image: "/university/Uttaranchal-University.webp"
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ export default function Universities() {
       rating: 4.6,
       students: "35K+",
       established: "1995",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80"
+      image: "/university/Sikkim_Manipal_University.jpg"
     },
     {
       id: 4,
@@ -54,7 +54,7 @@ export default function Universities() {
       rating: 4.8,
       students: "12K+",
       established: "2011",
-      image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&q=80"
+      image: "/university/ManipalUniversityJaipur%28MUJ%29.jpeg"
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ export default function Universities() {
       rating: 4.9,
       students: "8K+",
       established: "1949",
-      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
+      image: "/university/%20MITUniversity.jpeg"
     },
     {
       id: 7,
@@ -76,7 +76,7 @@ export default function Universities() {
       rating: 4.6,
       students: "10K+",
       established: "2006",
-      image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80"
+      image: "/university/MangalayatanUniversity.png"
     },
     {
       id: 9,
@@ -87,7 +87,7 @@ export default function Universities() {
       rating: 4.6,
       students: "10K+",
       established: "2003",
-      image: "https://images.unsplash.com/photo-1498243691587-b319a4e40505?w=800&q=80"
+      image: "/university/DPUPune%28Dr.D.Y.PatilVidyapeeth%29.png"
     },
     {
       id: 10,
@@ -98,7 +98,7 @@ export default function Universities() {
       rating: 4.5,
       students: "8K+",
       established: "2012",
-      image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=800&q=80"
+      image: "/university/VivekanandGlobalUniversity%28VGU%29.jpeg"
     },
     {
       id: 11,
@@ -109,7 +109,7 @@ export default function Universities() {
       rating: 4.5,
       students: "15K+",
       established: "2009",
-      image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
+      image: "/university/ShardaUniversityOnline.jpeg"
     },
     {
       id: 13,
@@ -120,7 +120,7 @@ export default function Universities() {
       rating: 4.6,
       students: "30K+",
       established: "2005",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
+      image: "/university/LPU.jpeg"
     }
   ];
 
@@ -247,7 +247,7 @@ export default function Universities() {
                 {/* University Image */}
                 <div className="relative w-full h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
                   <div 
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-slate-300 dark:bg-slate-600 bg-cover bg-center"
                     style={{
                       backgroundImage: `url(${university.image})`,
                       backgroundSize: 'cover',

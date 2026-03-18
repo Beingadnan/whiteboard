@@ -90,25 +90,25 @@ export default function Home() {
     {
       id: 1,
       name: "Amity University",
-      image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
+      image: "/university/AmityUniversity.webp",
       description: "Leading private university with diverse programs and state-of-the-art facilities."
     },
     {
       id: 2,
       name: "Uttaranchal University (UU)",
-      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
+      image: "/university/Uttaranchal-University.webp",
       description: "Premier university offering quality education in engineering, management, and more."
     },
     {
       id: 3,
       name: "Sikkim Manipal University (SMU)",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+      image: "/university/Sikkim_Manipal_University.jpg",
       description: "Renowned university with excellent academic programs and placement opportunities."
     },
     {
       id: 4,
       name: "Manipal University Jaipur (MUJ)",
-      image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&q=80",
+      image: "/university/ManipalUniversityJaipur%28MUJ%29.jpeg",
       description: "World-class education in engineering, management, and humanities."
     }
   ];

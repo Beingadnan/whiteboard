@@ -127,7 +127,7 @@ export default function Collaborate() {
   const partneredUniversities = [
     {
       name: "Amity University",
-      logo: "https://collegesgyan.com/wp-content/uploads/2024/03/Untitled-design-10-e1710144513893.webp",
+      logo: "/university/AmityUniversity.webp",
       features: [
         "Leading online education platform in Asia",
         "20+ years of experience in online education",
@@ -137,7 +137,7 @@ export default function Collaborate() {
     },
     {
       name: "Manipal University Jaipur (MUJ)",
-      logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
+      logo: "/university/ManipalUniversityJaipur%28MUJ%29.jpeg",
       features: [
         "Endorsed by the University Grants Commission (UGC)",
         "Convenient access to courses via EduNxt from anywhere",
@@ -147,7 +147,7 @@ export default function Collaborate() {
     },
     {
       name: "Sikkim Manipal University (SMU)",
-      logo: "https://upload.wikimedia.org/wikipedia/en/3/30/Logo_of_Sikkim_Manipal_University.jpg",
+      logo: "/university/Sikkim_Manipal_University.jpg",
       features: [
         "Established under Sikkim Manipal University of Health, Medical & Technological Sciences Act No. 9 of 1995",
         "Recognised by the UGC under Section 2(f)",
@@ -157,7 +157,7 @@ export default function Collaborate() {
     },
     {
       name: "Uttaranchal University (UU)",
-      logo: "https://www.admissionindia.net/uploads/colleges/10/logo.jpg",
+      logo: "/university/Uttaranchal-University.webp",
       features: [
         "20+ Years of Excellence",
         "Ranked 27th In India & 1st in Uttarakhand by India Today",
@@ -167,7 +167,7 @@ export default function Collaborate() {
     },
     {
       name: "MIT University",
-      logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Manipal_University_Jaipur_logo.png",
+      logo: "/university/%20MITUniversity.jpeg",
       features: [
         "Prestigious institution known for excellence in engineering and technology",
         "Strong industry connections",
@@ -177,7 +177,7 @@ export default function Collaborate() {
     },
     {
       name: "Mangalayatan University",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSFLljfmgx0Y26SkW3viqM71aGDPp-NmOog&s",
+      logo: "/university/MangalayatanUniversity.png",
       features: [
         "A progressive university offering diverse programs",
         "Focus on holistic development",
