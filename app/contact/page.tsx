@@ -260,9 +260,9 @@ export default function Contact() {
                         >
                           <option value="">Select a university</option>
                           <option value="Amity University">Amity University</option>
-                          <option value="Uttaranchal University (UU)">Uttaranchal University (UU)</option>
-                          <option value="Sikkim Manipal University (SMU)">Sikkim Manipal University (SMU)</option>
-                          <option value="Manipal University Jaipur (MUJ)">Manipal University Jaipur (MUJ)</option>
+                          <option value="Uttaranchal University">Uttaranchal University</option>
+                          <option value="Sikkim Manipal University">Sikkim Manipal University</option>
+                          <option value="Manipal University Jaipur">Manipal University Jaipur</option>
                           <option value="MIT University">MIT University</option>
                           <option value="Mangalayatan University">Mangalayatan University</option>
                           <option value="other">Other</option>

@@ -25,7 +25,7 @@ export default function Universities() {
     },
     {
       id: 2,
-      name: "Uttaranchal University (UU)",
+      name: "Uttaranchal University",
       description: "A premier university in Uttarakhand offering quality education in engineering, management, law, and applied sciences with modern infrastructure.",
       programs: ["Engineering", "Management", "Law", "Applied Sciences"],
       location: "Dehradun, Uttarakhand",
@@ -36,7 +36,7 @@ export default function Universities() {
     },
     {
       id: 3,
-      name: "Sikkim Manipal University (SMU)",
+      name: "Sikkim Manipal University",
       description: "A renowned distance education university offering flexible learning programs with UGC recognition and industry-aligned curriculum.",
       programs: ["Distance MBA", "Distance BBA", "Distance MCA", "Health Sciences"],
       location: "Gangtok, Sikkim",
@@ -47,7 +47,7 @@ export default function Universities() {
     },
     {
       id: 4,
-      name: "Manipal University Jaipur (MUJ)",
+      name: "Manipal University Jaipur",
       description: "A leading private university offering world-class education in engineering, management, and humanities with excellent placement records.",
       programs: ["Engineering", "Management", "Design", "Humanities"],
       location: "Jaipur, Rajasthan",
@@ -68,7 +68,7 @@ export default function Universities() {
       image: "/university/%20MITUniversity.jpeg"
     },
     {
-      id: 7,
+      id: 6,
       name: "Mangalayatan University",
       description: "A progressive university offering diverse programs with focus on holistic development.",
       programs: ["Engineering", "Management", "Law", "Arts & Commerce"],
@@ -77,50 +77,6 @@ export default function Universities() {
       students: "10K+",
       established: "2006",
       image: "/university/MangalayatanUniversity.png"
-    },
-    {
-      id: 9,
-      name: "DPU Pune (Dr. D.Y. Patil Vidyapeeth)",
-      description: "Online BBA, MBA, and MCA for Indian and international students with semester-wise fees.",
-      programs: ["Management", "Computer Applications"],
-      location: "Pune, Maharashtra",
-      rating: 4.6,
-      students: "10K+",
-      established: "2003",
-      image: "/university/DPUPune%28Dr.D.Y.PatilVidyapeeth%29.png"
-    },
-    {
-      id: 10,
-      name: "Vivekanand Global University (VGU)",
-      description: "Affordable online programs with semester, annual, and one-shot payment options.",
-      programs: ["Arts", "Management", "Computer Applications"],
-      location: "Jaipur, Rajasthan",
-      rating: 4.5,
-      students: "8K+",
-      established: "2012",
-      image: "/university/VivekanandGlobalUniversity%28VGU%29.jpeg"
-    },
-    {
-      id: 11,
-      name: "Sharda University Online",
-      description: "Online BBA, BCA, MBA, and MCA with semester, annual, and one-time fee options.",
-      programs: ["Management", "Computer Applications"],
-      location: "Greater Noida, Uttar Pradesh",
-      rating: 4.5,
-      students: "15K+",
-      established: "2009",
-      image: "/university/ShardaUniversityOnline.jpeg"
-    },
-    {
-      id: 13,
-      name: "LPU Online (Lovely Professional University)",
-      description: "Online BA, BBA, BCA, MBA, and MCA with semester and exam fee. Registration fee ₹600.",
-      programs: ["Arts", "Management", "Computer Applications"],
-      location: "Jalandhar, Punjab",
-      rating: 4.6,
-      students: "30K+",
-      established: "2005",
-      image: "/university/LPU.jpeg"
     }
   ];
 

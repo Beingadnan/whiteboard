@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState, useMemo, useRef } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 
 export default function UniversityDetail() {
   const params = useParams();
-  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [formData, setFormData] = useState({
@@ -158,7 +157,7 @@ export default function UniversityDetail() {
     },
     {
       id: 2,
-      name: "Uttaranchal University (UU)",
+      name: "Uttaranchal University",
       shortName: "UU",
       description: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
       fullDescription: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
@@ -179,7 +178,7 @@ export default function UniversityDetail() {
       ],
       feeTables: [
         {
-          title: "Uttaranchal University (Online) – Fee Structure (INR)",
+          title: "Uttaranchal University Online – Fee Structure (INR)",
           headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time"],
           rows: [
             { "Course": "BA", "Total Fee": "₹72,000", "Semester Fee": "₹10,200", "Annual Fee": "₹18,400", "One Time": "₹55,200" },
@@ -245,7 +244,7 @@ export default function UniversityDetail() {
     },
     {
       id: 3,
-      name: "Sikkim Manipal University (SMU)",
+      name: "Sikkim Manipal University",
       shortName: "SMU",
       description: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs with a focus on innovation, interdisciplinary learning, and professional readiness.",
       fullDescription: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs with a focus on innovation, interdisciplinary learning, and professional readiness.",
@@ -329,7 +328,7 @@ export default function UniversityDetail() {
     },
     {
       id: 4,
-      name: "Manipal University Jaipur (MUJ)",
+      name: "Manipal University Jaipur",
       shortName: "MUJ",
       description: "The online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). In 2021, the university commenced offering courses in an online format. The University Grants Commission (UGC) has granted authorization to Online Manipal University to provide undergraduate (UG) and postgraduate (PG) programs.",
       fullDescription: "The online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). In 2021, the university commenced offering courses in an online format. The University Grants Commission (UGC) has granted authorization to Online Manipal University to provide undergraduate (UG) and postgraduate (PG) programs.",
@@ -453,7 +452,7 @@ export default function UniversityDetail() {
       ]
     },
     {
-      id: 7,
+      id: 6,
       name: "Mangalayatan University",
       shortName: "Mangalayatan",
       description: "A progressive university offering diverse programs with focus on holistic development.",
@@ -491,226 +490,6 @@ export default function UniversityDetail() {
           answer: "Yes, Mangalayatan University is UGC recognized and offers diverse programs with focus on holistic development."
         }
       ]
-    },
-    {
-      id: 9,
-      name: "DPU Pune (Dr. D.Y. Patil Vidyapeeth)",
-      shortName: "DPU",
-      description: "DPU Pune offers online BBA, MBA, and MCA programs for Indian and international students with semester-wise fee structure.",
-      fullDescription: "Dr. D.Y. Patil Vidyapeeth, Pune offers UGC-entitled online programs. Indian students pay in INR; international students in USD with semester-wise breakdown.",
-      programs: ["Management", "Computer Applications"],
-      location: "Pune, Maharashtra",
-      rating: 4.6,
-      students: "10K+",
-      established: "2003",
-      image: "/university/DPUPune%28Dr.D.Y.PatilVidyapeeth%29.png",
-      naacGrade: "A+",
-      ugcApproved: true,
-      keyFeatures: ["UGC entitled", "Indian & International fees", "Semester-wise payment"],
-      feeTables: [
-        {
-          title: "Online BBA – Indian Civilian (INR)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "₹35,000" },
-            { "Semester": "Sem 2", "Fee": "₹35,000" },
-            { "Semester": "Sem 3", "Fee": "₹30,000" },
-            { "Semester": "Sem 4", "Fee": "₹30,000" },
-            { "Semester": "Sem 5", "Fee": "₹15,000" },
-            { "Semester": "Sem 6", "Fee": "₹15,000" },
-            { "Semester": "Total", "Fee": "₹1,45,400" },
-          ],
-        },
-        {
-          title: "Online BBA – International (USD)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "$600" },
-            { "Semester": "Sem 2", "Fee": "$600" },
-            { "Semester": "Sem 3", "Fee": "$600" },
-            { "Semester": "Sem 4", "Fee": "$600" },
-            { "Semester": "Sem 5", "Fee": "$400" },
-            { "Semester": "Total", "Fee": "$2,800" },
-          ],
-        },
-        {
-          title: "Online MBA – Indian Civilian (INR)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "₹50,000" },
-            { "Semester": "Sem 2", "Fee": "₹50,000" },
-            { "Semester": "Sem 3", "Fee": "₹45,000" },
-            { "Semester": "Sem 4", "Fee": "₹44,400" },
-            { "Semester": "Total", "Fee": "₹1,89,400" },
-          ],
-        },
-        {
-          title: "Online MBA – International (USD)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "$1,000" },
-            { "Semester": "Sem 2", "Fee": "$1,000" },
-            { "Semester": "Sem 3", "Fee": "$800" },
-            { "Semester": "Sem 4", "Fee": "$800" },
-            { "Semester": "Total", "Fee": "$3,600" },
-          ],
-        },
-        {
-          title: "Online MCA – Indian Civilian (INR)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "₹40,000" },
-            { "Semester": "Sem 2", "Fee": "₹40,000" },
-            { "Semester": "Sem 3", "Fee": "₹30,000" },
-            { "Semester": "Sem 4", "Fee": "₹30,000" },
-            { "Semester": "Total", "Fee": "₹1,40,000" },
-          ],
-        },
-        {
-          title: "Online MCA – International (USD)",
-          headers: ["Semester", "Fee"],
-          rows: [
-            { "Semester": "Sem 1", "Fee": "$750" },
-            { "Semester": "Sem 2", "Fee": "$750" },
-            { "Semester": "Sem 3", "Fee": "$600" },
-            { "Semester": "Sem 4", "Fee": "$600" },
-            { "Semester": "Total", "Fee": "$2,700" },
-          ],
-        },
-      ],
-      courses: [
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,45,400", discountFee: "Sem-wise (Indian) / $2,800 (Intl)" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,89,400", discountFee: "Sem-wise (Indian) / $3,600 (Intl)" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "Sem-wise (Indian) / $2,700 (Intl)" },
-      ],
-      admissionProcess: ["Apply online", "Submit documents", "Pay semester fee"],
-      benefits: ["UGC entitled", "Indian & International", "Flexible sem-wise"],
-      placementPartners: ["Wipro", "Infosys", "TCS"],
-      faqs: [{ question: "Does DPU offer international student fees?", answer: "Yes, DPU Pune offers separate fee structure in USD for international students for BBA, MBA, and MCA." }]
-    },
-    {
-      id: 10,
-      name: "Vivekanand Global University (VGU)",
-      shortName: "VGU",
-      description: "VGU offers affordable online programs with semester, annual, and one-shot payment options.",
-      fullDescription: "Vivekanand Global University offers UGC-recognized online degrees with flexible payment: semester fee, annual fee, or one-shot payment.",
-      programs: ["Arts", "Management", "Computer Applications"],
-      location: "Jaipur, Rajasthan",
-      rating: 4.5,
-      students: "8K+",
-      established: "2012",
-      image: "/university/VivekanandGlobalUniversity%28VGU%29.jpeg",
-      naacGrade: "A",
-      ugcApproved: true,
-      keyFeatures: ["Sem/Annual/One-shot payment", "UGC recognized", "Affordable"],
-      feeTables: [
-        {
-          title: "Vivekanand Global University (VGU) – Fee Structure (INR)",
-          headers: ["Program", "Semester Fee", "Annual Fee", "One Shot"],
-          rows: [
-            { "Program": "BA", "Semester Fee": "₹10,800", "Annual Fee": "₹20,400", "One Shot": "₹57,600" },
-            { "Program": "BBA", "Semester Fee": "₹19,800", "Annual Fee": "₹37,400", "One Shot": "₹1,05,600" },
-            { "Program": "BCA", "Semester Fee": "₹19,800", "Annual Fee": "₹37,400", "One Shot": "₹1,05,600" },
-            { "Program": "MA", "Semester Fee": "₹16,200", "Annual Fee": "₹30,600", "One Shot": "₹57,600" },
-            { "Program": "MBA", "Semester Fee": "₹33,750", "Annual Fee": "₹63,750", "One Shot": "₹1,20,000" },
-            { "Program": "MCA", "Semester Fee": "₹33,750", "Annual Fee": "₹63,750", "One Shot": "₹1,20,000" },
-          ],
-        },
-      ],
-      courses: [
-        { name: "Online BA", duration: "3 years", fullFee: "₹57,600 (one shot)", discountFee: "Sem ₹10,800 / Annual ₹20,400" },
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,05,600 (one shot)", discountFee: "Sem ₹19,800 / Annual ₹37,400" },
-        { name: "Online BCA", duration: "3 years", fullFee: "₹1,05,600 (one shot)", discountFee: "Sem ₹19,800 / Annual ₹37,400" },
-        { name: "Online MA", duration: "2 years", fullFee: "₹57,600 (one shot)", discountFee: "Sem ₹16,200 / Annual ₹30,600" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,20,000 (one shot)", discountFee: "Sem ₹33,750 / Annual ₹63,750" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000 (one shot)", discountFee: "Sem ₹33,750 / Annual ₹63,750" },
-      ],
-      admissionProcess: ["Apply online", "Submit documents", "Choose payment option"],
-      benefits: ["One-shot discount", "UGC recognized", "Flexible payment"],
-      placementPartners: ["Wipro", "Infosys"],
-      faqs: [{ question: "What payment options does VGU offer?", answer: "VGU offers semester-wise, annual, or one-time (one-shot) payment with lower total cost for one-shot." }]
-    },
-    {
-      id: 11,
-      name: "Sharda University Online",
-      shortName: "Sharda",
-      description: "Sharda University offers online BBA, BCA, MBA, and MCA with semester, annual, and one-time fee options.",
-      fullDescription: "Sharda University Online offers UGC-recognized programs. Exam fee applies as per university norms.",
-      programs: ["Management", "Computer Applications"],
-      location: "Greater Noida, Uttar Pradesh",
-      rating: 4.5,
-      students: "15K+",
-      established: "2009",
-      image: "/university/ShardaUniversityOnline.jpeg",
-      naacGrade: "A+",
-      ugcApproved: true,
-      keyFeatures: ["UGC recognized", "MBA Data Science", "Exam fee separate"],
-      feeTables: [
-        {
-          title: "Sharda University Online – Fee Structure (INR)",
-          headers: ["Course", "Semester Fee", "Annual Fee", "One Time"],
-          rows: [
-            { "Course": "BBA", "Semester Fee": "₹20,000", "Annual Fee": "₹40,000", "One Time": "₹1,20,000" },
-            { "Course": "BCA", "Semester Fee": "₹20,000", "Annual Fee": "₹40,000", "One Time": "₹1,20,000" },
-            { "Course": "MBA", "Semester Fee": "₹35,000", "Annual Fee": "₹70,000", "One Time": "₹1,40,000" },
-            { "Course": "MBA (Data Science)", "Semester Fee": "₹49,000", "Annual Fee": "₹98,000", "One Time": "₹1,96,000" },
-            { "Course": "MCA", "Semester Fee": "₹30,000", "Annual Fee": "₹60,000", "One Time": "₹1,20,000" },
-          ],
-        },
-      ],
-      feeNote: "Exam Fee: ₹7,000",
-      courses: [
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹20,000 / Annual ₹40,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹20,000 / Annual ₹40,000" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "One Time ₹1,40,000" },
-        { name: "Online MBA (Data Science)", duration: "2 years", fullFee: "₹1,96,000", discountFee: "One Time ₹1,96,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000", discountFee: "One Time ₹1,20,000" },
-      ],
-      admissionProcess: ["Apply online", "Submit documents", "Pay fee"],
-      benefits: ["UGC recognized", "MBA Data Science", "Placement support"],
-      placementPartners: ["Tech Mahindra", "Wipro", "Infosys"],
-      faqs: [{ question: "Is there an exam fee at Sharda?", answer: "Yes, exam fee of ₹7,000 applies as per university norms." }]
-    },
-    {
-      id: 13,
-      name: "LPU Online (Lovely Professional University)",
-      shortName: "LPU",
-      description: "LPU Online offers BA, BBA, BCA, MBA, and MCA with semester fee and exam fee. Registration fee applies.",
-      fullDescription: "Lovely Professional University offers UGC-recognized online programs. Registration fee ₹600; exam fee ₹2,000 per semester (example).",
-      programs: ["Arts", "Management", "Computer Applications"],
-      location: "Jalandhar, Punjab",
-      rating: 4.6,
-      students: "30K+",
-      established: "2005",
-      image: "/university/LPU.jpeg",
-      naacGrade: "A++",
-      ugcApproved: true,
-      keyFeatures: ["Sem fee + exam fee", "UGC recognized", "NAAC A++"],
-      feeTables: [
-        {
-          title: "LPU Online – Example Fee Structure (INR)",
-          headers: ["Program", "Sem Fee", "Exam Fee", "Total Program"],
-          rows: [
-            { "Program": "BA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
-            { "Program": "BBA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
-            { "Program": "BCA", "Sem Fee": "₹23,000", "Exam Fee": "₹2,000", "Total Program": "₹1,50,000" },
-            { "Program": "MBA", "Sem Fee": "₹48,000", "Exam Fee": "₹2,000", "Total Program": "₹2,00,000" },
-            { "Program": "MCA", "Sem Fee": "₹35,000", "Exam Fee": "₹2,000", "Total Program": "₹1,48,000" },
-          ],
-        },
-      ],
-      feeNote: "Registration Fee: ₹600",
-      courses: [
-        { name: "Online BA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹23,000 + Exam ₹2,000" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹2,00,000", discountFee: "Sem ₹48,000 + Exam ₹2,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,48,000", discountFee: "Sem ₹35,000 + Exam ₹2,000" },
-      ],
-      admissionProcess: ["Apply online", "Pay registration fee ₹600", "Submit documents", "Pay semester fee"],
-      benefits: ["NAAC A++", "UGC recognized", "Affordable"],
-      placementPartners: ["Wipro", "Infosys", "TCS", "Capgemini"],
-      faqs: [{ question: "What is the registration fee at LPU?", answer: "Registration fee is ₹600. Exam fee per semester is as per program (e.g. ₹2,000)." }]
     }
   ];
 
