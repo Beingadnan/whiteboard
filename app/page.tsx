@@ -3,9 +3,12 @@
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import StructuredData from "./components/StructuredData";
 import { useRouter } from "next/navigation";
+import { courseImageByHomeTitle } from "../lib/courseImages";
+
 export default function Home() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -19,9 +22,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const scrollContentRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
   const reviewsScrollRef = useRef<HTMLDivElement>(null);
   const [isReviewsPaused, setIsReviewsPaused] = useState(false);
   const universitiesScrollRef = useRef<HTMLDivElement>(null);
@@ -75,10 +75,31 @@ export default function Home() {
     }
   };
 
-  const openModal = (url: string) => {
+  const openModal = (
+    url: string,
+    prefs?: { course?: string; university?: string }
+  ) => {
     setRedirectUrl(url);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      course: prefs?.course ?? "",
+      university: prefs?.university ?? "",
+      state: ""
+    });
     setShowModal(true);
   };
+
+  useEffect(() => {
+    if (showModal) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [showModal]);
 
   const closeModal = () => {
     setShowModal(false);
@@ -95,65 +116,35 @@ export default function Home() {
     },
     {
       id: 2,
-      name: "Uttaranchal University (UU)",
+      name: "Uttaranchal University",
       image: "/university/Uttaranchal-University.webp",
       description: "Premier university offering quality education in engineering, management, and more."
     },
     {
       id: 3,
-      name: "Sikkim Manipal University (SMU)",
+      name: "Sikkim Manipal University",
       image: "/university/Sikkim_Manipal_University.jpg",
       description: "Renowned university with excellent academic programs and placement opportunities."
     },
     {
       id: 4,
-      name: "Manipal University Jaipur (MUJ)",
+      name: "Manipal University Jaipur",
       image: "/university/ManipalUniversityJaipur%28MUJ%29.jpeg",
       description: "World-class education in engineering, management, and humanities."
+    },
+    {
+      id: 5,
+      name: "MIT University",
+      image: "/university/%20MITUniversity.jpeg",
+      description: "Prestigious institution known for excellence in engineering and technology education."
+    },
+    {
+      id: 6,
+      name: "Mangalayatan University",
+      image: "/university/MangalayatanUniversity.png",
+      description: "Progressive university with diverse programs and holistic development focus."
     }
   ];
-
-  // Auto-scroll functionality with infinite loop
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    const content = scrollContentRef.current;
-    if (!container || !content) return;
-
-    let animationId: number;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5; // pixels per frame
-    const cardWidth = 320; // base card width
-    const gap = 24; // gap between cards
-    const singleSetWidth = (cardWidth + gap) * featuredUniversities.length;
-
-    const scroll = () => {
-      if (!isPaused) {
-        scrollPosition += scrollSpeed;
-        
-        // When we've scrolled one full set, reset to create seamless infinite loop
-        if (scrollPosition >= singleSetWidth) {
-          scrollPosition = 0;
-          container.scrollLeft = 0;
-        } else {
-          container.scrollLeft = scrollPosition;
-        }
-      }
-      
-      animationId = requestAnimationFrame(scroll);
-    };
-
-    // Start scrolling after a brief delay
-    const timeoutId = setTimeout(() => {
-      animationId = requestAnimationFrame(scroll);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeoutId);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [isPaused, featuredUniversities.length]);
 
   // Auto-scroll for reviews section
   useEffect(() => {
@@ -242,7 +233,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online MBA"],
       description: "Master of Business Administration for aspiring business leaders."
     },
     {
@@ -253,7 +244,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online MCA"],
       description: "Master of Computer Applications for IT professionals."
     },
     {
@@ -264,7 +255,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online BBA"],
       description: "Bachelor of Business Administration for business enthusiasts."
     },
     {
@@ -275,7 +266,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online BCA"],
       description: "Bachelor of Computer Applications for tech careers."
     },
     {
@@ -286,7 +277,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online B.Com"],
       description: "Bachelor of Commerce for commerce and finance careers."
     },
     {
@@ -297,7 +288,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online M.Com"],
       description: "Master of Commerce for advanced commerce studies."
     },
     {
@@ -308,7 +299,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online BA"],
       description: "Bachelor of Arts for humanities and social sciences."
     },
     {
@@ -319,7 +310,7 @@ export default function Home() {
       approved: "UGC-entitled degree programme",
       mode: "Online (Live/Recorded Lectures)",
       payment: "EMI options available",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: courseImageByHomeTitle["Online MA"],
       description: "Master of Arts for advanced humanities studies."
     }
   ];
@@ -407,8 +398,8 @@ export default function Home() {
   const universityListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Top Universities - Amity, MUJ, SMU, Uttaranchal, MIT, Mangalayatan",
-    "description": "List of top partner universities including Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, and Mangalayatan University",
+    "name": "Top Universities - Amity, Uttaranchal, SMU, Manipal Jaipur, MIT, Mangalayatan",
+    "description": "List of top partner universities: Amity University, Uttaranchal University, Sikkim Manipal University, Manipal University Jaipur, MIT University, Mangalayatan University",
     "itemListElement": featuredUniversities.map((university, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -482,7 +473,12 @@ export default function Home() {
                           {university.description}
                         </p>
                         <button
-                          onClick={() => openModal("/universities")}
+                          type="button"
+                          onClick={() =>
+                            openModal("/universities", {
+                              university: university.name
+                            })
+                          }
                           className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-md hover:shadow-lg"
                         >
                           Join Now
@@ -581,7 +577,10 @@ export default function Home() {
 
                   {/* View Program Button */}
                   <button
-                    onClick={() => openModal("/courses")}
+                    type="button"
+                    onClick={() =>
+                      openModal("/courses", { course: course.title })
+                    }
                     className="block w-full text-center px-4 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-lg hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 text-sm"
                   >
                     View Program
@@ -912,12 +911,17 @@ export default function Home() {
 
       {/* Student Form Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 md:pt-20 p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
-          <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-5 md:p-6 shadow-2xl border border-slate-200 dark:border-slate-700 max-w-lg w-full max-h-[85vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 z-[1100] flex items-start justify-center pt-[calc(5.5rem+env(safe-area-inset-top))] md:pt-24 p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-5 md:p-6 shadow-2xl border border-slate-200 dark:border-slate-700 max-w-lg w-full max-h-[min(85vh,calc(100dvh-6rem))] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-slate-600 dark:text-slate-300"
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-slate-600 dark:text-slate-300"
               aria-label="Close modal"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -925,9 +929,26 @@ export default function Home() {
               </svg>
             </button>
 
+            {/* Brand strip — visible above the fold on mobile */}
+            <div className="mb-3 pr-10 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
+              <Image
+                src="/Logo.png"
+                alt="SuccessMentorix"
+                width={140}
+                height={48}
+                className="h-9 w-auto max-w-[120px] object-contain object-left"
+              />
+              <span className="font-extrabold text-sm md:text-base text-[#b8860b] dark:text-[#e6c84a] truncate min-w-0">
+                SuccessMentorix
+              </span>
+            </div>
+
             {/* Modal Header */}
-            <div className="mb-4 pr-8">
-              <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-50 mb-1">
+            <div className="mb-4 pr-2">
+              <h2
+                id="modal-title"
+                className="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-50 mb-1"
+              >
                 Get Started Today
               </h2>
               <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400">

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import StructuredData from "../components/StructuredData";
+import { courseImages } from "../../lib/courseImages";
 
 export default function Courses() {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +30,7 @@ export default function Courses() {
       rating: 4.9,
       students: "3K+",
       fee: "₹1,99,000",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mba
     },
     {
       id: 2,
@@ -43,7 +44,7 @@ export default function Courses() {
       rating: 4.8,
       students: "2K+",
       fee: "₹1,75,000",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mba
     },
     {
       id: 3,
@@ -57,7 +58,7 @@ export default function Courses() {
       rating: 4.6,
       students: "1.5K+",
       fee: "₹1,10,000",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mba
     },
     {
       id: 4,
@@ -71,7 +72,7 @@ export default function Courses() {
       rating: 4.7,
       students: "1K+",
       fee: "₹1,40,000",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mba
     },
     {
       id: 5,
@@ -85,7 +86,7 @@ export default function Courses() {
       rating: 4.7,
       students: "2K+",
       fee: "₹1,65,000",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.bba
     },
     {
       id: 6,
@@ -99,7 +100,7 @@ export default function Courses() {
       rating: 4.8,
       students: "1.5K+",
       fee: "₹1,70,000",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mca
     },
     {
       id: 7,
@@ -113,7 +114,7 @@ export default function Courses() {
       rating: 4.7,
       students: "2.5K+",
       fee: "₹1,50,000",
-      image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.bca
     },
     {
       id: 8,
@@ -127,7 +128,7 @@ export default function Courses() {
       rating: 4.6,
       students: "1K+",
       fee: "₹1,20,000",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.mCom
     },
     {
       id: 9,
@@ -141,10 +142,24 @@ export default function Courses() {
       rating: 4.7,
       students: "3K+",
       fee: "₹99,000",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.bCom
     },
     {
       id: 10,
+      title: "Online BA",
+      category: "arts",
+      university: "Amity University",
+      duration: "3 Years",
+      level: "Undergraduate",
+      description: "Bachelor of Arts program offering a strong foundation in humanities, languages, and social sciences.",
+      highlights: ["Flexible Specializations", "Foundation for Higher Studies", "Expert Faculty", "Flexible Learning"],
+      rating: 4.6,
+      students: "900+",
+      fee: "₹95,000",
+      image: courseImages.ba
+    },
+    {
+      id: 11,
       title: "Online MA",
       category: "arts",
       university: "Amity University",
@@ -155,7 +170,7 @@ export default function Courses() {
       rating: 4.6,
       students: "800+",
       fee: "₹1,30,000",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: courseImages.ma
     }
   ];
 

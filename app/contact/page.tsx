@@ -71,17 +71,17 @@ export default function Contact() {
     {
       icon: "📍",
       title: "Address",
-      details: ["Noida, Uttar Pradesh", "India"]
+      details: ["12/279 Gandhi Nagar, Shukla Ganj", "Unnao, Uttar Pradesh, India"]
     },
     {
       icon: "📞",
       title: "Phone",
-      details: ["+91 9335512881"]
+      details: ["+91 93355 12881", "+91 81125 92546"]
     },
     {
       icon: "💬",
       title: "WhatsApp",
-      details: ["+91 9335512881"]
+      details: ["+91 93355 12881", "+91 81125 92546"]
     },
     {
       icon: "🕒",

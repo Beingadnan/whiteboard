@@ -1,16 +1,16 @@
-# Course Images
+# Course images
 
-Place course images in this directory:
+Files in this folder are used as `/courses/<filename>` (see `lib/courseImages.ts`).
 
-- `engineering.jpg` - Engineering course image
-- `mba.jpg` - MBA course image  
-- `online-mba.jpg` - Online MBA course image
+| File        | Used for                          |
+|------------|------------------------------------|
+| `MBA.webp` | MBA / Online MBA                   |
+| `BBA.webp` | Online BBA                         |
+| `MCA.jpeg` | Online MCA                         |
+| `BCA.webp` | Online BCA                         |
+| `bcom.jpeg`| Online B.Com                       |
+| `mcom.png` | Online M.Com                       |
+| `BA.jpeg`  | Online BA                          |
+| `MA.jpeg`  | Online MA                          |
 
-**Image Requirements:**
-- Format: JPG, PNG, or WebP
-- Recommended size: 800x600px or larger
-- Aspect ratio: 4:3 (landscape)
-- File size: Under 500KB for optimal performance
-
-If images are not available, the page will display a gradient background with the logo colors.
-
+**Tips:** Prefer webp/jpeg under ~500KB, landscape ~4:3. Names are case-sensitive on Linux servers.

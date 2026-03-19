@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { courseImageForTitle } from "../../../lib/courseImages";
 
 export default function CourseDetail() {
   const params = useParams();
@@ -106,7 +107,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Students can choose from two lecture delivery modes: Pro & Prime. Prime: The Prime delivery mode allows students to view recorded lectures only. Pro: The Pro mode allows students to access live-interactive lectures as well as view recorded lectures. Please note: The above-mentioned fee structure is subject to change at the discretion of the University. In addition, Students need to pay an examination fee of Rs 600/- per subject."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Master of Business Administration (MBA)")
     },
     {
       id: 2,
@@ -167,7 +168,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MBA")
     },
     {
       id: 3,
@@ -236,7 +237,7 @@ export default function CourseDetail() {
         semesters: 6,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online BBA")
     },
     {
       id: 4,
@@ -295,7 +296,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MCA")
     },
     {
       id: 5,
@@ -362,7 +363,7 @@ export default function CourseDetail() {
         semesters: 6,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online BCA")
     },
     {
       id: 6,
@@ -421,7 +422,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online M.Com")
     },
     {
       id: 7,
@@ -488,7 +489,7 @@ export default function CourseDetail() {
         semesters: 6,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online B.Com")
     },
     {
       id: 8,
@@ -547,7 +548,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Online learning platform access included. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MA")
     },
     {
       id: 9,
@@ -606,7 +607,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Online learning platform access included. EMI options available. Campus immersion events included."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MBA")
     },
     {
       id: 10,
@@ -665,7 +666,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Distance education mode with flexible learning. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MBA")
     },
     {
       id: 11,
@@ -724,7 +725,7 @@ export default function CourseDetail() {
         semesters: 4,
         note: "Affordable online programs with flexible learning. EMI options available."
       },
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6lVIJnKO03mSTx3SfYGqBcqmCZ5dyqcvbg&s"
+      image: courseImageForTitle("Online MBA")
     }
   ];
 

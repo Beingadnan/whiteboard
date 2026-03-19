@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Header() {
@@ -31,13 +32,18 @@ export default function Header() {
     >
       <div className="header-container">
         <div className="header-brand">
-          <Link href="/" className="brand-link brand-link-text-only" aria-label="SuccessMentorix home">
-            <span className="brand-text">
-              <span className="brand-name">
-                <span className="brand-name-gradient">SuccessMentorix</span>
-              </span>
-              <span className="brand-tagline">Your Path to Extraordinary Success.</span>
-            </span>
+          <Link href="/" className="brand-link brand-link-with-logo" aria-label="SuccessMentorix home">
+            <Image
+              src="/Logo.png"
+              alt="SuccessMentorix"
+              width={560}
+              height={180}
+              className="brand-header-logo-img"
+              priority
+              quality={100}
+              sizes="(max-width: 900px) 75vw, 440px"
+            />
+            <span className="brand-header-brand-name">SuccessMentorix</span>
           </Link>
         </div>
 
