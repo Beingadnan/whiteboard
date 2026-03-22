@@ -70,7 +70,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 16px;
+  column-gap: 12px;
   row-gap: 8px;
   min-height: 108px;
   height: auto;
@@ -319,10 +319,11 @@ body {
   opacity: 0.9;
 }
 
-/* Navigation — grid middle column; CTA stays in its own column */
+/* Navigation — hug the actions column so Contact isn’t miles from Free Counselling */
 .header-nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   justify-self: stretch;
   min-width: 0;
   max-width: 100%;
@@ -332,9 +333,10 @@ body {
 .nav-list {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 2px 4px;
+  column-gap: 14px;
+  row-gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -358,7 +360,7 @@ body {
   color: #0a3d5c;
 }
 
-/* Header Actions — own grid column so links never overlap Enquire */
+/* Header Actions — tight to nav column */
 .header-actions {
   display: flex;
   align-items: center;
@@ -366,7 +368,8 @@ body {
   flex-shrink: 0;
   justify-self: end;
   min-width: fit-content;
-  padding-left: 8px;
+  padding-left: 0;
+  margin-left: 0;
   position: relative;
   z-index: 2;
   background: inherit;
@@ -492,6 +495,7 @@ body {
     left: 0;
     right: 0;
     z-index: 999;
+    justify-content: flex-start;
     background: white;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
