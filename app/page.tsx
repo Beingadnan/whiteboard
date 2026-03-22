@@ -323,7 +323,7 @@ export default function Home() {
     "name": "Successmentorix",
     "alternateName": "Successmentorix",
     "url": process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com",
-    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/Logo.png`,
+    "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://successmentorix.com"}/SMLogo.png`,
     "description": "Leading education counseling platform helping students get admission in top universities like Amity University, Manipal University Jaipur (MUJ), Sikkim Manipal University (SMU), Uttaranchal University, MIT University, Mangalayatan University. Offering online MBA, MCA, BBA, BCA courses with UGC approval.",
     "address": {
       "@type": "PostalAddress",
@@ -930,15 +930,15 @@ export default function Home() {
             </button>
 
             {/* Brand strip — visible above the fold on mobile */}
-            <div className="mb-3 pr-10 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
+            <div className="enquiry-modal-brand mb-3 pr-10 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
               <Image
-                src="/Logo.png"
+                src="/SMLogo.png"
                 alt="SuccessMentorix"
                 width={140}
                 height={48}
                 className="h-9 w-auto max-w-[120px] object-contain object-left"
               />
-              <span className="font-extrabold text-sm md:text-base text-[#b8860b] dark:text-[#e6c84a] truncate min-w-0">
+              <span className="brand-header-brand-name truncate min-w-0 align-middle">
                 SuccessMentorix
               </span>
             </div>

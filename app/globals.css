@@ -84,22 +84,34 @@ body {
 
 .brand-link-with-logo {
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   max-width: min(100%, 560px);
 }
 
-.brand-header-logo-img {
+/* Tight square frame so wide/transparent PNGs don’t reserve a huge horizontal slot */
+.brand-header-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 96px;
+  width: 96px;
+}
+
+.brand-header-logo-img {
+  max-height: 100%;
+  max-width: 100%;
   width: auto;
-  max-width: min(440px, 52vw);
+  height: auto;
   object-fit: contain;
+  object-position: center;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
-/* Golden wordmark — matches Logo.png warm gold / tan */
+/* Header wordmark — navy → red gradient as text (no background chip) */
 .brand-header-brand-name {
   font-family: var(--font-brand), "Plus Jakarta Sans", Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 2.2vw, 1.65rem);
@@ -107,56 +119,52 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.1;
   white-space: nowrap;
-  color: #c9a227;
-  background: linear-gradient(
-    165deg,
-    #fff3c4 0%,
-    #f5d15c 22%,
-    #e6b422 48%,
-    #c99710 72%,
-    #a67c00 100%
-  );
+  display: inline-block;
+  max-width: 100%;
+  background: linear-gradient(135deg, #0f4c75 0%, #dc2626 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(101, 67, 0, 0.22));
+  color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(15, 76, 117, 0.35));
 }
 
 @supports not (background-clip: text) {
   .brand-header-brand-name {
     -webkit-text-fill-color: unset;
-    color: #c9a227;
+    color: #0f4c75;
     background: none;
     filter: none;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35), 0 1px 2px rgba(101, 67, 0, 0.25);
   }
 }
 
 .dark .brand-header-brand-name {
-  color: #e6c84a;
-  background: linear-gradient(
-    165deg,
-    #fff8dc 0%,
-    #ffd54f 35%,
-    #f0b429 65%,
-    #d4a012 100%
-  );
+  background: linear-gradient(135deg, #5b9bd5 0%, #f87171 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+  color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Slightly smaller wordmark in home enquiry modal */
+.enquiry-modal-brand .brand-header-brand-name {
+  font-size: clamp(0.8125rem, 2.4vw, 1rem);
+  max-width: min(10rem, calc(100vw - 10rem));
 }
 
 @media (max-width: 900px) {
   /* Keep wordmark visible on phones — was display:none, which hid “SuccessMentorix” */
   .brand-header-brand-name {
-    display: block;
+    display: inline-block;
     font-size: clamp(0.8125rem, 2.9vw, 1rem);
     line-height: 1.15;
     max-width: min(11.5rem, calc(100vw - 11rem));
+    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: middle;
   }
 
   .brand-link-with-logo {
@@ -167,10 +175,9 @@ body {
     max-width: min(100%, calc(100vw - 168px));
   }
 
-  .brand-header-logo-img {
-    max-width: min(200px, 36vw);
+  .brand-header-logo-wrap {
     height: clamp(44px, 10vw, 64px);
-    flex-shrink: 0;
+    width: clamp(44px, 10vw, 64px);
   }
 
   .header-brand {
@@ -279,15 +286,17 @@ body {
 .nav-list li a {
   display: inline-block;
   padding: 10px 16px;
-  color: #475569;
+  color: #0f4c75;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
   border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .nav-list li a:hover {
-  color: #0f4c75;
+  background: rgba(15, 76, 117, 0.1);
+  color: #0a3d5c;
 }
 
 /* Header Actions */
@@ -537,9 +546,9 @@ body {
     max-width: min(9rem, calc(100vw - 8.75rem));
   }
 
-  .brand-header-logo-img {
-    max-width: min(120px, 32vw);
+  .brand-header-logo-wrap {
     height: 40px;
+    width: 40px;
   }
 }
 
@@ -577,12 +586,13 @@ body {
   }
 
   .nav-list li a {
-    color: #cbd5e1;
+    color: #5b9bd5;
+    font-weight: 600;
   }
 
   .nav-list li a:hover {
-    color: #5b9bd5;
     background: rgba(15, 76, 117, 0.15);
+    color: #7db3e8;
   }
 
   .cta-link {
@@ -596,6 +606,15 @@ body {
 
   .mobile-menu-toggle span {
     background: #f1f5f9;
+  }
+
+  .brand-header-brand-name {
+    background: linear-gradient(135deg, #5b9bd5 0%, #f87171 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
   }
 
   .header-nav {

@@ -33,16 +33,18 @@ export default function Header() {
       <div className="header-container">
         <div className="header-brand">
           <Link href="/" className="brand-link brand-link-with-logo" aria-label="SuccessMentorix home">
-            <Image
-              src="/Logo.png"
-              alt="SuccessMentorix"
-              width={560}
-              height={180}
-              className="brand-header-logo-img"
-              priority
-              quality={100}
-              sizes="(max-width: 900px) 75vw, 440px"
-            />
+            <span className="brand-header-logo-wrap">
+              <Image
+                src="/SMLogo.png"
+                alt="SuccessMentorix"
+                width={512}
+                height={512}
+                className="brand-header-logo-img"
+                priority
+                quality={100}
+                sizes="(max-width: 480px) 40px, (max-width: 900px) 64px, 96px"
+              />
+            </span>
             <span className="brand-header-brand-name">SuccessMentorix</span>
           </Link>
         </div>

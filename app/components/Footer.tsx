@@ -60,7 +60,7 @@ export default function Footer() {
           <div className="footer-edukyu-brand-col">
             <Link href="/" className="footer-edukyu-logo footer-edukyu-logo-img-wrap">
               <Image
-                src="/Logo.png"
+                src="/SMLogo.png"
                 alt="SuccessMentorix"
                 width={440}
                 height={140}

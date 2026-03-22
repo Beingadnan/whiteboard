@@ -21,6 +21,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://successmentorix.com'),
+  icons: {
+    icon: [{ url: "/SMLogo.png", type: "image/png" }],
+    apple: "/SMLogo.png",
+    shortcut: "/SMLogo.png",
+  },
   title: {
     default: "Successmentorix - Top Universities & Online Courses | Amity, MUJ, SMU, Uttaranchal",
     template: "%s | Successmentorix"
@@ -86,7 +91,7 @@ export const metadata: Metadata = {
     description: 'Get admission in top universities like Amity, MUJ, SMU, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval. Free career counseling.',
     images: [
       {
-        url: '/Logo.png',
+        url: '/SMLogo.png',
         width: 1200,
         height: 630,
         alt: 'Successmentorix',
@@ -97,7 +102,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Successmentorix - Top Universities & Online Courses',
     description: 'Get admission in top universities like Amity, MUJ, SMU, Uttaranchal. Online MBA, MCA, BBA courses with UGC approval.',
-    images: ['/Logo.png'],
+    images: ['/SMLogo.png'],
   },
   alternates: {
     canonical: '/',
