@@ -23,9 +23,21 @@ body {
   padding-top: 108px;
 }
 
+@media (max-width: 1024px) {
+  body {
+    padding-top: 104px;
+  }
+}
+
 @media (max-width: 768px) {
   body {
-    padding-top: 84px;
+    padding-top: 96px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 92px;
   }
 }
 
@@ -36,6 +48,8 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
+  max-width: 100vw;
+  overflow-x: clip;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -52,15 +66,18 @@ body {
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
+  column-gap: 16px;
+  row-gap: 8px;
   min-height: 108px;
   height: auto;
-  gap: 24px;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Brand Section */
@@ -68,13 +85,16 @@ body {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  min-width: 0;
+  max-width: min(100%, 360px);
 }
 
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
   text-decoration: none;
+  min-width: 0;
 }
 
 .brand-link.brand-link-text-only .brand-text {
@@ -84,8 +104,29 @@ body {
 
 .brand-link-with-logo {
   align-items: center;
-  gap: 10px;
-  max-width: min(100%, 560px);
+  gap: 4px;
+  max-width: 100%;
+}
+
+.brand-header-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.brand-header-tagline {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: clamp(0.625rem, 1.25vw, 0.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #64748b;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  max-width: 22rem;
 }
 
 /* Tight square frame so wide/transparent PNGs don’t reserve a huge horizontal slot */
@@ -94,8 +135,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 96px;
-  width: 96px;
+  height: 72px;
+  width: 72px;
+  margin-right: -2px;
 }
 
 .brand-header-logo-img {
@@ -104,7 +146,7 @@ body {
   width: auto;
   height: auto;
   object-fit: contain;
-  object-position: center;
+  object-position: left center;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -147,6 +189,10 @@ body {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
+.dark .brand-header-tagline {
+  color: #94a3b8;
+}
+
 /* Slightly smaller wordmark in home enquiry modal */
 .enquiry-modal-brand .brand-header-brand-name {
   font-size: clamp(0.8125rem, 2.4vw, 1rem);
@@ -169,7 +215,7 @@ body {
 
   .brand-link-with-logo {
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     min-width: 0;
     flex: 1 1 auto;
     max-width: min(100%, calc(100vw - 168px));
@@ -178,6 +224,12 @@ body {
   .brand-header-logo-wrap {
     height: clamp(44px, 10vw, 64px);
     width: clamp(44px, 10vw, 64px);
+  }
+
+  .brand-header-tagline {
+    max-width: min(14rem, calc(100vw - 7rem));
+    font-size: clamp(0.5625rem, 2.1vw, 0.6875rem);
+    line-height: 1.25;
   }
 
   .header-brand {
@@ -267,31 +319,38 @@ body {
   opacity: 0.9;
 }
 
-/* Navigation */
+/* Navigation — grid middle column; CTA stays in its own column */
 .header-nav {
-  flex: 1;
   display: flex;
   justify-content: center;
+  justify-self: stretch;
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px 4px;
   list-style: none;
   padding: 0;
   margin: 0;
+  max-width: 100%;
 }
 
 .nav-list li a {
   display: inline-block;
-  padding: 10px 16px;
+  padding: 8px 10px;
   color: #0f4c75;
   text-decoration: none;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-list li a:hover {
@@ -299,24 +358,36 @@ body {
   color: #0a3d5c;
 }
 
-/* Header Actions */
+/* Header Actions — own grid column so links never overlap Enquire */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   flex-shrink: 0;
+  justify-self: end;
+  min-width: fit-content;
+  padding-left: 8px;
+  position: relative;
+  z-index: 2;
+  background: inherit;
+}
+
+/* Free Counselling: only in hamburger drawer (see Header.tsx) */
+.nav-drawer-only {
+  display: none;
 }
 
 .cta-link {
   display: inline-flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 8px 12px;
   color: #0f4c75;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 14px;
   border-radius: 8px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .cta-link:hover {
@@ -402,55 +473,25 @@ body {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Responsive Design */
+/* Tablet / small laptop: hamburger + drawer so nav + CTA don’t overflow */
 @media (max-width: 1024px) {
+  .nav-drawer-only {
+    display: list-item;
+  }
+
   .header-container {
-    padding: 0 20px;
-    gap: 24px;
-  }
-
-  .nav-list {
-    gap: 4px;
-  }
-
-  .nav-list li a {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-
-  .cta-link {
-    padding: 10px 14px;
-    font-size: 14px;
-  }
-
-  .cta-button-primary {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header-container {
-    min-height: 84px;
+    min-height: 88px;
     height: auto;
     padding: 8px 16px;
-    gap: 10px;
-  }
-
-  .brand-name {
-    font-size: 20px;
-  }
-
-  .brand-tagline {
-    font-size: 9px;
-    letter-spacing: 0.15em;
+    gap: 12px;
   }
 
   .header-nav {
     position: fixed;
-    top: 84px;
+    top: 104px;
     left: 0;
     right: 0;
+    z-index: 999;
     background: white;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -460,7 +501,7 @@ body {
   }
 
   .header-nav.nav-open {
-    max-height: calc(100vh - 84px);
+    max-height: calc(100vh - 104px);
     overflow-y: auto;
   }
 
@@ -481,6 +522,7 @@ body {
     border-radius: 10px;
     font-size: 16px;
     width: 100%;
+    white-space: normal;
   }
 
   .nav-list li a::after {
@@ -488,7 +530,7 @@ body {
   }
 
   .header-actions {
-    gap: 12px;
+    gap: 10px;
   }
 
   .cta-link {
@@ -508,6 +550,39 @@ body {
   .brand-link-with-logo {
     flex-direction: row;
     flex-wrap: nowrap;
+    max-width: calc(100vw - 132px);
+    gap: 6px;
+  }
+
+  .brand-header-brand-name {
+    max-width: min(13rem, calc(100vw - 8rem));
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    min-height: 92px;
+    gap: 10px;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .brand-tagline {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+  }
+
+  .header-nav {
+    top: 96px;
+  }
+
+  .header-nav.nav-open {
+    max-height: calc(100vh - 96px);
+  }
+
+  .brand-link-with-logo {
     max-width: calc(100vw - 148px);
   }
 
@@ -517,6 +592,14 @@ body {
 }
 
 @media (max-width: 480px) {
+  .header-nav {
+    top: 92px;
+  }
+
+  .header-nav.nav-open {
+    max-height: calc(100vh - 92px);
+  }
+
   .header-container {
     padding: 0 10px;
     gap: 8px;
@@ -549,6 +632,16 @@ body {
   .brand-header-logo-wrap {
     height: 40px;
     width: 40px;
+  }
+
+  .brand-header-text-block {
+    gap: 2px;
+  }
+
+  .brand-header-tagline {
+    max-width: min(11.5rem, calc(100vw - 5.25rem));
+    font-size: 0.5625rem;
+    line-height: 1.2;
   }
 }
 
@@ -597,6 +690,7 @@ body {
 
   .cta-link {
     color: #5b9bd5;
+    font-weight: 700;
   }
 
   .cta-link:hover {
@@ -617,6 +711,10 @@ body {
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
   }
 
+  .brand-header-tagline {
+    color: #94a3b8;
+  }
+
   .header-nav {
     background: #0f172a;
     border-top-color: rgba(255, 255, 255, 0.1);
@@ -635,10 +733,23 @@ body {
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: calc(100vh - 104px);
+    padding: 60px 0;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
-    min-height: calc(100vh - 84px);
-    padding: 60px 0;
+    min-height: calc(100vh - 96px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: calc(100vh - 92px);
+    padding: 48px 0;
   }
 }
 

@@ -42,10 +42,15 @@ export default function Header() {
                 className="brand-header-logo-img"
                 priority
                 quality={100}
-                sizes="(max-width: 480px) 40px, (max-width: 900px) 64px, 96px"
+                sizes="(max-width: 480px) 40px, (max-width: 900px) 64px, 72px"
               />
             </span>
-            <span className="brand-header-brand-name">SuccessMentorix</span>
+            <span className="brand-header-text-block">
+              <span className="brand-header-brand-name">SuccessMentorix</span>
+              <span className="brand-header-tagline">
+                Your Path to Extraordinary Success.
+              </span>
+            </span>
           </Link>
         </div>
 
@@ -57,7 +62,7 @@ export default function Header() {
             <li>
               <Link href="/about" onClick={closeMenu}>About Us</Link>
             </li>
-            <li>
+            <li className="nav-drawer-only">
               <Link href="/courses" onClick={closeMenu}>Courses</Link>
             </li>
             <li>
@@ -68,6 +73,11 @@ export default function Header() {
             </li>
             <li>
               <Link href="/contact" onClick={closeMenu}>Contact</Link>
+            </li>
+            <li className="nav-drawer-only">
+              <Link href="/career-counselling" onClick={closeMenu}>
+                Free Counselling
+              </Link>
             </li>
           </ul>
         </nav>
