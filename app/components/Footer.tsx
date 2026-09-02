@@ -6,22 +6,23 @@ import { useState, useEffect } from "react";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 const FOOTER_UNIVERSITIES = [
-  "Amity University",
-  "Uttaranchal University",
-  "Sikkim Manipal University",
-  "Manipal University Jaipur",
-  "MIT University",
-  "Mangalayatan University",
+  { name: "Amity University", href: "/universities/amity-university" },
+  { name: "Uttaranchal University", href: "/universities/uttaranchal-university" },
+  { name: "Sikkim Manipal University", href: "/universities/sikkim-manipal-university" },
+  { name: "Manipal University Jaipur", href: "/universities/manipal-university-jaipur" },
+  { name: "MIT University", href: "/universities/mit-university" },
+  { name: "Mangalayatan University", href: "/universities/mangalayatan-university" },
 ];
 
+
 const FOOTER_COURSES = [
-  { name: "MBA", href: "/courses" },
-  { name: "BBA", href: "/courses" },
-  { name: "MCA", href: "/courses" },
-  { name: "B.Com", href: "/courses" },
+  { name: "MBA", href: "/courses/mba-amity-university" },
+  { name: "BBA", href: "/courses/online-bba-amity-university" },
+  { name: "MCA", href: "/courses/online-mca-amity-university" },
+  { name: "B.Com", href: "/courses/online-bcom-amity-university" },
   { name: "M.Sc", href: "/courses" },
   { name: "B.Sc", href: "/courses" },
-  { name: "MA", href: "/courses" },
+  { name: "MA", href: "/courses/online-ma-amity-university" },
   { name: "BA", href: "/courses" },
 ];
 
@@ -145,9 +146,9 @@ export default function Footer() {
           <div className="footer-edukyu-nav-col">
             <h3 className="footer-edukyu-heading">Colleges</h3>
             <ul className="footer-edukyu-nav-list">
-              {FOOTER_UNIVERSITIES.map((name) => (
+              {FOOTER_UNIVERSITIES.map(({ name, href }) => (
                 <li key={name}>
-                  <Link href="/universities" className="footer-edukyu-nav-link">
+                  <Link href={href} className="footer-edukyu-nav-link">
                     {name}
                   </Link>
                 </li>

@@ -1,13 +1,13 @@
 "use client";
 
 import Hero from "./components/Hero";
-import Footer from "./components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import StructuredData from "./components/StructuredData";
 import { useRouter } from "next/navigation";
 import { courseImageByHomeTitle } from "../lib/courseImages";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const router = useRouter();
@@ -62,14 +62,14 @@ export default function Home() {
           router.push(redirectUrl);
           setRedirectUrl(null);
         } else {
-          alert("Thank you for your enquiry! We'll get back to you soon.");
+          toast.success("🎉 Thank you for your enquiry! We'll get back to you soon.", { icon: false });
         }
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }
@@ -1094,7 +1094,6 @@ export default function Home() {
           </div>
         </div>
       )}
-      <Footer />
     </>
   );
 }

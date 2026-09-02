@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { courseImageForTitle } from "../../../lib/courseImages";
+import { toast } from "react-toastify";
 
 export default function CourseDetail() {
   const params = useParams();
@@ -26,6 +27,7 @@ export default function CourseDetail() {
   const courses = [
     {
       id: 1,
+      slug: "mba-amity-university",
       title: "Master of Business Administration (MBA)",
       shortTitle: "MBA",
       category: "business",
@@ -111,6 +113,7 @@ export default function CourseDetail() {
     },
     {
       id: 2,
+      slug: "online-mba-manipal-university-jaipur",
       title: "Online MBA",
       shortTitle: "Online MBA",
       category: "business",
@@ -172,6 +175,7 @@ export default function CourseDetail() {
     },
     {
       id: 3,
+      slug: "online-bba-amity-university",
       title: "Online BBA",
       shortTitle: "Online BBA",
       category: "business",
@@ -241,6 +245,7 @@ export default function CourseDetail() {
     },
     {
       id: 4,
+      slug: "online-mca-amity-university",
       title: "Online MCA",
       shortTitle: "Online MCA",
       category: "technology",
@@ -300,6 +305,7 @@ export default function CourseDetail() {
     },
     {
       id: 5,
+      slug: "online-bca-amity-university",
       title: "Online BCA",
       shortTitle: "Online BCA",
       category: "technology",
@@ -367,6 +373,7 @@ export default function CourseDetail() {
     },
     {
       id: 6,
+      slug: "online-mcom-amity-university",
       title: "Online M.Com",
       shortTitle: "Online M.Com",
       category: "commerce",
@@ -426,6 +433,7 @@ export default function CourseDetail() {
     },
     {
       id: 7,
+      slug: "online-bcom-amity-university",
       title: "Online B.Com",
       shortTitle: "Online B.Com",
       category: "commerce",
@@ -493,6 +501,7 @@ export default function CourseDetail() {
     },
     {
       id: 8,
+      slug: "online-ma-amity-university",
       title: "Online MA",
       shortTitle: "Online MA",
       category: "arts",
@@ -552,6 +561,7 @@ export default function CourseDetail() {
     },
     {
       id: 9,
+      slug: "online-mba-sikkim-manipal-university",
       title: "Online MBA",
       shortTitle: "Online MBA",
       category: "business",
@@ -611,6 +621,7 @@ export default function CourseDetail() {
     },
     {
       id: 10,
+      slug: "online-mba-uttaranchal-university",
       title: "Online MBA",
       shortTitle: "Online MBA",
       category: "business",
@@ -670,6 +681,7 @@ export default function CourseDetail() {
     },
     {
       id: 11,
+      slug: "online-mba-mangalayatan-university",
       title: "Online MBA",
       shortTitle: "Online MBA",
       category: "business",
@@ -729,18 +741,24 @@ export default function CourseDetail() {
     }
   ];
 
-  const courseId = parseInt(params.id as string);
-  const course = courses.find(c => c.id === courseId);
+  const idParam = params.id as string;
+  const courseId = parseInt(idParam);
+  const course = useMemo(
+    () => courses.find(c => c.slug === idParam || c.id === courseId),
+    [idParam, courseId]
+  );
+  const hasInitialized = useRef<string | null>(null);
 
   useEffect(() => {
-    if (course) {
+    if (course && hasInitialized.current !== idParam) {
       setFormData(prev => ({
         ...prev,
         university: course.university,
         course: course.title
       }));
+      hasInitialized.current = idParam;
     }
-  }, [course]);
+  }, [idParam, course]);
 
   if (!course) {
     return (
@@ -783,7 +801,7 @@ export default function CourseDetail() {
       const data = await response.json();
       
       if (data.success) {
-        alert("Thank you for your interest! We'll contact you soon.");
+        toast.success("🎉 Thank you for your interest! We'll contact you soon.", { icon: false });
         setFormData({
           name: "",
           email: "",
@@ -793,11 +811,11 @@ export default function CourseDetail() {
           message: ""
         });
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }

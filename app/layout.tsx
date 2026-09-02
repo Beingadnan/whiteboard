@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -122,6 +125,26 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          toastStyle={{
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            borderRadius: "16px",
+            padding: "20px 24px",
+            minWidth: "360px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+          }}
+        />
       </body>
     </html>
   );

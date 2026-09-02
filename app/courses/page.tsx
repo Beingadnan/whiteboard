@@ -20,6 +20,7 @@ export default function Courses() {
   const courses = [
     {
       id: 1,
+      slug: "mba-amity-university",
       title: "Master of Business Administration (MBA)",
       category: "business",
       university: "Amity University",
@@ -34,6 +35,7 @@ export default function Courses() {
     },
     {
       id: 2,
+      slug: "online-mba-manipal-university-jaipur",
       title: "Online MBA",
       category: "business",
       university: "Manipal University Jaipur",
@@ -48,6 +50,7 @@ export default function Courses() {
     },
     {
       id: 3,
+      slug: "online-mba-sikkim-manipal-university",
       title: "Online MBA",
       category: "business",
       university: "Sikkim Manipal University",
@@ -62,6 +65,7 @@ export default function Courses() {
     },
     {
       id: 4,
+      slug: "online-mba-uttaranchal-university",
       title: "Online MBA",
       category: "business",
       university: "Uttaranchal University",
@@ -76,6 +80,7 @@ export default function Courses() {
     },
     {
       id: 5,
+      slug: "online-bba-amity-university",
       title: "Online BBA",
       category: "business",
       university: "Amity University",
@@ -90,6 +95,7 @@ export default function Courses() {
     },
     {
       id: 6,
+      slug: "online-mca-amity-university",
       title: "Online MCA",
       category: "technology",
       university: "Amity University",
@@ -104,6 +110,7 @@ export default function Courses() {
     },
     {
       id: 7,
+      slug: "online-bca-amity-university",
       title: "Online BCA",
       category: "technology",
       university: "Amity University",
@@ -118,6 +125,7 @@ export default function Courses() {
     },
     {
       id: 8,
+      slug: "online-mcom-amity-university",
       title: "Online M.Com",
       category: "commerce",
       university: "Amity University",
@@ -132,6 +140,7 @@ export default function Courses() {
     },
     {
       id: 9,
+      slug: "online-bcom-amity-university",
       title: "Online B.Com",
       category: "commerce",
       university: "Amity University",
@@ -146,6 +155,7 @@ export default function Courses() {
     },
     {
       id: 10,
+      slug: "online-ba-amity-university",
       title: "Online BA",
       category: "arts",
       university: "Amity University",
@@ -160,6 +170,7 @@ export default function Courses() {
     },
     {
       id: 11,
+      slug: "online-ma-amity-university",
       title: "Online MA",
       category: "arts",
       university: "Amity University",
@@ -380,7 +391,7 @@ export default function Courses() {
 
                 {/* CTA Button */}
                 <Link
-                  href={`/courses/${course.id}`}
+                  href={`/courses/${course.slug}`}
                   className="block w-full text-center px-4 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-md hover:shadow-lg text-sm"
                 >
                   View Details

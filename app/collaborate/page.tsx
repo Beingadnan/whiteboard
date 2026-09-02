@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function Collaborate() {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +44,7 @@ export default function Collaborate() {
       const data = await response.json();
       
       if (data.success) {
-        alert("Thank you for your interest! We'll contact you soon to discuss partnership opportunities.");
+        toast.success("🎉 Thank you for your interest! We'll contact you soon to discuss partnership opportunities.", { icon: false });
         setFormData({
           name: "",
           email: "",
@@ -54,11 +55,11 @@ export default function Collaborate() {
           message: ""
         });
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }

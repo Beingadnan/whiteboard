@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function CareerCounselling() {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +54,9 @@ export default function CareerCounselling() {
       const data = await response.json();
       
       if (data.success) {
-        alert("Thank you! We'll contact you soon for your free career counselling session.");
+        toast.success("🎉 Thank you! We'll contact you soon for your free career counselling session.", {
+          icon: false,
+        });
         setFormData({
           firstName: "",
           lastName: "",
@@ -64,11 +67,11 @@ export default function CareerCounselling() {
           message: ""
         });
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }

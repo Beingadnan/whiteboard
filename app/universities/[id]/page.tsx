@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function UniversityDetail() {
   const params = useParams();
@@ -25,6 +26,7 @@ export default function UniversityDetail() {
   const universities = [
     {
       id: 1,
+      slug: "amity-university",
       name: "Amity University",
       shortName: "Amity",
       description: "Amity University Online offers UGC-accredited online degrees, diplomas, and certifications in India, providing learners with a digitally advanced platform and globally recognized education designed to meet modern industry needs and support career growth.",
@@ -157,8 +159,9 @@ export default function UniversityDetail() {
     },
     {
       id: 2,
+      slug: "uttaranchal-university",
       name: "Uttaranchal University",
-      shortName: "UU",
+      shortName: "Uttaranchal",
       description: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
       fullDescription: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
       programs: ["Engineering", "Management", "Law", "Applied Sciences"],
@@ -244,6 +247,7 @@ export default function UniversityDetail() {
     },
     {
       id: 3,
+      slug: "sikkim-manipal-university",
       name: "Sikkim Manipal University",
       shortName: "SMU",
       description: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs with a focus on innovation, interdisciplinary learning, and professional readiness.",
@@ -328,6 +332,7 @@ export default function UniversityDetail() {
     },
     {
       id: 4,
+      slug: "manipal-university-jaipur",
       name: "Manipal University Jaipur",
       shortName: "MUJ",
       description: "The online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). In 2021, the university commenced offering courses in an online format. The University Grants Commission (UGC) has granted authorization to Online Manipal University to provide undergraduate (UG) and postgraduate (PG) programs.",
@@ -416,6 +421,7 @@ export default function UniversityDetail() {
     },
     {
       id: 5,
+      slug: "mit-university",
       name: "MIT University",
       shortName: "MIT",
       description: "Madras Institute of Technology - A prestigious institution known for excellence in engineering and technology education with strong industry connections.",
@@ -453,6 +459,7 @@ export default function UniversityDetail() {
     },
     {
       id: 6,
+      slug: "mangalayatan-university",
       name: "Mangalayatan University",
       shortName: "Mangalayatan",
       description: "A progressive university offering diverse programs with focus on holistic development.",
@@ -493,16 +500,20 @@ export default function UniversityDetail() {
     }
   ];
 
-  const universityId = parseInt(params.id as string);
-  const university = useMemo(() => universities.find(u => u.id === universityId), [universityId]);
-  const hasInitialized = useRef<number | null>(null);
+  const idParam = params.id as string;
+  const universityId = parseInt(idParam);
+  const university = useMemo(
+    () => universities.find(u => u.slug === idParam || u.id === universityId),
+    [idParam, universityId]
+  );
+  const hasInitialized = useRef<string | null>(null);
 
   useEffect(() => {
-    if (university && hasInitialized.current !== universityId) {
+    if (university && hasInitialized.current !== idParam) {
       setFormData(prev => ({ ...prev, university: university.name }));
-      hasInitialized.current = universityId;
+      hasInitialized.current = idParam;
     }
-  }, [universityId, university]);
+  }, [idParam, university]);
 
   if (!university) {
     return (
@@ -544,7 +555,7 @@ export default function UniversityDetail() {
       const data = await response.json();
       
       if (data.success) {
-        alert("Thank you for your interest! We'll contact you soon.");
+        toast.success("🎉 Thank you for your interest! We'll contact you soon.", { icon: false });
         setFormData({
           name: "",
           email: "",
@@ -554,11 +565,11 @@ export default function UniversityDetail() {
           message: ""
         });
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }

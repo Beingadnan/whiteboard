@@ -14,6 +14,7 @@ export default function Universities() {
   const universities = [
     {
       id: 1,
+      slug: "amity-university",
       name: "Amity University",
       description: "A leading private university offering diverse programs across multiple disciplines with state-of-the-art facilities and industry partnerships.",
       programs: ["Engineering", "Business", "Law", "Arts"],
@@ -25,6 +26,7 @@ export default function Universities() {
     },
     {
       id: 2,
+      slug: "uttaranchal-university",
       name: "Uttaranchal University",
       description: "A premier university in Uttarakhand offering quality education in engineering, management, law, and applied sciences with modern infrastructure.",
       programs: ["Engineering", "Management", "Law", "Applied Sciences"],
@@ -36,6 +38,7 @@ export default function Universities() {
     },
     {
       id: 3,
+      slug: "sikkim-manipal-university",
       name: "Sikkim Manipal University",
       description: "A renowned distance education university offering flexible learning programs with UGC recognition and industry-aligned curriculum.",
       programs: ["Distance MBA", "Distance BBA", "Distance MCA", "Health Sciences"],
@@ -47,6 +50,7 @@ export default function Universities() {
     },
     {
       id: 4,
+      slug: "manipal-university-jaipur",
       name: "Manipal University Jaipur",
       description: "A leading private university offering world-class education in engineering, management, and humanities with excellent placement records.",
       programs: ["Engineering", "Management", "Design", "Humanities"],
@@ -58,6 +62,7 @@ export default function Universities() {
     },
     {
       id: 5,
+      slug: "mit-university",
       name: "MIT University",
       description: "Madras Institute of Technology - A prestigious institution known for excellence in engineering and technology education with strong industry connections.",
       programs: ["Engineering", "Technology", "Aeronautics", "Automotive"],
@@ -69,6 +74,7 @@ export default function Universities() {
     },
     {
       id: 6,
+      slug: "mangalayatan-university",
       name: "Mangalayatan University",
       description: "A progressive university offering diverse programs with focus on holistic development.",
       programs: ["Engineering", "Management", "Law", "Arts & Commerce"],
@@ -268,7 +274,7 @@ export default function Universities() {
                   {/* CTA Button */}
                   <div className="mt-6">
                     <Link
-                      href={`/universities/${university.id}`}
+                      href={`/universities/${university.slug}`}
                       className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl hover:from-[#0a3d5c] hover:to-[#b91c1c] transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                       Explore Programs

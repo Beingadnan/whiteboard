@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +47,7 @@ export default function Contact() {
       const data = await response.json();
       
       if (data.success) {
-        alert("Thank you for your message! We'll get back to you soon.");
+        toast.success("🎉 Thank you for your message! We'll get back to you soon.", { icon: false });
         setFormData({
           name: "",
           email: "",
@@ -57,11 +58,11 @@ export default function Contact() {
           message: ""
         });
       } else {
-        alert("There was an error submitting your form. Please try again.");
+        toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert("There was an error submitting your form. Please try again.");
+      toast.error("❌ Something went wrong. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }
