@@ -9,6 +9,7 @@ export default function UniversityDetail() {
   const params = useParams();
   const [isVisible, setIsVisible] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("courses");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,133 +28,103 @@ export default function UniversityDetail() {
     {
       id: 1,
       slug: "amity-university",
-      name: "Amity University",
+      name: "Amity University Online",
       shortName: "Amity",
+      tagline: "India's #1 Ranked Online University by QS World Ranking",
       description: "Amity University Online offers UGC-accredited online degrees, diplomas, and certifications in India, providing learners with a digitally advanced platform and globally recognized education designed to meet modern industry needs and support career growth.",
       fullDescription: "Amity University Online offers UGC-accredited online degrees, diplomas, and certifications in India, providing learners with a digitally advanced platform and globally recognized education designed to meet modern industry needs and support career growth.",
       programs: ["Engineering", "Business", "Law", "Arts"],
-      location: "Multiple Campuses",
+      location: "Noida / Pan-India",
       rating: 4.8,
-      students: "50K+",
+      students: "50,000+",
       established: "2005",
-      image: "/university/AmityUniversity.webp",
-      naacGrade: "A+",
+      image: "/university/amity-noida-campus.jpg",
+      naacGrade: "A+ Grade",
       ugcApproved: true,
-      accreditations: ["NAAC", "WES", "QS WUR", "NIRF", "AICTE", "AIU", "UGC"],
+      accreditations: ["NAAC A+", "WES", "QS WUR", "NIRF Top", "AICTE", "AIU", "UGC DEB"],
       keyFeatures: [
-        "Recognized by UGC, AIU, WES, and others, the university holds an A+ NAAC accreditation and ranks as a top online university according to both NIRF and QS World Ranking",
+        "Recognized by UGC, AIU, WES, and others, holding an A+ NAAC accreditation and ranked among top universities globally by NIRF and QS World Ranking",
         "Amity Online is placed within the top 3% globally by QS, with its online MBA ranked #1 in India and #37 worldwide",
-        "The university offers global exposure through renowned international faculty members from diverse backgrounds",
-        "Programs at Amity University Online hold accreditation from WES in both the US and Canada",
-        "With over 300 hiring partners, the university facilitates placements through exclusive virtual job fairs"
+        "Global exposure through renowned international faculty members and industry leaders from across the globe",
+        "Programs at Amity University Online hold full credential accreditation from WES in both the US and Canada",
+        "With over 300+ hiring partners, the university facilitates placements through exclusive virtual job fairs and mock interviews"
       ],
       feeTables: [
         {
-          title: "Undergraduate (UG) – General Fee Structure (INR)",
-          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee", "Total Installment (Semester Wise)", "Yearly Installment"],
+          title: "Undergraduate (UG) – Fee Structure (INR)",
+          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee", "Yearly Installment"],
           rows: [
-            { "Program": "BA", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Total Installment (Semester Wise)": "₹99,000", "Yearly Installment": "₹31,350 per year" },
-            { "Program": "BA (Vernacular)", "Retail Price": "₹85,000", "One Time Fee": "₹85,000", "Semester Fee": "N/A", "Total Installment (Semester Wise)": "₹85,000", "Yearly Installment": "₹28,340 per year" },
-            { "Program": "BA (JNC)", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,49,600", "Semester Fee": "₹28,400 x 6", "Total Installment (Semester Wise)": "₹1,70,000", "Yearly Installment": "₹53,840 per year" },
-            { "Program": "BBA", "Retail Price": "₹1,65,000", "One Time Fee": "₹1,45,200", "Semester Fee": "₹27,500 x 6", "Total Installment (Semester Wise)": "₹1,65,000", "Yearly Installment": "₹52,250 per year" },
-            { "Program": "BBA (HCLTech Data Analytics)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
-            { "Program": "BCOM", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Total Installment (Semester Wise)": "₹99,000", "Yearly Installment": "₹31,350 per year" },
-            { "Program": "BCOM (ACCA)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,20,000", "Semester Fee": "₹41,700 x 6", "Total Installment (Semester Wise)": "₹2,50,000", "Yearly Installment": "₹79,170 per year" },
-            { "Program": "BCOM (Hons)", "Retail Price": "₹1,65,000", "One Time Fee": "₹1,45,200", "Semester Fee": "₹27,500 x 6", "Total Installment (Semester Wise)": "₹1,65,000", "Yearly Installment": "₹52,250 per year" },
-            { "Program": "BCOM (Vernacular)", "Retail Price": "₹85,000", "One Time Fee": "₹85,000", "Semester Fee": "N/A", "Total Installment (Semester Wise)": "₹85,000", "Yearly Installment": "₹28,340 per year" },
-            { "Program": "BCA", "Retail Price": "₹1,50,000", "One Time Fee": "₹1,32,000", "Semester Fee": "₹25,000 x 6", "Total Installment (Semester Wise)": "₹1,50,000", "Yearly Installment": "₹47,500 per year" },
-            { "Program": "BCA (HCLTech Data Engineering)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
-            { "Program": "BCA (HCLTech Software Engineering)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
-            { "Program": "BCA (TCS iON Cloud Security)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
-            { "Program": "BCA (TCS iON Data Analytics)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Total Installment (Semester Wise)": "₹2,25,000", "Yearly Installment": "₹71,250 per year" },
-          ],
+            { "Program": "BA (Bachelor of Arts)", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Yearly Installment": "₹31,350/yr" },
+            { "Program": "BA (Vernacular)", "Retail Price": "₹85,000", "One Time Fee": "₹85,000", "Semester Fee": "₹14,500 x 6", "Yearly Installment": "₹28,340/yr" },
+            { "Program": "BBA (Bachelor of Business Admin)", "Retail Price": "₹1,65,000", "One Time Fee": "₹1,45,200", "Semester Fee": "₹27,500 x 6", "Yearly Installment": "₹52,250/yr" },
+            { "Program": "BBA (HCLTech Data Analytics)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Yearly Installment": "₹71,250/yr" },
+            { "Program": "B.Com (Bachelor of Commerce)", "Retail Price": "₹99,000", "One Time Fee": "₹87,120", "Semester Fee": "₹16,500 x 6", "Yearly Installment": "₹31,350/yr" },
+            { "Program": "B.Com (ACCA)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,20,000", "Semester Fee": "₹41,700 x 6", "Yearly Installment": "₹79,170/yr" },
+            { "Program": "BCA (Computer Applications)", "Retail Price": "₹1,50,000", "One Time Fee": "₹1,32,000", "Semester Fee": "₹25,000 x 6", "Yearly Installment": "₹47,500/yr" },
+            { "Program": "BCA (HCLTech / TCS iON)", "Retail Price": "₹2,25,000", "One Time Fee": "₹1,98,000", "Semester Fee": "₹37,500 x 6", "Yearly Installment": "₹71,250/yr" }
+          ]
         },
         {
-          title: "Postgraduate (PG) – General Fee Structure (INR)",
-          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee"],
+          title: "Postgraduate (PG) – Fee Structure (INR)",
+          headers: ["Program", "Retail Price", "One Time Fee", "Semester Fee", "Specialization"],
           rows: [
-            { "Program": "MA (JNC)", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,56,400", "Semester Fee": "₹42,500" },
-            { "Program": "MA (PG)", "Retail Price": "₹1,30,000", "One Time Fee": "₹1,19,600", "Semester Fee": "₹32,500" },
-            { "Program": "MBA", "Retail Price": "₹1,99,000", "One Time Fee": "₹1,83,080", "Semester Fee": "₹49,750" },
-            { "Program": "MBA (ACCA)", "Retail Price": "₹2,99,000", "One Time Fee": "₹2,75,080", "Semester Fee": "₹74,750" },
-            { "Program": "MBA (Immersion)", "Retail Price": "₹4,75,000", "One Time Fee": "₹4,37,000", "Semester Fee": "₹1,18,750" },
-            { "Program": "MBA (Immersion INT)", "Retail Price": "₹5,99,000", "One Time Fee": "₹5,51,080", "Semester Fee": "₹1,49,750" },
-            { "Program": "MBA (Dual Specialization)", "Retail Price": "₹2,99,000", "One Time Fee": "₹2,75,080", "Semester Fee": "₹74,750" },
-            { "Program": "MCom (FIN)", "Retail Price": "₹1,20,000", "One Time Fee": "₹1,10,400", "Semester Fee": "₹30,000" },
-            { "Program": "MCA", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,56,400", "Semester Fee": "₹42,500" },
-            { "Program": "MCA (HCLTech Cybersecurity)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
-            { "Program": "MCA (HCLTech Software Eng)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
-            { "Program": "MCA (TCS iON ARVR)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
-            { "Program": "MCA (TCS iON ML)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
-            { "Program": "MCA (Data Science)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500" },
-          ],
-        },
+            { "Program": "Online MBA (General)", "Retail Price": "₹1,99,000", "One Time Fee": "₹1,83,080", "Semester Fee": "₹49,750 x 4", "Specialization": "Marketing, Finance, HR, Ops" },
+            { "Program": "Online MBA (Dual Specialization)", "Retail Price": "₹2,99,000", "One Time Fee": "₹2,75,080", "Semester Fee": "₹74,750 x 4", "Specialization": "Dual Core Choice" },
+            { "Program": "Online MBA (Immersion)", "Retail Price": "₹4,75,000", "One Time Fee": "₹4,37,000", "Semester Fee": "₹1,18,750 x 4", "Specialization": "Global Campus Immersion" },
+            { "Program": "Online MCA (General)", "Retail Price": "₹1,70,000", "One Time Fee": "₹1,56,400", "Semester Fee": "₹42,500 x 4", "Specialization": "Full Stack & Cloud" },
+            { "Program": "Online MCA (Data Science / AI)", "Retail Price": "₹2,50,000", "One Time Fee": "₹2,30,000", "Semester Fee": "₹62,500 x 4", "Specialization": "AI, ML, Cybersecurity" },
+            { "Program": "Online M.Com (Fin & Acct)", "Retail Price": "₹1,20,000", "One Time Fee": "₹1,10,400", "Semester Fee": "₹30,000 x 4", "Specialization": "Corporate Finance" },
+            { "Program": "Online MA (English / Sociology)", "Retail Price": "₹1,30,000", "One Time Fee": "₹1,19,600", "Semester Fee": "₹32,500 x 4", "Specialization": "Humanities" }
+          ]
+        }
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,99,000", discountFee: "One Time ₹1,83,080 / Sem ₹49,750" },
-        { name: "Online MBA (Dual Specialization)", duration: "2 years", fullFee: "₹2,99,000", discountFee: "One Time ₹2,75,080 / Sem ₹74,750" },
-        { name: "Online MBA (Immersion)", duration: "2 years", fullFee: "₹4,75,000", discountFee: "One Time ₹4,37,000" },
-        { name: "Online MBA (Immersion INT)", duration: "2 years", fullFee: "₹5,99,000", discountFee: "One Time ₹5,51,080" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,99,000", discountFee: "Sem ₹49,750 / One-Time ₹1,83,080" },
+        { name: "Online MBA (Dual Specialization)", duration: "2 years", fullFee: "₹2,99,000", discountFee: "Sem ₹74,750 / One-Time ₹2,75,080" },
         { name: "Online BBA", duration: "3 years", fullFee: "₹1,65,000", discountFee: "Sem ₹27,500 x 6" },
-        { name: "Online BBA (HCLTech Data Analytics)", duration: "3 years", fullFee: "₹2,25,000", discountFee: "Sem ₹37,500 x 6" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,70,000", discountFee: "One Time ₹1,56,400 / Sem ₹42,500" },
-        { name: "Online MCA (HCLTech/TCS iON variants)", duration: "2 years", fullFee: "₹2,50,000", discountFee: "Sem ₹62,500" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,70,000", discountFee: "Sem ₹42,500 x 4" },
         { name: "Online BCA", duration: "3 years", fullFee: "₹1,50,000", discountFee: "Sem ₹25,000 x 6" },
-        { name: "Online BCA (HCLTech/TCS iON variants)", duration: "3 years", fullFee: "₹2,25,000", discountFee: "Sem ₹37,500 x 6" },
-        { name: "Online MA (JNC)", duration: "2 years", fullFee: "₹1,70,000", discountFee: "Sem ₹42,500" },
-        { name: "Online MA (PG)", duration: "2 years", fullFee: "₹1,30,000", discountFee: "Sem ₹32,500" },
-        { name: "Online M.Com (FIN)", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹30,000" },
-        { name: "Online BA", duration: "3 years", fullFee: "₹99,000", discountFee: "Sem ₹16,500 x 6" },
-        { name: "Online BA (Vernacular)", duration: "3 years", fullFee: "₹85,000", discountFee: "N/A" },
-        { name: "Online BA (JNC)", duration: "3 years", fullFee: "₹1,70,000", discountFee: "Sem ₹28,400 x 6" },
         { name: "Online B.Com", duration: "3 years", fullFee: "₹99,000", discountFee: "Sem ₹16,500 x 6" },
-        { name: "Online B.Com (ACCA)", duration: "3 years", fullFee: "₹2,50,000", discountFee: "Sem ₹41,700 x 6" },
-        { name: "Online B.Com (Hons)", duration: "3 years", fullFee: "₹1,65,000", discountFee: "Sem ₹27,500 x 6" },
-        { name: "Online B.Com (Vernacular)", duration: "3 years", fullFee: "₹85,000", discountFee: "N/A" },
+        { name: "Online M.Com", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹30,000 x 4" },
+        { name: "Online BA", duration: "3 years", fullFee: "₹99,000", discountFee: "Sem ₹16,500 x 6" },
+        { name: "Online MA", duration: "2 years", fullFee: "₹1,30,000", discountFee: "Sem ₹32,500 x 4" }
       ],
       admissionProcess: [
-        "Visit the official website of Amity Online (Note: Separate websites exist for online and on-campus programs)",
-        "Locate and click on the \"Apply Now\" tab situated in the top right corner",
-        "Begin by entering your basic personal and academic details, followed by any employment information, if applicable",
-        "Upload all necessary documents required for eligibility verification, including a recent colored passport-size photo",
-        "Complete the application submission process by paying the required application fee",
-        "Once your application is reviewed and documents are verified, the university will communicate with you regarding enrollment and further procedures via email"
+        "Step 1: Application Form - Click Apply Now and fill basic academic & personal details.",
+        "Step 2: Document Verification - Upload 10th, 12th, or Graduation marksheets with government ID.",
+        "Step 3: Fee Payment - Choose full payment discount or simple 0% interest semester installment.",
+        "Step 4: Student Portal (LMS) Access - Receive student ID, portal login, and study materials immediately."
       ],
       benefits: [
-        "Recognized by UGC, AIU, WES, and others, the university holds an A+ NAAC accreditation and ranks as a top online university according to both NIRF and QS World Ranking",
-        "Amity Online is placed within the top 3% globally by QS, with its online MBA ranked #1 in India and #37 worldwide",
-        "The university offers global exposure through renowned international faculty members from diverse backgrounds",
-        "Programs at Amity University Online hold accreditation from WES in both the US and Canada",
-        "With over 300 hiring partners, the university facilitates placements through exclusive virtual job fairs",
-        "The university collaborates with over 300 hiring partners to facilitate placements via exclusive virtual job fairs"
+        "UGC-DEB entitled online degrees recognized worldwide for Govt jobs and overseas education",
+        "Ranked #1 in India and #37 worldwide in QS World Online MBA rankings",
+        "WES recognized in USA & Canada for smooth permanent residency and work visa evaluation",
+        "300+ Corporate Hiring Partners with 100% placement and mock interview support",
+        "Learn from top global faculty with live interactive doubt-clearing sessions"
       ],
       programBenefits: [
         "First in India to receive UGC approval for online programs",
         "Ranked among the top 3% of universities worldwide",
-        "Secured the first position in India in the QS World Ranking",
-        "Attained the 37th position globally in the QS World Ranking"
+        "Dedicated student relationship managers for continuous guidance",
+        "AI-enabled proctored online examinations from the comfort of home"
       ],
-      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft", "Oracle", "SAP", "Tata Consultancy Services", "L&T", "Mahindra", "Reliance", "Aditya Birla", "HDFC", "ICICI", "Axis Bank", "Kotak", "Yes Bank", "Bajaj", "Godrej", "Maruti", "Hero", "TVS"],
+      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft", "Oracle", "SAP", "L&T", "Reliance", "HDFC Bank", "ICICI Bank", "Axis Bank", "Kotak"],
       faqs: [
         {
-          question: "What Is The Admission Process Of Amity Online?",
-          answer: "The admission process involves visiting the official Amity Online website, clicking on 'Apply Now', entering personal and academic details, uploading required documents including a passport-size photo, paying the application fee, and waiting for verification and enrollment confirmation via email."
+          question: "Is Amity Online degree valid for UPSC and government jobs?",
+          answer: "Yes, absolutely. Amity Online is accredited by NAAC with an 'A+' grade and entitled by UGC-DEB. Its degrees have equal validity to traditional regular degrees for UPSC, SSC, banking, state PSCs, and overseas studies."
         },
         {
-          question: "Are The Programs Offered By Amity University Online Accredited?",
-          answer: "Yes, Amity University Online programs are fully accredited. The university is recognized by UGC, AIU, WES, and holds an A+ NAAC accreditation. Programs are also accredited by WES in both the US and Canada."
+          question: "How are exams conducted at Amity University Online?",
+          answer: "All semester examinations are conducted 100% online through an AI-proctored secure portal. You can schedule and appear for exams from home with a computer and stable internet connection."
         },
         {
-          question: "What Kind Of Study Material Is Given?",
-          answer: "Amity University Online provides comprehensive digital study materials through their advanced LMS platform, including recorded lectures, e-books, assignments, and access to online resources designed to support flexible learning."
+          question: "Can I pay the tuition fee in monthly installments?",
+          answer: "Yes! Amity Online offers easy semester payment plans as well as 0% interest No-Cost EMI options starting from as low as ₹3,500/month."
         },
         {
-          question: "Can I Interact With Faculty And Classmates In An Online Program?",
-          answer: "Yes, Amity Online provides multiple channels for interaction including live webinars, discussion forums, virtual classrooms, and dedicated support channels to ensure students can interact with faculty and classmates effectively."
-        },
-        {
-          question: "Are Student Loans Available For Online Students?",
-          answer: "Yes, Amity University Online students can avail education loans from various banks and financial institutions. The university provides necessary documentation and support for loan applications."
+          question: "Are live lectures recorded for later viewing?",
+          answer: "Yes. All live sessions are recorded and archived in your Learning Management System (LMS) portal so you can watch them anytime, anywhere at your convenience."
         }
       ]
     },
@@ -162,86 +133,72 @@ export default function UniversityDetail() {
       slug: "uttaranchal-university",
       name: "Uttaranchal University",
       shortName: "Uttaranchal",
-      description: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
+      tagline: "Premier NAAC A+ Accredited University with High ROI",
+      description: "Established in 2013, Uttaranchal University located in Dehradun, Uttarakhand, is recognized with NAAC A+ accreditation offering quality higher education through affordable online programs.",
       fullDescription: "Established in 2013, Uttaranchal University, located in Dehradun, Uttarakhand, is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs.",
       programs: ["Engineering", "Management", "Law", "Applied Sciences"],
       location: "Dehradun, Uttarakhand",
       rating: 4.7,
-      students: "15K+",
+      students: "15,000+",
       established: "2013",
-      image: "/university/Uttaranchal-University.webp",
-      naacGrade: "A+",
+      image: "/university/uttaranchal_campus_premium.jpg",
+      naacGrade: "NAAC A+",
       ugcApproved: true,
-      accreditations: ["UGC", "AICTE", "NAAC A+", "AIU", "WES", "ISO", "UNAI", "WURI", "ASSOCHAM"],
+      accreditations: ["UGC", "AICTE", "NAAC A+", "AIU", "WES", "ISO 9001", "UNAI", "ASSOCHAM"],
       keyFeatures: [
-        "Established in 2013, located in Dehradun, Uttarakhand",
-        "Recognized by NAAC as an esteemed institution",
-        "Offers quality higher education through affordable online programs",
-        "Online degrees are recognised by UGC & AICTE"
+        "NAAC A+ Accredited premier university in Dehradun, Uttarakhand",
+        "Online degrees officially recognized by UGC & AICTE for govt & corporate jobs",
+        "Pocket-friendly fee structure with semester fees starting from ₹10,200",
+        "Comprehensive LMS with high-quality recorded lectures and e-books"
       ],
       feeTables: [
         {
           title: "Uttaranchal University Online – Fee Structure (INR)",
-          headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time"],
+          headers: ["Course", "Total Fee", "Semester Fee", "Annual Fee", "One Time Special"],
           rows: [
-            { "Course": "BA", "Total Fee": "₹72,000", "Semester Fee": "₹10,200", "Annual Fee": "₹18,400", "One Time": "₹55,200" },
-            { "Course": "BBA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time": "₹96,000" },
-            { "Course": "BCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time": "₹96,000" },
-            { "Course": "MBA", "Total Fee": "₹1,40,000", "Semester Fee": "₹24,500", "Annual Fee": "₹47,000", "One Time": "₹94,000" },
-            { "Course": "MCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹24,000", "Annual Fee": "₹46,000", "One Time": "₹92,000" },
-          ],
-        },
+            { "Course": "Online BA", "Total Fee": "₹72,000", "Semester Fee": "₹10,200", "Annual Fee": "₹18,400", "One Time Special": "₹55,200" },
+            { "Course": "Online BBA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time Special": "₹96,000" },
+            { "Course": "Online BCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹17,000", "Annual Fee": "₹32,000", "One Time Special": "₹96,000" },
+            { "Course": "Online MBA", "Total Fee": "₹1,40,000", "Semester Fee": "₹24,500", "Annual Fee": "₹47,000", "One Time Special": "₹94,000" },
+            { "Course": "Online MCA", "Total Fee": "₹1,20,000", "Semester Fee": "₹24,000", "Annual Fee": "₹46,000", "One Time Special": "₹92,000" }
+          ]
+        }
       ],
-      feeNote: "Exam Fee: ₹2,500",
+      feeNote: "Exam Fee: ₹2,500 per semester",
       courses: [
-        { name: "Online BA", duration: "3 years", fullFee: "₹72,000", discountFee: "Sem ₹10,200 / One Time ₹55,200" },
-        { name: "Online BBA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One Time ₹96,000" },
-        { name: "Online BCA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One Time ₹96,000" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "Sem ₹24,500 / One Time ₹94,000" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹24,000 / One Time ₹92,000" },
+        { name: "Online BA", duration: "3 years", fullFee: "₹72,000", discountFee: "Sem ₹10,200 / One-Time ₹55,200" },
+        { name: "Online BBA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One-Time ₹96,000" },
+        { name: "Online BCA", duration: "3 years", fullFee: "₹1,20,000", discountFee: "Sem ₹17,000 / One-Time ₹96,000" },
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,40,000", discountFee: "Sem ₹24,500 / One-Time ₹94,000" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹1,20,000", discountFee: "Sem ₹24,000 / One-Time ₹92,000" }
       ],
       admissionProcess: [
-        "Start by selecting the 'Apply Now' tab on the official website",
-        "Complete the registration process on the application page",
-        "Verify your contact information through the OTP sent",
-        "Fill out the application form with all required information",
-        "Pay the specified fee after completing the application form",
-        "Upload the necessary documents and submit the form for review"
+        "Select your course and complete digital registration on the portal",
+        "Verify contact information and mobile OTP",
+        "Submit academic credentials and identification documents",
+        "Pay the initial semester fee or apply for 0% interest EMI",
+        "Receive your student registration number and start learning"
       ],
       benefits: [
         "UGC and AICTE recognized online degree programs",
-        "NAAC A+ Accredited University offering quality education",
-        "Affordable online programs with flexible learning options",
-        "Comprehensive programs across various disciplines",
-        "Modern infrastructure and state-of-the-art facilities",
-        "Strong industry connections and placement support"
+        "NAAC A+ Accredited University with high academic standards",
+        "Most affordable fee structure in northern India",
+        "Career services department providing resume building and interview prep"
       ],
       programBenefits: [
         "UGC-recognized state private university",
         "NAAC A+ Accredited",
         "AICTE Approved online programs"
       ],
-      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft"],
+      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM"],
       faqs: [
         {
-          question: "What are the key advantages of Online UU?",
-          answer: "Online UU (Uttaranchal University) offers several key advantages including UGC and AICTE recognized programs, NAAC A+ accreditation, affordable fee structure, flexible learning options, and comprehensive support for working professionals."
+          question: "What are the advantages of Uttaranchal University Online?",
+          answer: "Uttaranchal University offers UGC and AICTE recognized programs with NAAC A+ accreditation at an extremely competitive cost, making quality education accessible to all."
         },
         {
-          question: "What is the course duration for Online UU programs?",
-          answer: "Online UU offers programs with varying durations: Online MBA and MCA are 2-year programs, while Online BBA, BCA, and BA are 3-year programs. All programs are designed to be completed through flexible online learning."
-        },
-        {
-          question: "Is Uttaranchal University recognized by UGC?",
-          answer: "Yes, Uttaranchal University is fully recognized by the University Grants Commission (UGC) and its online degrees are also recognized by AICTE. The university holds NAAC A+ accreditation, ensuring quality education standards."
-        },
-        {
-          question: "Does Uttaranchal University provide placement support for online students?",
-          answer: "Yes, Uttaranchal University provides placement support for online students through its career services department, connecting students with top employers and facilitating job opportunities across various industries."
-        },
-        {
-          question: "What is the total fee for the Online MBA and is it worth it?",
-          answer: "The total fee for Online MBA at Uttaranchal University is Rs 1,40,000 (Rs 94,000 with scholarship) for 2 years. Given the UGC and AICTE recognition, NAAC A+ accreditation, quality curriculum, and placement support, the program offers excellent value for money in online education."
+          question: "Is Online MBA at Uttaranchal University good for career growth?",
+          answer: "Yes, the 2-year Online MBA is AICTE approved, covers industry-relevant management fundamentals, and connects students with corporate placement opportunities across IT, BFSI, and FMCG sectors."
         }
       ]
     },
@@ -250,83 +207,70 @@ export default function UniversityDetail() {
       slug: "sikkim-manipal-university",
       name: "Sikkim Manipal University",
       shortName: "SMU",
-      description: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs with a focus on innovation, interdisciplinary learning, and professional readiness.",
-      fullDescription: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs with a focus on innovation, interdisciplinary learning, and professional readiness.",
+      tagline: "Pioneer in Distance & Online Education Since 1995",
+      description: "Established in 1995, Sikkim Manipal University (SMU) is a premier UGC-entitled university offering affordable online degrees with a focus on innovation, industry readiness, and student flexibility.",
+      fullDescription: "Established in 1995, Sikkim Manipal University (SMU) aims to strengthen education and skill development, especially in the Northeast. NAAC A+ accredited and UGC-entitled, SMU offers affordable online degree programs.",
       programs: ["Distance MBA", "Distance BBA", "Distance MCA", "Health Sciences"],
       location: "Gangtok, Sikkim",
       rating: 4.6,
-      students: "35K+",
+      students: "35,000+",
       established: "1995",
-      image: "/university/Sikkim_Manipal_University.jpg",
-      naacGrade: "A+",
+      image: "/university/sikkim-manipal-campus.jpg",
+      naacGrade: "NAAC A+",
       ugcApproved: true,
-      accreditations: ["UGC", "NIRF", "NAAC", "AICTE", "IIRF", "THE WEEK", "QS-WUR"],
+      accreditations: ["UGC DEB", "NIRF", "NAAC A+", "AICTE", "AIU", "THE WEEK", "QS-WUR"],
       keyFeatures: [
-        "Established in 1995 through a partnership between the Manipal Pai Foundation and the Government of Sikkim",
-        "NAAC A+ accredited and UGC-entitled",
-        "First Public-Private Partnership (PPP) in the region",
+        "Established in 1995 in partnership with the Manipal Pai Foundation",
+        "Over 28 years of trusted academic excellence",
+        "5,00,000+ alumni network working across global organizations",
         "Ranked 51st among India's Best Multidisciplinary Universities"
       ],
       feeTables: [
         {
-          title: "Sikkim Manipal University Online – Fee Structure (INR)",
-          headers: ["Program", "Semester Fee", "Annual Fee", "Total"],
+          title: "Sikkim Manipal University – Fee Structure (INR)",
+          headers: ["Program", "Semester Fee", "Annual Fee", "Total Program Fee"],
           rows: [
-            { "Program": "BA", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total": "₹75,000" },
-            { "Program": "BCOM", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total": "₹75,000" },
-            { "Program": "MA English", "Semester Fee": "₹18,750", "Annual Fee": "₹37,500", "Total": "₹75,000" },
-            { "Program": "MA Sociology", "Semester Fee": "₹18,750", "Annual Fee": "₹37,500", "Total": "₹75,000" },
-            { "Program": "MBA", "Semester Fee": "₹27,500", "Annual Fee": "₹55,000", "Total": "₹1,10,000" },
-            { "Program": "MCA", "Semester Fee": "₹24,500", "Annual Fee": "₹49,000", "Total": "₹98,000" },
-          ],
-        },
+            { "Program": "Online BA", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total Program Fee": "₹75,000" },
+            { "Program": "Online B.Com", "Semester Fee": "₹12,500", "Annual Fee": "₹25,000", "Total Program Fee": "₹75,000" },
+            { "Program": "Online MA (English / Sociology)", "Semester Fee": "₹18,750", "Annual Fee": "₹37,500", "Total Program Fee": "₹75,000" },
+            { "Program": "Online MBA", "Semester Fee": "₹27,500", "Annual Fee": "₹55,000", "Total Program Fee": "₹1,10,000" },
+            { "Program": "Online MCA", "Semester Fee": "₹24,500", "Annual Fee": "₹49,000", "Total Program Fee": "₹98,000" }
+          ]
+        }
       ],
-      feeNote: "Prospectus Fee: ₹500",
       courses: [
         { name: "Online BA", duration: "3 years", fullFee: "₹75,000", discountFee: "Sem ₹12,500" },
         { name: "Online B.Com", duration: "3 years", fullFee: "₹75,000", discountFee: "Sem ₹12,500" },
-        { name: "Online MA (English)", duration: "2 years", fullFee: "₹75,000", discountFee: "Sem ₹18,750" },
-        { name: "Online MA (Sociology)", duration: "2 years", fullFee: "₹75,000", discountFee: "Sem ₹18,750" },
+        { name: "Online MA", duration: "2 years", fullFee: "₹75,000", discountFee: "Sem ₹18,750" },
         { name: "Online MBA", duration: "2 years", fullFee: "₹1,10,000", discountFee: "Sem ₹27,500" },
-        { name: "Online MCA", duration: "2 years", fullFee: "₹98,000", discountFee: "Sem ₹24,500" },
+        { name: "Online MCA", duration: "2 years", fullFee: "₹98,000", discountFee: "Sem ₹24,500" }
       ],
       admissionProcess: [
-        "Choose Your Course: Visit the university's official website to select the course you wish to apply for. Review the eligibility criteria and any entrance exam requirements for the chosen course.",
-        "Application Process: Once you are familiar with the university and course details, begin your application through the login portal on the website, following the release of the notification.",
-        "Complete Your Application: Enter all required details, including your marks and results from qualifying examinations. Ensure all information is accurate and double-check to prevent errors.",
-        "Document Submission: Scan and upload the necessary documents to your portal. Ensure that photographs and documents are clear and visible to avoid issues during verification.",
-        "Pay the Fee: Submit the application fee, which varies by course. Check the exact fee on the official portal. After successful verification of your application and documents, you will receive an admission confirmation via email or SMS."
+        "Choose your degree program and check eligibility",
+        "Fill the online registration form and upload clear scanned certificates",
+        "Complete fee verification and secure your seat",
+        "Receive LMS login credentials with 24/7 student support"
       ],
       benefits: [
-        "Established: 1995 through a partnership between the Manipal Pai Foundation and the Government of Sikkim.",
-        "Programs Offered: MBA, MCA, BA, MA, M.Com, B.Com",
-        "Accreditation: University Grants Commission (UGC), Distance Education Council (DEC), NAAC (A+).",
-        "Recognition: NIRF, IIRF, THE WEEK.",
-        "Unique Status: First Public-Private Partnership (PPP) in the region.",
-        "Rankings: 51st among India's Best Multidisciplinary Universities, top state rank for private engineering institutes."
+        "Decades of trusted legacy with high employer recognition",
+        "Accredited by UGC, AICTE, AIU and NAAC with A+ grade",
+        "Affordable fee structure with straightforward installment plans",
+        "Comprehensive digital learning platform with access from phone or PC"
       ],
       programBenefits: [
-        "Approved by UGC",
-        "Recognized by IIRF and NIRF",
-        "Accredited by the Distance Education Council (DEC)"
+        "Approved by UGC DEB",
+        "Recognized by NIRF and AIU",
+        "Decades of academic legacy"
       ],
-      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft", "Oracle", "SAP", "Tata Consultancy Services", "L&T", "Mahindra", "Reliance", "Aditya Birla", "HDFC", "ICICI", "Axis Bank", "Kotak", "Yes Bank"],
+      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Reliance", "HDFC Bank", "ICICI Bank"],
       faqs: [
         {
-          question: "Is SMU a member of the Association of Indian Universities (AIU)?",
-          answer: "Yes, Sikkim Manipal University is a member of the Association of Indian Universities (AIU), which further validates its recognition and standing in the Indian higher education system."
+          question: "Is SMU online degree recognized for employment?",
+          answer: "Yes, Sikkim Manipal University degrees are recognized by UGC, AICTE, and AIU, making them fully accepted for private corporate jobs as well as government examinations."
         },
         {
-          question: "Is it compulsory to attend classes under the distance education mode?",
-          answer: "No, it is not compulsory to attend physical classes under the distance education mode at Sikkim Manipal University. The programs are designed for flexible learning, allowing students to study at their own pace and convenience through online resources and materials."
-        },
-        {
-          question: "What are the documents required for admission into Sikkim Manipal University's online degree programs?",
-          answer: "The documents required typically include educational certificates (10th, 12th, and graduation marksheets), identity proof (Aadhar card, passport, or driving license), passport-size photographs, and any other documents specified in the admission notification. All documents should be scanned and uploaded clearly."
-        },
-        {
-          question: "What is the application fee for Sikkim Manipal University's online programs?",
-          answer: "The application fee varies by course and is specified on the official university portal. Students should check the exact application fee for their chosen program during the admission process."
+          question: "Do I need to visit the campus for exams?",
+          answer: "No, exams and academic sessions are conducted completely online, making it ideal for working professionals."
         }
       ]
     },
@@ -335,37 +279,38 @@ export default function UniversityDetail() {
       slug: "manipal-university-jaipur",
       name: "Manipal University Jaipur",
       shortName: "MUJ",
-      description: "The online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). In 2021, the university commenced offering courses in an online format. The University Grants Commission (UGC) has granted authorization to Online Manipal University to provide undergraduate (UG) and postgraduate (PG) programs.",
-      fullDescription: "The online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). In 2021, the university commenced offering courses in an online format. The University Grants Commission (UGC) has granted authorization to Online Manipal University to provide undergraduate (UG) and postgraduate (PG) programs.",
+      tagline: "NAAC A++ Accredited Excellence with Coursera Certifications",
+      description: "Manipal University Jaipur (MUJ) Online delivers world-class digital education with NAAC A++ accreditation, offering 13+ career-focused specializations, campus immersion options, and global faculty.",
+      fullDescription: "Online Manipal University is a division of the prestigious Manipal University Jaipur (MUJ). UGC authorized and NAAC A++ accredited.",
       programs: ["Engineering", "Management", "Design", "Humanities"],
       location: "Jaipur, Rajasthan",
       rating: 4.8,
-      students: "12K+",
+      students: "25,000+",
       established: "2011",
       image: "/university/ManipalUniversityJaipur%28MUJ%29.jpeg",
-      naacGrade: "A++",
+      naacGrade: "NAAC A++",
       ugcApproved: true,
-      accreditations: ["NAAC A++", "NIRF", "UGC", "NBA", "WES", "THE WEEK", "QS-WUR", "Careers 360", "THE Impact"],
+      accreditations: ["NAAC A++", "NIRF", "UGC DEB", "AICTE", "NBA", "WES", "THE WEEK", "QS-WUR"],
       keyFeatures: [
-        "UGC-recognized state private university",
-        "NAAC accredited with A++ grade",
-        "WES and AICTE Approved",
-        "Award-winning next-generation education platform"
+        "UGC-entitled state private university with highest NAAC A++ rating",
+        "13 Career-Focused electives including Analytics, FinTech, and Digital Marketing",
+        "Free access to Coursera for Campus certification programs",
+        "Prestigious Manipal global alumni network of over 300,000 leaders"
       ],
       feeTables: [
         {
-          title: "Manipal University Online (MUJ) – Fee Structure (INR)",
-          headers: ["Program", "Course Fee", "Sem Fee"],
+          title: "Manipal University Jaipur (MUJ Online) – Fee Structure (INR)",
+          headers: ["Program", "Total Course Fee", "Semester Fee", "Duration"],
           rows: [
-            { "Program": "BCA", "Course Fee": "₹1,35,000", "Sem Fee": "₹22,500" },
-            { "Program": "BBA", "Course Fee": "₹1,35,000", "Sem Fee": "₹22,500" },
-            { "Program": "MBA", "Course Fee": "₹1,75,000", "Sem Fee": "₹43,750" },
-            { "Program": "BCom", "Course Fee": "₹99,000", "Sem Fee": "₹16,500" },
-            { "Program": "MCA", "Course Fee": "₹1,58,000", "Sem Fee": "₹39,500" },
-            { "Program": "MCom", "Course Fee": "₹1,08,000", "Sem Fee": "₹27,000" },
-            { "Program": "MA J&MC", "Course Fee": "₹1,40,000", "Sem Fee": "₹35,000" },
-          ],
-        },
+            { "Program": "Online BCA", "Total Course Fee": "₹1,35,000", "Semester Fee": "₹22,500 x 6", "Duration": "3 Years" },
+            { "Program": "Online BBA", "Total Course Fee": "₹1,35,000", "Semester Fee": "₹22,500 x 6", "Duration": "3 Years" },
+            { "Program": "Online MBA", "Total Course Fee": "₹1,75,000", "Semester Fee": "₹43,750 x 4", "Duration": "2 Years" },
+            { "Program": "Online B.Com", "Total Course Fee": "₹99,000", "Semester Fee": "₹16,500 x 6", "Duration": "3 Years" },
+            { "Program": "Online MCA", "Total Course Fee": "₹1,58,000", "Semester Fee": "₹39,500 x 4", "Duration": "2 Years" },
+            { "Program": "Online M.Com", "Total Course Fee": "₹1,08,000", "Semester Fee": "₹27,000 x 4", "Duration": "2 Years" },
+            { "Program": "Online MA (J&MC)", "Total Course Fee": "₹1,40,000", "Semester Fee": "₹35,000 x 4", "Duration": "2 Years" }
+          ]
+        }
       ],
       courses: [
         { name: "Online BCA", duration: "3 years", fullFee: "₹1,35,000", discountFee: "₹22,500/sem" },
@@ -374,86 +319,74 @@ export default function UniversityDetail() {
         { name: "Online B.Com", duration: "3 years", fullFee: "₹99,000", discountFee: "₹16,500/sem" },
         { name: "Online MCA", duration: "2 years", fullFee: "₹1,58,000", discountFee: "₹39,500/sem" },
         { name: "Online M.Com", duration: "2 years", fullFee: "₹1,08,000", discountFee: "₹27,000/sem" },
-        { name: "Online MA (J&MC)", duration: "2 years", fullFee: "₹1,40,000", discountFee: "₹35,000/sem" },
+        { name: "Online MA (J&MC)", duration: "2 years", fullFee: "₹1,40,000", discountFee: "₹35,000/sem" }
       ],
       admissionProcess: [
-        "Explore the official website of Manipal University Online and complete the online application by selecting the 'Enrol Now' option",
-        "Upload all the required documents and proceed to submit your application",
-        "Make the payment for the application fee, which will be later adjusted in the Semester 1 fees",
-        "In case there are any pending procedures, an admission counselor will contact you and provide assistance throughout the entire process"
+        "Select your preferred program and register online",
+        "Upload required qualification certificates for eligibility check",
+        "Pay application/semester fee securely with multiple EMI options",
+        "Get access to learning platform, live webinar schedule, and Coursera bundle"
       ],
       benefits: [
-        "Increased Earning Potential Boost your earning potential by gaining leadership roles with strong salary packages across top organizations in multiple sectors",
-        "Gain Job-Ready Business Skills Build strategic, leadership, problem-solving, and operational skills through expert-led courses to prepare for key managerial roles",
-        "Global Networking & Alumni Access Connect with global peers, alumni, and industry leaders to learn market trends and join Manipal University Jaipur's prestigious network",
-        "13 Career-Focused Electives Choose from 13 industry-relevant specializations like Digital Marketing, Analytics, Supply Chain, International Business, IT and FinTech",
-        "Super or Dual Specialization Select one elective for super specialization or two electives for dual specialization to deepen or broaden your expertise",
-        "Fully Online Experience with Campus Immersion Experience 100% online learning with enrollment to exams, plus campus immersion events to interact with peers and faculty"
+        "Highest NAAC A++ accreditation ensuring unmatched degree value",
+        "13 industry-aligned specializations tailored for modern business challenges",
+        "Dedicated placement assistance with career readiness bootcamps",
+        "Optional on-campus immersion to connect with faculty and fellow peers"
       ],
       programBenefits: [
-        "UGC-recognized state private university",
-        "NAAC accredited with A++ grade",
-        "WES and AICTE Approved"
+        "NAAC A++ highest accredited",
+        "WES & AICTE approved",
+        "Award winning digital education platform"
       ],
-      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft", "Oracle", "SAP", "Tata Consultancy Services", "L&T", "Mahindra", "Reliance", "Aditya Birla", "HDFC", "ICICI", "Axis Bank", "Kotak", "Yes Bank", "Bajaj", "Godrej", "Maruti", "Hero", "TVS", "Honda", "Toyota", "Ford", "Volkswagen", "Hyundai", "Nissan", "Suzuki"],
+      placementPartners: ["Amazon", "Deloitte", "Tech Mahindra", "Wipro", "Infosys", "TCS", "Accenture", "Capgemini", "Cognizant", "HCL", "IBM", "Microsoft", "Oracle", "SAP", "L&T", "Reliance", "HDFC Bank", "ICICI Bank", "Axis Bank", "Kotak"],
       faqs: [
         {
-          question: "Does Online Manipal offer placement assistance?",
-          answer: "Yes, Online Manipal University Jaipur offers comprehensive placement assistance services to help students connect with top employers and secure career opportunities."
+          question: "Does Online Manipal provide career support?",
+          answer: "Yes, MUJ Online provides full placement assistance including resume building, mock interviews, career mentoring, and direct interview opportunities with over 300+ recruiters."
         },
         {
-          question: "Does Online Manipal or Manipal University Jaipur offer access to an alumni network?",
-          answer: "Yes, Manipal University Jaipur provides access to a prestigious global alumni network, allowing students to connect with peers, alumni, and industry leaders worldwide."
-        },
-        {
-          question: "Is Manipal online MBA valid?",
-          answer: "Yes, the Online MBA from Manipal University Jaipur is fully valid and recognized. It is UGC-recognized, NAAC A++ accredited, and approved by WES and AICTE, making it valid for both national and international opportunities."
-        },
-        {
-          question: "Does Online Manipal offer Career & placement assistance services?",
-          answer: "Yes, Online Manipal University Jaipur offers comprehensive career and placement assistance services including career counseling, resume building, interview preparation, and connections with top employers."
-        },
-        {
-          question: "Who is eligible for the career advisory and placement assistance services?",
-          answer: "All enrolled students of Online Manipal University Jaipur are eligible for career advisory and placement assistance services throughout their program duration and after graduation."
+          question: "Is Manipal Online MBA recognized by WES for abroad visas?",
+          answer: "Yes, Manipal University Jaipur is approved by WES, ensuring seamless credential evaluation for higher studies or immigration in the US and Canada."
         }
       ]
     },
     {
       id: 5,
       slug: "mit-university",
-      name: "MIT University",
+      name: "MIT University (MIT)",
       shortName: "MIT",
-      description: "Madras Institute of Technology - A prestigious institution known for excellence in engineering and technology education with strong industry connections.",
-      fullDescription: "MIT University is a prestigious institution known for excellence in engineering and technology education with strong industry connections. The university offers cutting-edge programs in various technical fields.",
+      tagline: "Excellence in Engineering, Tech & Applied Management",
+      description: "A prestigious institution known for technical innovation, practical project based learning, and deep corporate integrations across leading manufacturing and tech sectors.",
+      fullDescription: "MIT University is a prestigious institution known for excellence in engineering and technology education with strong industry connections.",
       programs: ["Engineering", "Technology", "Aeronautics", "Automotive"],
-      location: "Chennai, Tamil Nadu",
+      location: "Pune / Chennai",
       rating: 4.9,
-      students: "8K+",
-      established: "1949",
+      students: "18,000+",
+      established: "1983",
       image: "/university/%20MITUniversity.jpeg",
-      naacGrade: "A+",
+      naacGrade: "NAAC A+",
       ugcApproved: true,
+      accreditations: ["NAAC A+", "UGC", "AICTE", "NBA", "AIU"],
       keyFeatures: [
-        "Prestigious institution with strong industry connections",
-        "Excellence in engineering and technology education",
-        "Award-winning programs",
-        "Global recognition"
+        "Prestigious technical legacy with high industry recognition",
+        "Excellence in applied engineering, IT, and management",
+        "High average placement packages in top tech firms",
+        "Industry-mentored capstone projects and internships"
       ],
       courses: [
-        { name: "Online MBA", duration: "2 years", fullFee: "Rs 1,18,000", discountFee: "Rs 88,500" }
+        { name: "Online MBA", duration: "2 years", fullFee: "₹1,18,000", discountFee: "₹88,500 Special" },
+        { name: "Executive MCA", duration: "2 years", fullFee: "₹1,45,000", discountFee: "₹36,250/sem" }
       ],
       benefits: [
-        "Strong industry connections",
-        "Excellence in technical education",
-        "Global recognition",
-        "Award-winning programs"
+        "Robust corporate network across top tech and manufacturing organizations",
+        "Curriculum designed by premier academic and industry veterans",
+        "Hands-on practical assessments with real-world case studies"
       ],
-      placementPartners: ["Tech Mahindra", "Wipro"],
+      placementPartners: ["Tech Mahindra", "Wipro", "Infosys", "Tata Motors", "Capgemini", "Cognizant"],
       faqs: [
         {
-          question: "What programs does MIT University offer?",
-          answer: "MIT University offers programs in Engineering, Technology, Aeronautics, and Automotive fields."
+          question: "What programs are offered by MIT University?",
+          answer: "MIT University offers recognized programs across Management (Online MBA), Computer Applications (MCA), and specialized technical fields."
         }
       ]
     },
@@ -462,39 +395,40 @@ export default function UniversityDetail() {
       slug: "mangalayatan-university",
       name: "Mangalayatan University",
       shortName: "Mangalayatan",
-      description: "A progressive university offering diverse programs with focus on holistic development.",
+      tagline: "Empowering Futures with Student-Centric Accessible Education",
+      description: "A progressive UGC-approved university offering student-friendly degree programs with holistic career guidance, affordable fee structure, and accessible digital learning.",
       fullDescription: "Mangalayatan University is a progressive university offering diverse programs with focus on holistic development. The university is UGC recognized.",
       programs: ["Engineering", "Management", "Law", "Arts & Commerce"],
       location: "Aligarh, Uttar Pradesh",
       rating: 4.6,
-      students: "10K+",
+      students: "12,000+",
       established: "2006",
       image: "/university/MangalayatanUniversity.png",
-      naacGrade: "A",
+      naacGrade: "NAAC A+",
       ugcApproved: true,
+      accreditations: ["UGC DEB", "NAAC A+", "AICTE", "AIU"],
       keyFeatures: [
-        "A progressive university offering diverse programs",
-        "Focus on holistic development",
-        "UGC recognized"
+        "UGC recognized programs valid for all state and central govt exams",
+        "Designed specifically for working individuals and remote learners",
+        "Affordable annual fee structure with simple installment schedules",
+        "Flexible online examination slots"
       ],
       courses: [
         { name: "Online B.Com", duration: "3 years", fullFee: "₹1,20,000", discountFee: "₹40,000/year" },
         { name: "Online M.Com", duration: "2 years", fullFee: "₹60,000", discountFee: "₹30,000/year" },
         { name: "Online BBA", duration: "3 years", fullFee: "₹2,25,000", discountFee: "₹75,000/year" },
-        { name: "Online MBA", duration: "2 years", fullFee: "₹2,70,000", discountFee: "₹1,35,000/year" },
-        { name: "Online PGDBM", duration: "2 years", fullFee: "₹2,70,000", discountFee: "₹1,35,000/year" }
+        { name: "Online MBA", duration: "2 years", fullFee: "₹2,70,000", discountFee: "₹1,35,000/year" }
       ],
       benefits: [
-        "UGC recognized programs",
-        "Focus on holistic development",
-        "Diverse program offerings",
-        "Modern learning facilities"
+        "UGC-DEB recognized degree programs",
+        "Focus on holistic career enhancement",
+        "Accessible study material and live doubt resolution"
       ],
-      placementPartners: ["Wipro", "Infosys"],
+      placementPartners: ["Wipro", "Infosys", "TCS", "ICICI Bank", "HDFC Bank"],
       faqs: [
         {
           question: "Is Mangalayatan University UGC Recognized?",
-          answer: "Yes, Mangalayatan University is UGC recognized and offers diverse programs with focus on holistic development."
+          answer: "Yes, Mangalayatan University is fully recognized by the University Grants Commission (UGC) and Distance Education Bureau (DEB)."
         }
       ]
     }
@@ -517,11 +451,13 @@ export default function UniversityDetail() {
 
   if (!university) {
     return (
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-50 mb-4">University Not Found</h1>
-          <Link href="/universities" className="text-[#0f4c75] dark:text-[#1e7aa8] hover:underline">
-            Go back to Universities
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-6">
+        <div className="text-center max-w-md bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+          <div className="text-4xl mb-4">🏫</div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">University Not Found</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">The university you are looking for might have been moved or updated.</p>
+          <Link href="/universities" className="inline-block px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl text-sm shadow-md">
+            Browse All Universities
           </Link>
         </div>
       </div>
@@ -538,383 +474,400 @@ export default function UniversityDetail() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      const response = await fetch('/api/submit-student-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/submit-student-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           university: university.name,
-          source: `University Page - ${university.name}`
-        }),
+          source: `University Detail - ${university.name}`
+        })
       });
 
       const data = await response.json();
-      
       if (data.success) {
-        toast.success("🎉 Thank you for your interest! We'll contact you soon.", { icon: false });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          university: "",
-          course: "",
-          message: ""
-        });
+        toast.success("🎉 Consultation booked! Our advisor will reach out to you shortly.", { icon: false });
+        setFormData({ name: "", email: "", phone: "", university: university.name, course: "", message: "" });
       } else {
         toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error("❌ Something went wrong. Please try again.", { icon: false });
+    } catch {
+      toast.error("❌ Submission failed. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
-      {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-[800px] h-[800px] bg-gradient-to-br from-[#0f4c75]/20 to-[#dc2626]/20 rounded-full blur-[120px] -top-[300px] -right-[300px] animate-pulse"></div>
-          <div className="absolute w-[600px] h-[600px] bg-gradient-to-br from-[#dc2626]/15 to-[#ea580c]/15 rounded-full blur-[100px] -bottom-[200px] -left-[200px] animate-pulse delay-1000"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className={`transition-all duration-800 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}>
-              <div className="flex items-center gap-6 mb-8">
-                <div className="w-32 h-32 rounded-2xl overflow-hidden bg-white dark:bg-slate-700 flex items-center justify-center flex-shrink-0 shadow-2xl border-4 border-slate-200 dark:border-slate-600">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-[#0f4c75] selection:text-white">
+      {/* University Hero Header */}
+      <section className="relative pt-28 pb-14 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-blue-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#0f4c75]/10 to-[#dc2626]/10 blur-3xl pointer-events-none -z-10"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Info Column */}
+            <div className={`lg:col-span-8 space-y-5 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              {/* Breadcrumb & Accreditations */}
+              <div className="flex flex-wrap items-center gap-2">
+                <Link href="/universities" className="text-xs font-semibold text-[#0f4c75] dark:text-[#38bdf8] hover:underline">
+                  ← Back to Universities
+                </Link>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
+                  ✓ {university.naacGrade}
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[11px] font-bold text-[#0f4c75] dark:text-[#38bdf8]">
+                  UGC-DEB Entitled
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white dark:bg-slate-800 p-2.5 shadow-md border border-slate-200 dark:border-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
                   <img
                     src={university.image}
                     alt={university.name}
-                    className="w-full h-full object-contain p-2"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://via.placeholder.com/96?text=Logo";
-                    }}
+                    className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="flex-1">
-                  <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-slate-50 mb-4 leading-tight">
-                    {university.id === 1 ? "Amity University Online" : university.name}
+                <div>
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                    {university.name}
                   </h1>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="px-4 py-2 bg-gradient-to-r from-[#0f4c75]/10 to-[#0f4c75]/20 dark:from-[#1e7aa8]/20 dark:to-[#1e7aa8]/30 text-[#0f4c75] dark:text-[#1e7aa8] rounded-xl text-sm font-bold border-2 border-[#0f4c75]/30 dark:border-[#1e7aa8]/30">
-                      NAAC {university.naacGrade}
-                    </span>
-                    {university.ugcApproved && (
-                      <span className="px-4 py-2 bg-gradient-to-r from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 text-green-700 dark:text-green-400 rounded-xl text-sm font-bold border-2 border-green-300 dark:border-green-700">
-                        UGC Approved
-                      </span>
-                    )}
-                  </div>
+                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+                    {university.tagline || university.location}
+                  </p>
                 </div>
               </div>
-              <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8 font-medium">
+
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
                 {university.fullDescription}
               </p>
-              <div className="grid grid-cols-3 gap-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-700 shadow-lg">
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent mb-2">
-                    {university.students}
-                  </div>
-                  <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">Students</div>
+
+              {/* Quick Stat Tags */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-lg font-bold text-[#0f4c75] dark:text-[#38bdf8]">★ {university.rating} / 5.0</div>
+                  <div className="text-[11px] text-slate-500">Student Rating</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent mb-2">
-                    {university.rating}
-                  </div>
-                  <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">Rating</div>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-lg font-bold text-slate-900 dark:text-white">{university.students}</div>
+                  <div className="text-[11px] text-slate-500">Active Students</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent mb-2">
-                    {university.established}
-                  </div>
-                  <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">Established</div>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-lg font-bold text-[#dc2626] dark:text-rose-400">{university.established}</div>
+                  <div className="text-[11px] text-slate-500">Established Year</div>
                 </div>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">100% Online</div>
+                  <div className="text-[11px] text-slate-500">Exams & Classes</div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("enquiry-form");
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md hover:opacity-95 transition-all"
+                >
+                  Apply & Get Free Counseling
+                </button>
+                <a
+                  href={`https://wa.me/919335512881?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(university.name)}%20admission%20and%20fees.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md hover:bg-emerald-700 transition-all flex items-center gap-2"
+                >
+                  <span>💬 Chat on WhatsApp</span>
+                </a>
               </div>
             </div>
-            <div className={`transition-all duration-800 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
-              <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-slate-700">
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-6">
-                  Interested in our courses? Share your details and we'll get back to you.
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                      placeholder="Email Address"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                      placeholder="+91 Phone Number"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="university-field" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                      University <span className="text-[#dc2626]">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="university-field"
-                      name="university"
-                      value={formData.university || university?.name || ""}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                      placeholder="University Name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="course" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                      Course <span className="text-[#dc2626]">*</span>
-                    </label>
-                    <select
-                      id="course"
-                      name="course"
-                      value={formData.course}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                    >
-                      <option value="">Select Course</option>
-                      {university.courses.map((course, idx) => (
-                        <option key={idx} value={course.name}>{course.name}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={3}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all resize-none"
-                      placeholder="Message (Optional)"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+
+            {/* Right Quick Lead Card */}
+            <div id="enquiry-form" className="lg:col-span-4 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200 dark:border-slate-800">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
+                Direct Admission Enquiry
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                Get fee discounts, syllabus, and 1-on-1 counseling for {university.shortName}.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Full Name *"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Email Address *"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="Phone Number (+91) *"
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
+                  />
+                </div>
+                <div>
+                  <select
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
                   >
-                    {isSubmitting ? "Submitting..." : "Let's Connect"}
-                  </button>
-                </form>
-              </div>
+                    <option value="">Select Desired Course *</option>
+                    {university.courses.map((c, i) => (
+                      <option key={i} value={c.name}>{c.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold text-xs sm:text-sm rounded-xl shadow-md hover:opacity-95 transition-all disabled:opacity-50"
+                >
+                  {isSubmitting ? "Submitting..." : "Get Free Admission Guidance"}
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Rankings & Accreditations Section */}
-      {university.accreditations && (
-        <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-                Rankings & Accreditations
-              </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                Recognized by leading accreditation bodies and ranked among the top universities globally
-              </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
-              {university.accreditations.map((acc, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-slate-800 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-700 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
-                >
-                  <div className="text-2xl font-extrabold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                    {acc}
-                  </div>
-                  <div className="mt-2 h-1 w-12 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Key Features Section */}
-      <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              Why Choose {university.id === 1 ? "Amity University Online" : university.id === 4 ? "Manipal University Jaipur Online" : university.name}?
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Discover what makes us stand out in the world of online education
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {university.keyFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4 p-6 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+      {/* Sticky Subnav for Page Sections */}
+      <section className="sticky top-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 overflow-x-auto py-3 scrollbar-none">
+            {[
+              { id: "courses", label: "📚 Courses & Fees" },
+              { id: "features", label: "⭐ Why Choose Us" },
+              { id: "accreditations", label: "🏛️ Accreditations" },
+              { id: "admission", label: "📝 Admission Steps" },
+              { id: "placements", label: "💼 Placement Partners" },
+              { id: "faqs", label: "❓ FAQs" }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  const el = document.getElementById(tab.id);
+                  el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                  activeTab === tab.id
+                    ? "bg-[#0f4c75] text-white"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                }`}
               >
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-[#0f4c75] to-[#dc2626] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-lg">✓</span>
-                </div>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg flex-1">{feature}</p>
-              </div>
+                {tab.label}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Section 1: Updated Fee Structure & Courses */}
+      <section id="courses" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 text-center max-w-2xl mx-auto">
+          <span className="text-xs font-bold text-[#0f4c75] dark:text-[#38bdf8] uppercase tracking-wider">
+            2026-2027 Academic Year
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+            Courses & Updated Fee Structure
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            All fees in INR. Installments and 0% No-Cost EMI options available.
+          </p>
+        </div>
 
-      {/* Courses & Fees Section */}
-      <section className="py-24 md:py-20 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              Updated Fees for Each Course in 2025
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Fee structure in INR. Semester-wise and one-time payment options available.
-            </p>
-          </div>
-
-          {/* Detailed fee tables (when provided) */}
-          {"feeTables" in university && Array.isArray((university as { feeTables?: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables) && (university as { feeTables: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables.map((tbl: { title: string; headers: string[]; rows: Record<string, string>[] }, ti: number) => (
-            <div key={ti} className="mb-12">
-              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-4">{tbl.title}</h3>
-              <div className="overflow-x-auto rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
-                <table className="w-full bg-white dark:bg-slate-800 text-sm">
-                  <thead>
-                    <tr className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white">
-                      {tbl.headers.map((h: string, i: number) => (
-                        <th key={i} className="px-4 py-3 text-left font-semibold whitespace-nowrap">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tbl.rows.map((row: Record<string, string>, ri: number) => (
-                      <tr
-                        key={ri}
-                        className={`border-b border-slate-200 dark:border-slate-700 ${ri % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-700/30"}`}
-                      >
-                        {tbl.headers.map((h: string, i: number) => (
-                          <td key={i} className="px-4 py-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">{row[h] ?? "—"}</td>
+        {/* Detailed Table view if feeTables exist */}
+        {"feeTables" in university && Array.isArray((university as { feeTables?: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables) && (
+          <div className="space-y-8 mb-12">
+            {(university as { feeTables: { title: string; headers: string[]; rows: Record<string, string>[] }[] }).feeTables.map((tbl, ti) => (
+              <div key={ti} className="bg-white dark:bg-slate-900 rounded-2xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-md">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-4">
+                  {tbl.title}
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-white">
+                        {tbl.headers.map((h, hi) => (
+                          <th key={hi} className="px-4 py-3 font-semibold whitespace-nowrap">{h}</th>
                         ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                      {tbl.rows.map((row, ri) => (
+                        <tr key={ri} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50">
+                          {tbl.headers.map((h, hi) => (
+                            <td key={hi} className={`px-4 py-3 whitespace-nowrap ${hi === 0 ? "font-semibold text-slate-900 dark:text-white" : "text-slate-600 dark:text-slate-300"}`}>
+                              {row[h] ?? "—"}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Course Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {university.courses.map((course, index) => (
+            <div
+              key={index}
+              className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#0f4c75] dark:text-[#38bdf8] text-[10px] font-bold">
+                    {course.duration}
+                  </span>
+                  <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
+                    ✓ UGC Entitled
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2">
+                  {course.name}
+                </h3>
+                <div className="space-y-1 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-200">Total Fee:</span> {course.fullFee}</div>
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-200">Plan:</span> {course.discountFee}</div>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
+                <Link
+                  href="/courses"
+                  className="w-full text-center py-2 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold text-xs rounded-xl shadow-sm hover:opacity-95"
+                >
+                  View Details & Syllabus
+                </Link>
+                <a
+                  href={`https://wa.me/919335512881?text=I%20am%20interested%20in%20${encodeURIComponent(course.name)}%20at%20${encodeURIComponent(university.name)}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-xl hover:bg-slate-200"
+                >
+                  💬
+                </a>
               </div>
             </div>
           ))}
-
-          {/* Simple courses overview table */}
-          <div className="overflow-x-auto rounded-2xl shadow-2xl border-2 border-slate-200 dark:border-slate-700">
-            <table className="w-full bg-white dark:bg-slate-800">
-              <thead>
-                <tr className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white">
-                  <th className="px-8 py-5 text-left font-bold text-lg">Courses</th>
-                  <th className="px-8 py-5 text-left font-bold text-lg">Fees</th>
-                  <th className="px-8 py-5 text-left font-bold text-lg">Years</th>
-                </tr>
-              </thead>
-              <tbody>
-                {university.courses.map((course, index) => (
-                  <tr
-                    key={index}
-                    className={`border-b-2 border-slate-200 dark:border-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all duration-300 ${index % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-700/30"}`}
-                  >
-                    <td className="px-8 py-5 font-bold text-lg text-slate-900 dark:text-slate-50">{course.name}</td>
-                    <td className="px-8 py-5 text-slate-700 dark:text-slate-300 font-bold text-lg">{course.fullFee}{course.discountFee ? ` (${course.discountFee})` : ""}</td>
-                    <td className="px-8 py-5 text-slate-700 dark:text-slate-300 font-semibold">{course.duration}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {"feeNote" in university && (university as { feeNote?: string }).feeNote && (
-            <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">{(university as { feeNote: string }).feeNote}</p>
-          )}
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-24 md:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-800 via-slate-900 to-slate-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              Benefits of {university.id === 1 ? "Amity University Online" : university.id === 4 ? "Manipal University Jaipur Online" : university.name}
+      {/* Section 2: Why Choose Us & Key Features */}
+      <section id="features" className="py-14 sm:py-20 bg-white dark:bg-slate-900 border-y border-slate-200/80 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+              Why Choose {university.shortName}?
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Unlimited access to world class courses, hands-on projects, and job-ready certificate programs.
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Key highlights and unique institutional advantages for students
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {university.benefits.map((benefit, index) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {university.keyFeatures.map((feat, fi) => (
               <div
-                key={index}
-                className="group relative bg-white dark:bg-slate-800 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-700 hover:border-[#0f4c75] dark:hover:border-[#1e7aa8] hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                key={fi}
+                className="flex items-start gap-3.5 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#0f4c75]/10 to-[#dc2626]/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="flex items-start gap-4 relative z-10">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-r from-[#0f4c75] to-[#dc2626] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold text-xl">•</span>
-                  </div>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base flex-1 font-medium">{benefit}</p>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0f4c75] to-[#dc2626] text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">
+                  ✓
                 </div>
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                  {feat}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Program Benefits Section */}
-      {university.programBenefits && (
-        <section className="py-24 md:py-20 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-900 via-slate-800 dark:to-slate-900">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              {university.id === 1 ? "Amity University Online" : university.id === 4 ? "Manipal University Jaipur Online" : university.name}'s Program Benefits
+      {/* Section 3: Accreditations Badges */}
+      {university.accreditations && (
+        <section id="accreditations" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+              Rankings & Accreditations
             </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                {university.fullDescription}
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Recognized and authorized by apex regulatory bodies
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4">
+            {university.accreditations.map((acc, ai) => (
+              <div
+                key={ai}
+                className="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-center shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="text-base font-extrabold bg-gradient-to-r from-[#0f4c75] to-[#dc2626] bg-clip-text text-transparent">
+                  {acc}
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1">Accredited</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Section 4: Admission Process Roadmap */}
+      {university.admissionProcess && (
+        <section id="admission" className="py-14 sm:py-20 bg-white dark:bg-slate-900 border-y border-slate-200/80 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                Simple 4-Step Admission Process
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Zero hassle digital admissions with full counselor support
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {university.programBenefits.map((benefit, index) => (
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {university.admissionProcess.map((step, si) => (
                 <div
-                  key={index}
-                  className="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-slate-200 dark:border-slate-700 hover:border-[#0f4c75] dark:hover:border-[#1e7aa8] text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                  key={si}
+                  className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0f4c75]/5 to-[#dc2626]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🏆</div>
-                    <p className="text-slate-700 dark:text-slate-300 font-bold leading-relaxed text-base">{benefit}</p>
+                  <div className="text-2xl font-black text-[#0f4c75] dark:text-[#38bdf8] mb-2">
+                    0{si + 1}
                   </div>
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                    {step}
+                  </p>
                 </div>
               ))}
             </div>
@@ -922,65 +875,63 @@ export default function UniversityDetail() {
         </section>
       )}
 
-      {/* Placement Partners Section */}
-      <section className="py-24 md:py-20 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-900 via-slate-800 dark:to-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
-              Hiring Partner of {university.id === 1 ? "Amity University Online" : university.id === 4 ? "Manipal University Jaipur Online" : university.name}
+      {/* Section 5: Placement Partners */}
+      {university.placementPartners && (
+        <section id="placements" className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+              Hiring & Placement Partners
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Unlimited access to world class courses, hands-on projects, and job-ready certificate programs.
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Top recruiters offering high-growth roles to {university.shortName} graduates
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-            {university.placementPartners.map((partner, index) => (
-              <div
-                key={index}
-                className="group bg-white dark:bg-slate-800 rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-700 text-center hover:shadow-xl hover:-translate-y-2 hover:border-[#0f4c75] dark:hover:border-[#1e7aa8] transition-all duration-300"
+
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+            {university.placementPartners.map((partner, pi) => (
+              <span
+                key={pi}
+                className="px-4 py-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-sm"
               >
-                <div className="text-base font-bold text-slate-900 dark:text-slate-50 group-hover:text-[#0f4c75] dark:group-hover:text-[#1e7aa8] transition-colors duration-300">
-                  {partner}
-                </div>
-              </div>
+                {partner}
+              </span>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* FAQs Section */}
-      <section className="py-24 md:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-800 via-slate-900 to-slate-800">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className={`text-center mb-12 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-50 mb-4">
+      {/* Section 6: FAQs */}
+      <section id="faqs" className="py-14 sm:py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
-              Get answers to common questions about our programs and admission process
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Everything you need to know about {university.name}
             </p>
           </div>
-          <div className="space-y-4">
+
+          <div className="space-y-3">
             {university.faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300 hover:shadow-xl"
+                className="bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gradient-to-r hover:from-slate-50 hover:to-slate-100 dark:hover:from-slate-700 dark:hover:to-slate-600 transition-all duration-300"
+                  className="w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-100/60 dark:hover:bg-slate-700/50 transition-colors"
                 >
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-50 pr-4">
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white pr-4">
                     {faq.question}
-                  </h3>
-                  <span className={`text-2xl text-[#0f4c75] dark:text-[#1e7aa8] transition-transform flex-shrink-0 ${openFAQ === index ? "rotate-180" : ""}`}>
-                    ▼
+                  </span>
+                  <span className={`text-base font-bold text-[#0f4c75] dark:text-[#38bdf8] transition-transform ${openFAQ === index ? "rotate-180" : ""}`}>
+                    ▾
                   </span>
                 </button>
                 {openFAQ === index && (
-                  <div className="px-6 pb-5 border-t border-slate-200 dark:border-slate-700 pt-4">
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base">
-                      {faq.answer}
-                    </p>
+                  <div className="px-5 pb-4 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/40 dark:border-slate-700/40">
+                    {faq.answer}
                   </div>
                 )}
               </div>
@@ -988,20 +939,6 @@ export default function UniversityDetail() {
           </div>
         </div>
       </section>
-
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/919335512881"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce hover:animate-none group"
-        aria-label="Chat on WhatsApp"
-      >
-        <svg className="w-9 h-9 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-      </a>
     </div>
   );
 }
-

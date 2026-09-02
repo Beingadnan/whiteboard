@@ -5,14 +5,14 @@
 const c = (filename: string) => `/courses/${filename}`;
 
 export const courseImages = {
-  mba: c("MBA.webp"),
-  bba: c("BBA.webp"),
-  mca: c("MCA.jpeg"),
-  bca: c("BCA.webp"),
-  mCom: c("mcom.png"),
-  bCom: c("bcom.jpeg"),
-  ma: c("MA.jpeg"),
-  ba: c("BA.jpeg"),
+  mba: c("mba_premium.jpg"),
+  bba: c("bba_premium.jpg"),
+  mca: c("mca_premium.jpg"),
+  bca: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+  mCom: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80",
+  bCom: c("bcom_premium.jpg"),
+  ma: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
+  ba: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80",
 } as const;
 
 /** Home “Online Courses” strip — same assets as /courses catalog */

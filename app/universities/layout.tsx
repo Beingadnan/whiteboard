@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "UGC approved universities",
     "university admission process",
     "university admission 2024",
-    "university admission 2025"
+    "university admission 2026"
   ],
   openGraph: {
     title: "Top Universities - Amity, MUJ, SMU, Uttaranchal | Successmentorix",

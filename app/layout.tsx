@@ -4,6 +4,7 @@ import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollLeadPopup from "./components/ScrollLeadPopup";
 import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
@@ -126,6 +127,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <ScrollLeadPopup />
         <ToastContainer
           position="top-center"
           autoClose={5000}

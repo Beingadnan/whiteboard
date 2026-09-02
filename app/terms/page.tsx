@@ -25,7 +25,7 @@ export default function TermsOfService() {
             </span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            Last updated: September 2025
+            Last updated: September 2026
           </p>
         </div>
       </section>

@@ -3,13 +3,14 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { courseImageForTitle } from "../../../lib/courseImages";
+import Image from "next/image";
+import { courseImageForTitle, courseImages } from "../../../lib/courseImages";
 import { toast } from "react-toastify";
 
 export default function CourseDetail() {
   const params = useParams();
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<'overview' | 'eligibility' | 'fees'>('overview');
+  const [activeTab, setActiveTab] = useState<"overview" | "curriculum" | "fees" | "eligibility">("overview");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,170 +30,247 @@ export default function CourseDetail() {
       id: 1,
       slug: "mba-amity-university",
       title: "Master of Business Administration (MBA)",
-      shortTitle: "MBA",
-      category: "business",
+      shortTitle: "Online MBA",
+      category: "Management",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "2 Years",
       level: "Postgraduate",
-      description: "Premier MBA program designed to develop business leaders with global perspective and strategic thinking.",
-      fullDescription: "One of the biggest challenges being faced by business managers around the globe today, is establishing a business plan that is cost conservative and also delivers optimum results. This is where the MBA program gives your career an edge. One of our most sought after distance learning PG programs, this two year program delivers a sound understanding of the principles of management ready to be practically applied in the corporate world. The progressive curriculum, constantly updated to keep in tandem with today's times, explores contemporary management techniques and offers an understanding of business at a domestic and global level. Over a period of two years of distance learning with lectures on the weekends, young professionals like you will explore the exciting field of business management and its related fields of finance, marketing, human resources, and the most critical vertical of them all – operations. This MBA program will help you master the art and science of identifying business opportunities and crafting strategies that talk to them in their language.",
+      mode: "100% Online (Live & Recorded)",
+      description: "Premier MBA program designed to develop business leaders with global perspective, strategic thinking, and dual specialization options.",
+      fullDescription: "The Online MBA program from Amity University Online is accredited by UGC-DEB and NAAC A+, ranked #1 in India by QS World University Rankings. Over 2 years, students master strategic management, corporate finance, marketing analytics, and operations. The flexible format includes weekend live sessions with international faculty, recorded lectures on a world-class LMS, and networking with over 50,000+ peers worldwide.",
       highlights: [
-        "Understand various disciplines of management and integrated business communication",
-        "Understand the concepts of finance, marketing, and operations",
-        "Understand segmentation, targeting, positioning and differentiation",
-        "Understand the concepts of global business strategy",
-        "Understand customer relationship management"
+        "QS Ranked #1 Online MBA in India & #37 Globally",
+        "WES Accredited in US & Canada for global career mobility",
+        "Over 12 in-demand dual specializations to tailor your career",
+        "300+ Fortune 500 corporate recruiters and virtual job fairs"
       ],
+      careerRoles: ["Product Manager", "Management Consultant", "Finance Director", "Marketing Head", "Operations Lead"],
       rating: 4.9,
-      students: "3K+",
+      reviewsCount: 1420,
+      students: "15,000+",
       programStructure: [
         {
-          semester: "Semester-1",
+          semester: "Semester 1",
           subjects: [
-            { name: "Management Theory and Practice", credits: 4 },
+            { name: "Management Theory & Practice", credits: 4 },
             { name: "Organizational Behavior", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Corporate Social Responsibility", credits: 4 },
-            { name: "Information Systems for Managers", credits: 4 },
-            { name: "Business Communication", credits: 4 }
+            { name: "Business Economics & Decision Making", credits: 4 },
+            { name: "Corporate Communication & Strategy", credits: 4 },
+            { name: "Information Systems for Managers", credits: 4 }
           ]
         },
         {
-          semester: "Semester-2",
+          semester: "Semester 2",
           subjects: [
             { name: "Marketing Management", credits: 4 },
             { name: "Financial Accounting & Analysis", credits: 4 },
-            { name: "Essentials of HRM", credits: 4 },
+            { name: "Human Resource Management", credits: 4 },
             { name: "Strategic Management", credits: 4 },
-            { name: "Business Statistics", credits: 4 },
-            { name: "Business Law", credits: 4 }
+            { name: "Business Analytics & Statistics", credits: 4 }
           ]
         },
         {
-          semester: "Semester-3",
+          semester: "Semester 3",
           subjects: [
-            { name: "Brand Management", credits: 4 },
-            { name: "Consumer Behavior", credits: 4 },
-            { name: "Marketing Strategy", credits: 4 },
-            { name: "Customer Relationship Management", credits: 4 },
-            { name: "Sales Management", credits: 4 },
-            { name: "International Marketing", credits: 4 }
+            { name: "Brand Management & Strategy", credits: 4 },
+            { name: "Consumer Behavior & Market Research", credits: 4 },
+            { name: "Corporate Finance & Risk Management", credits: 4 },
+            { name: "Supply Chain & Operations Strategy", credits: 4 }
           ]
         },
         {
-          semester: "Semester-4",
+          semester: "Semester 4",
           subjects: [
-            { name: "B2B Marketing", credits: 4 },
-            { name: "Services Marketing", credits: 4 },
-            { name: "Integrated Marketing Communications", credits: 4 },
-            { name: "Marketing Research", credits: 4 },
-            { name: "Business: Ethics, Governance & Risk", credits: 4 },
-            { name: "Project", credits: 4 }
+            { name: "Global Business Strategy", credits: 4 },
+            { name: "Digital Transformation & Innovation", credits: 4 },
+            { name: "Business Ethics & Governance", credits: 4 },
+            { name: "Industry Capstone Master's Project", credits: 6 }
           ]
         }
       ],
-      eligibility: "Bachelor's Degree (10+2+3) in any discipline from any recognized University. OR An Equivalent degree recognized by Association of India Universities (AIU) with Minimum 50% marks at Graduation level.",
+      eligibility: "Bachelor's Degree (10+2+3) in any discipline from any recognized University with a minimum of 50% marks (45% for reserved category). Working experience is an added advantage but not mandatory.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 2,99,000/-",
-          pro: "INR 2,99,000/-"
-        },
-        annualFee: {
-          prime: "INR 1,49,500/-",
-          pro: "INR 1,49,500/-"
-        },
-        semesterFee: {
-          prime: "INR 74,750/-",
-          pro: "INR 74,750/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,99,000", pro: "₹1,99,000" },
+        annualFee: { prime: "₹99,500/year", pro: "₹99,500/year" },
+        semesterFee: { prime: "₹49,750/sem", pro: "₹49,750/sem" },
         semesters: 4,
-        note: "Students can choose from two lecture delivery modes: Pro & Prime. Prime: The Prime delivery mode allows students to view recorded lectures only. Pro: The Pro mode allows students to access live-interactive lectures as well as view recorded lectures. Please note: The above-mentioned fee structure is subject to change at the discretion of the University. In addition, Students need to pay an examination fee of Rs 600/- per subject."
+        note: "0% interest No-Cost EMI starts at ₹4,150/month with leading banking partners. Examination fee: ₹600 per subject."
       },
       image: courseImageForTitle("Master of Business Administration (MBA)")
     },
     {
       id: 2,
       slug: "online-mba-manipal-university-jaipur",
-      title: "Online MBA",
+      title: "Online MBA (Manipal University Jaipur)",
       shortTitle: "Online MBA",
-      category: "business",
+      category: "Management",
       university: "Manipal University Jaipur",
+      universitySlug: "manipal-university-jaipur",
       duration: "2 Years",
       level: "Postgraduate",
-      description: "Flexible online MBA program perfect for working professionals seeking career advancement.",
-      fullDescription: "The Online MBA program is designed for working professionals who want to advance their careers without interrupting their work. This flexible program offers the same quality education as on-campus programs with the convenience of online learning. Students can access lectures, assignments, and resources from anywhere at any time.",
+      mode: "100% Online (LMS & Coursera)",
+      description: "NAAC A++ accredited online MBA with 13 specialized electives, Coursera for Campus certifications, and global alumni network.",
+      fullDescription: "Manipal University Jaipur Online MBA is designed for ambitious professionals. It blends academic rigor with practical case studies from Harvard and Stanford business reviews. Learners receive complimentary access to 10,000+ Coursera courses, faculty-led live discussions, and access to Manipal's prestigious global alumni network.",
       highlights: [
-        "Flexible learning schedule",
-        "Access to recorded and live lectures",
-        "Industry-relevant curriculum",
-        "Networking opportunities",
-        "Career support and placement assistance"
+        "Highest NAAC A++ accreditation with unmatched prestige",
+        "13 Career-oriented specializations including FinTech & Analytics",
+        "Free Coursera for Campus professional certificates",
+        "Dedicated placement cell with mock interviews and live recruiters"
       ],
-      rating: 4.6,
-      students: "2.5K+",
+      careerRoles: ["Business Development Manager", "Strategy Consultant", "Data & Analytics Manager", "Investment Banking Associate"],
+      rating: 4.8,
+      reviewsCount: 1250,
+      students: "12,000+",
       programStructure: [
         {
-          semester: "Semester-1",
+          semester: "Semester 1",
           subjects: [
-            { name: "Management Principles", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Financial Accounting", credits: 4 },
-            { name: "Marketing Management", credits: 4 },
-            { name: "Organizational Behavior", credits: 4 }
+            { name: "Management Process & Organizational Behavior", credits: 4 },
+            { name: "Managerial Economics", credits: 4 },
+            { name: "Accounting for Managers", credits: 4 },
+            { name: "Business Statistics & Analytics", credits: 4 }
           ]
         },
         {
-          semester: "Semester-2",
+          semester: "Semester 2",
           subjects: [
-            { name: "Operations Management", credits: 4 },
-            { name: "Human Resource Management", credits: 4 },
             { name: "Financial Management", credits: 4 },
-            { name: "Strategic Management", credits: 4 },
-            { name: "Business Research Methods", credits: 4 }
+            { name: "Marketing Management", credits: 4 },
+            { name: "Human Resource Management", credits: 4 },
+            { name: "Operations & Supply Chain", credits: 4 }
+          ]
+        },
+        {
+          semester: "Semester 3 & 4",
+          subjects: [
+            { name: "Elective Specialization Subjects (4 Modules)", credits: 16 },
+            { name: "Strategic Management & Innovation", credits: 4 },
+            { name: "Live Industry Capstone Project", credits: 6 }
           ]
         }
       ],
-      eligibility: "Bachelor's degree in any discipline with minimum 50% marks from a recognized university. Work experience preferred but not mandatory.",
+      eligibility: "Graduate degree (10+2+3) in any discipline from a recognized University with at least 50% aggregate marks (45% for reserved category).",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,75,000/-",
-          pro: "INR 1,75,000/-"
-        },
-        annualFee: {
-          prime: "INR 87,500/-",
-          pro: "INR 87,500/-"
-        },
-        semesterFee: {
-          prime: "INR 43,750/-",
-          pro: "INR 43,750/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,75,000", pro: "₹1,75,000" },
+        annualFee: { prime: "₹87,500/year", pro: "₹87,500/year" },
+        semesterFee: { prime: "₹43,750/sem", pro: "₹43,750/sem" },
         semesters: 4,
-        note: "Online learning platform access included. EMI options available."
+        note: "0% interest No-Cost EMI starts at ₹3,650/month with zero processing fees."
       },
       image: courseImageForTitle("Online MBA")
     },
     {
       id: 3,
+      slug: "online-mba-sikkim-manipal-university",
+      title: "Online MBA (Sikkim Manipal University)",
+      shortTitle: "Online MBA (SMU)",
+      category: "Management",
+      university: "Sikkim Manipal University",
+      universitySlug: "sikkim-manipal-university",
+      duration: "2 Years",
+      level: "Postgraduate",
+      mode: "100% Online (UGC Entitled)",
+      description: "Established distance & online MBA program with over 28 years of academic heritage and affordable semester fee plans.",
+      fullDescription: "Sikkim Manipal University's Online MBA has empowered over 500,000 alumni across India and abroad. Designed for working executives, this program offers affordable semester installment schedules, self-paced recorded lessons, and digital study materials.",
+      highlights: [
+        "UGC-DEB and NAAC A+ accredited program",
+        "Affordable semester fee of just ₹27,500",
+        "Large 5 Lakh+ global alumni network",
+        "AI proctored weekend online examinations"
+      ],
+      careerRoles: ["Operations Manager", "Branch Manager", "Marketing Executive", "Finance Executive"],
+      rating: 4.7,
+      reviewsCount: 980,
+      students: "18,000+",
+      programStructure: [
+        {
+          semester: "Semester 1 & 2",
+          subjects: [
+            { name: "Management Principles", credits: 4 },
+            { name: "Financial Accounting", credits: 4 },
+            { name: "Marketing Essentials", credits: 4 },
+            { name: "Quantitative Techniques", credits: 4 }
+          ]
+        },
+        {
+          semester: "Semester 3 & 4",
+          subjects: [
+            { name: "Specialization Electives", credits: 16 },
+            { name: "Project Dissertation", credits: 6 }
+          ]
+        }
+      ],
+      eligibility: "Graduation in any stream from recognized university with minimum 50% aggregate marks.",
+      feeStructure: {
+        admissionFee: "₹500",
+        fullFee: { prime: "₹1,10,000", pro: "₹1,10,000" },
+        annualFee: { prime: "₹55,000/year", pro: "₹55,000/year" },
+        semesterFee: { prime: "₹27,500/sem", pro: "₹27,500/sem" },
+        semesters: 4,
+        note: "Pocket-friendly installment options available."
+      },
+      image: courseImageForTitle("Online MBA")
+    },
+    {
+      id: 4,
+      slug: "online-mba-uttaranchal-university",
+      title: "Online MBA (Uttaranchal University)",
+      shortTitle: "Online MBA (UU)",
+      category: "Management",
+      university: "Uttaranchal University",
+      universitySlug: "uttaranchal-university",
+      duration: "2 Years",
+      level: "Postgraduate",
+      mode: "100% Online (AICTE Approved)",
+      description: "Cost-effective online MBA designed for ambitious professionals with AICTE approval and comprehensive digital learning materials.",
+      fullDescription: "Uttaranchal University Online MBA offers recognized management training with NAAC A+ standards, covering Finance, Marketing, HR, and Information Technology.",
+      highlights: ["AICTE & UGC Recognized", "NAAC A+ Accreditation", "Affordable Fee ₹24,500/Sem", "Placement Assistance"],
+      careerRoles: ["HR Executive", "Finance Officer", "Corporate Planner", "Operations Manager"],
+      rating: 4.7,
+      reviewsCount: 820,
+      students: "8,500+",
+      programStructure: [
+        {
+          semester: "Semester 1 to 4",
+          subjects: [
+            { name: "Core Business Principles", credits: 16 },
+            { name: "Specialized Concentration Subjects", credits: 16 },
+            { name: "Final Capstone Project", credits: 6 }
+          ]
+        }
+      ],
+      eligibility: "Graduation with minimum 50% marks from a recognized university.",
+      feeStructure: {
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,40,000", pro: "₹1,40,000" },
+        annualFee: { prime: "₹70,000/year", pro: "₹70,000/year" },
+        semesterFee: { prime: "₹24,500/sem", pro: "₹24,500/sem" },
+        semesters: 4,
+        note: "Special one-time payment discount available at ₹94,000 total."
+      },
+      image: courseImageForTitle("Online MBA")
+    },
+    {
+      id: 5,
       slug: "online-bba-amity-university",
-      title: "Online BBA",
+      title: "Bachelor of Business Administration (BBA)",
       shortTitle: "Online BBA",
-      category: "business",
+      category: "Management",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "3 Years",
       level: "Undergraduate",
-      description: "Comprehensive Bachelor of Business Administration program designed to develop business acumen and management skills.",
-      fullDescription: "The Online BBA program is a comprehensive undergraduate program designed to provide students with a strong foundation in business administration and management principles. This three-year program covers various aspects of business including marketing, finance, human resources, operations, and strategic management. Students will gain practical knowledge through case studies, projects, and industry interactions.",
-      highlights: [
-        "Strong foundation in business administration principles",
-        "Industry-relevant curriculum with practical applications",
-        "Flexible online learning format",
-        "Career support and placement assistance",
-        "Access to recorded and live lectures"
-      ],
-      rating: 4.7,
-      students: "2K+",
+      mode: "100% Online (UGC Approved)",
+      description: "Comprehensive 3-year undergraduate degree in modern business administration, finance, marketing, and entrepreneurship.",
+      fullDescription: "Amity Online BBA builds strong management fundamentals for high school graduates and working professionals. Learn marketing fundamentals, micro & macroeconomics, business law, and data analytics with flexible online modules.",
+      highlights: ["Industry Oriented Curriculum", "Live Interactive Case Studies", "Top B-School Faculty", "0% No-Cost EMI"],
+      careerRoles: ["Business Analyst", "Marketing Coordinator", "Operations Associate", "Sales Manager"],
+      rating: 4.8,
+      reviewsCount: 1100,
+      students: "9,000+",
       programStructure: [
         {
           semester: "Year 1",
@@ -200,8 +278,7 @@ export default function CourseDetail() {
             { name: "Principles of Management", credits: 4 },
             { name: "Business Economics", credits: 4 },
             { name: "Financial Accounting", credits: 4 },
-            { name: "Business Communication", credits: 3 },
-            { name: "Business Mathematics", credits: 3 }
+            { name: "Business Communication", credits: 3 }
           ]
         },
         {
@@ -218,526 +295,300 @@ export default function CourseDetail() {
           subjects: [
             { name: "Strategic Management", credits: 4 },
             { name: "International Business", credits: 4 },
-            { name: "Business Ethics", credits: 3 },
-            { name: "Project Work", credits: 4 }
+            { name: "Entrepreneurship & Innovation", credits: 4 },
+            { name: "Final Year Capstone Project", credits: 6 }
           ]
         }
       ],
-      eligibility: "10+2 in any stream with minimum 50% marks from a recognized board.",
+      eligibility: "10+2 (Higher Secondary) in any stream from a recognized educational board (CBSE, ICSE, State Board) with minimum 50% aggregate marks.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,65,000/-",
-          pro: "INR 1,65,000/-"
-        },
-        annualFee: {
-          prime: "INR 55,000/-",
-          pro: "INR 55,000/-"
-        },
-        semesterFee: {
-          prime: "INR 27,500/-",
-          pro: "INR 27,500/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,65,000", pro: "₹1,65,000" },
+        annualFee: { prime: "₹55,000/year", pro: "₹55,000/year" },
+        semesterFee: { prime: "₹27,500/sem", pro: "₹27,500/sem" },
         semesters: 6,
-        note: "Online learning platform access included. EMI options available."
+        note: "0% interest EMI available from ₹2,300/month."
       },
       image: courseImageForTitle("Online BBA")
     },
     {
-      id: 4,
+      id: 6,
       slug: "online-mca-amity-university",
-      title: "Online MCA",
+      title: "Master of Computer Applications (MCA)",
       shortTitle: "Online MCA",
-      category: "technology",
+      category: "Computer & IT",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "2 Years",
       level: "Postgraduate",
-      description: "Master of Computer Applications program designed for IT professionals seeking advanced technical skills.",
-      fullDescription: "The Online MCA program is designed for IT professionals and graduates who want to advance their careers in computer applications and software development. This two-year program covers advanced topics in computer science, software engineering, database management, web technologies, and emerging technologies. Students will work on real-world projects and gain hands-on experience with industry-standard tools and technologies.",
+      mode: "100% Online with Virtual Labs",
+      description: "Advanced computing program covering Cloud Architecture, AI & ML, Full-Stack Software Engineering, and Cyber Security.",
+      fullDescription: "Amity's Online MCA equips graduates with modern enterprise software development skills. Featuring curriculum curated with industry leaders like TCS iON and HCLTech, students master Cloud Infrastructure, Python, Advanced Data Structures, and Machine Learning.",
       highlights: [
-        "Advanced computer applications and software development",
-        "Industry-relevant curriculum with hands-on projects",
-        "Expert faculty with industry experience",
-        "Career support and placement assistance",
-        "Access to latest technologies and tools"
+        "Specializations in AI, Machine Learning, & Cloud Computing",
+        "Virtual coding environments and live software projects",
+        "300+ Tech hiring partners with dedicated coding mock interviews",
+        "UGC-DEB recognized degree equivalent to on-campus MCA"
       ],
-      rating: 4.8,
-      students: "1.5K+",
+      careerRoles: ["Full Stack Developer", "Cloud Architect", "Data Engineer", "Software Engineer", "Systems Architect"],
+      rating: 4.9,
+      reviewsCount: 1320,
+      students: "11,000+",
       programStructure: [
         {
-          semester: "Semester-1",
+          semester: "Semester 1",
           subjects: [
-            { name: "Advanced Data Structures", credits: 4 },
-            { name: "Database Management Systems", credits: 4 },
-            { name: "Object-Oriented Programming", credits: 4 },
-            { name: "Computer Networks", credits: 4 }
+            { name: "Advanced Data Structures & Algorithms", credits: 4 },
+            { name: "Relational Database Management & SQL", credits: 4 },
+            { name: "Object-Oriented Programming (Java/Python)", credits: 4 },
+            { name: "Computer Networks & Architecture", credits: 4 }
           ]
         },
         {
-          semester: "Semester-2",
+          semester: "Semester 2",
           subjects: [
-            { name: "Web Technologies", credits: 4 },
-            { name: "Software Engineering", credits: 4 },
-            { name: "Operating Systems", credits: 4 },
-            { name: "Cloud Computing", credits: 4 }
+            { name: "Cloud Computing & DevOps", credits: 4 },
+            { name: "Full Stack Web Engineering", credits: 4 },
+            { name: "Software Testing & Quality Assurance", credits: 4 },
+            { name: "AI & Machine Learning Foundations", credits: 4 }
+          ]
+        },
+        {
+          semester: "Semester 3 & 4",
+          subjects: [
+            { name: "Advanced Electives (Cybersecurity / AI / Data Analytics)", credits: 16 },
+            { name: "Industry Live Project Dissertation", credits: 8 }
           ]
         }
       ],
-      eligibility: "Bachelor's degree in any discipline with Mathematics at 10+2 level or graduation level, with minimum 50% marks from a recognized university.",
+      eligibility: "Bachelor's Degree in BCA / Computer Science / B.Sc IT or any Bachelor's degree with Mathematics at 10+2 level or graduation level with minimum 50% marks.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,70,000/-",
-          pro: "INR 1,70,000/-"
-        },
-        annualFee: {
-          prime: "INR 85,000/-",
-          pro: "INR 85,000/-"
-        },
-        semesterFee: {
-          prime: "INR 42,500/-",
-          pro: "INR 42,500/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,70,000", pro: "₹1,70,000" },
+        annualFee: { prime: "₹85,000/year", pro: "₹85,000/year" },
+        semesterFee: { prime: "₹42,500/sem", pro: "₹42,500/sem" },
         semesters: 4,
-        note: "Online learning platform access included. EMI options available."
+        note: "0% interest EMI starts at ₹3,540/month."
       },
       image: courseImageForTitle("Online MCA")
     },
     {
-      id: 5,
+      id: 7,
       slug: "online-bca-amity-university",
-      title: "Online BCA",
+      title: "Bachelor of Computer Applications (BCA)",
       shortTitle: "Online BCA",
-      category: "technology",
+      category: "Computer & IT",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "3 Years",
       level: "Undergraduate",
-      description: "Bachelor of Computer Applications program providing comprehensive knowledge in computer science and applications.",
-      fullDescription: "The Online BCA program is a comprehensive undergraduate program designed to provide students with a strong foundation in computer science and applications. This three-year program covers programming languages, database management, web development, software engineering, and computer networks. Students will gain practical skills through hands-on projects and industry internships.",
-      highlights: [
-        "Strong foundation in computer science and applications",
-        "Hands-on programming and development experience",
-        "Industry-relevant curriculum",
-        "Career support and placement assistance",
-        "Access to latest technologies and development tools"
-      ],
+      mode: "100% Online (Hands-on Labs)",
+      description: "Comprehensive computing degree teaching Python, Java, Web Development, Data Structures, and Cloud Computing.",
+      fullDescription: "The Online BCA program is a 3-year undergraduate course offering rigorous foundations in coding, database design, and web architecture. Perfect for aspiring software developers seeking flexible, affordable education.",
+      highlights: ["Hands-on Python, Java, and Web Development", "Cloud Security & Data Analytics Electives", "Internship & Placement Assistance", "UGC Recognized"],
+      careerRoles: ["Junior Software Developer", "Web Developer", "Database Administrator", "Tech Support Engineer"],
       rating: 4.7,
-      students: "2.5K+",
+      reviewsCount: 1450,
+      students: "14,000+",
       programStructure: [
         {
           semester: "Year 1",
           subjects: [
-            { name: "Programming Fundamentals", credits: 4 },
-            { name: "Data Structures", credits: 4 },
-            { name: "Database Management", credits: 4 },
-            { name: "Computer Networks", credits: 3 }
+            { name: "Programming in C & C++", credits: 4 },
+            { name: "Data Structures & Algorithms", credits: 4 },
+            { name: "Computer Architecture", credits: 4 },
+            { name: "Discrete Mathematics", credits: 3 }
           ]
         },
         {
           semester: "Year 2",
           subjects: [
-            { name: "Object-Oriented Programming", credits: 4 },
-            { name: "Web Development", credits: 4 },
-            { name: "Software Engineering", credits: 4 },
-            { name: "Operating Systems", credits: 3 }
+            { name: "Java & Object Oriented Programming", credits: 4 },
+            { name: "Database Management Systems (MySQL)", credits: 4 },
+            { name: "Web Technologies (HTML, CSS, JS)", credits: 4 },
+            { name: "Operating Systems", credits: 4 }
           ]
         },
         {
           semester: "Year 3",
           subjects: [
-            { name: "Mobile Application Development", credits: 4 },
-            { name: "Cloud Computing", credits: 4 },
-            { name: "Project Work", credits: 4 }
+            { name: "Python for Data Science", credits: 4 },
+            { name: "Cloud Computing Fundamentals", credits: 4 },
+            { name: "Software Engineering Principles", credits: 4 },
+            { name: "Major Project Development", credits: 6 }
           ]
         }
       ],
-      eligibility: "10+2 in any stream with Mathematics as a subject, with minimum 50% marks from a recognized board.",
+      eligibility: "10+2 from a recognized board in any stream with minimum 50% aggregate marks. Mathematics or Computer Science background is preferred.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,50,000/-",
-          pro: "INR 1,50,000/-"
-        },
-        annualFee: {
-          prime: "INR 50,000/-",
-          pro: "INR 50,000/-"
-        },
-        semesterFee: {
-          prime: "INR 25,000/-",
-          pro: "INR 25,000/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,50,000", pro: "₹1,50,000" },
+        annualFee: { prime: "₹50,000/year", pro: "₹50,000/year" },
+        semesterFee: { prime: "₹25,000/sem", pro: "₹25,000/sem" },
         semesters: 6,
-        note: "Online learning platform access included. EMI options available."
+        note: "0% interest EMI starts at ₹2,080/month."
       },
       image: courseImageForTitle("Online BCA")
     },
     {
-      id: 6,
+      id: 8,
       slug: "online-mcom-amity-university",
-      title: "Online M.Com",
+      title: "Master of Commerce (M.Com)",
       shortTitle: "Online M.Com",
-      category: "commerce",
+      category: "Commerce",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "2 Years",
       level: "Postgraduate",
-      description: "Master of Commerce program designed to develop expertise in commerce, finance, and accounting.",
-      fullDescription: "The Online M.Com program is designed for commerce graduates who want to advance their careers in finance, accounting, taxation, and business management. This two-year program covers advanced topics in accounting, financial management, taxation, business law, and economics. Students will gain practical knowledge through case studies and industry projects.",
-      highlights: [
-        "Advanced knowledge in commerce and finance",
-        "Industry-relevant curriculum with practical applications",
-        "Expert faculty with industry experience",
-        "Career support and placement assistance",
-        "Flexible online learning format"
-      ],
+      mode: "100% Online (UGC Entitled)",
+      description: "Specialized postgraduate program in Corporate Finance, International Taxation, Financial Reporting, and Banking Operations.",
+      fullDescription: "Amity Online M.Com provides in-depth mastery over accounting standards (IFRS/Ind AS), financial risk analysis, taxation laws, and investment strategies.",
+      highlights: ["Advanced Accounting & IFRS", "Corporate Taxation & Financial Modeling", "UGC Recognized for UGC-NET & Ph.D. eligibility"],
+      careerRoles: ["Senior Financial Analyst", "Tax Consultant", "Accounts Manager", "Auditor"],
       rating: 4.6,
-      students: "1K+",
+      reviewsCount: 650,
+      students: "6,000+",
       programStructure: [
         {
-          semester: "Semester-1",
+          semester: "Semester 1 to 4",
           subjects: [
-            { name: "Advanced Accounting", credits: 4 },
-            { name: "Financial Management", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Business Law", credits: 3 }
-          ]
-        },
-        {
-          semester: "Semester-2",
-          subjects: [
-            { name: "Taxation", credits: 4 },
-            { name: "Auditing", credits: 4 },
-            { name: "Corporate Finance", credits: 4 },
-            { name: "Research Methods", credits: 3 }
+            { name: "Advanced Financial Accounting", credits: 4 },
+            { name: "Direct & Indirect Tax Laws", credits: 4 },
+            { name: "Corporate Financial Analysis", credits: 4 },
+            { name: "Research Methodology & Project", credits: 6 }
           ]
         }
       ],
-      eligibility: "Bachelor's degree in Commerce or related field with minimum 50% marks from a recognized university.",
+      eligibility: "Bachelor's Degree in Commerce (B.Com / BBA / Economics) with minimum 50% aggregate marks from a recognized university.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,20,000/-",
-          pro: "INR 1,20,000/-"
-        },
-        annualFee: {
-          prime: "INR 60,000/-",
-          pro: "INR 60,000/-"
-        },
-        semesterFee: {
-          prime: "INR 30,000/-",
-          pro: "INR 30,000/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,20,000", pro: "₹1,20,000" },
+        annualFee: { prime: "₹60,000/year", pro: "₹60,000/year" },
+        semesterFee: { prime: "₹30,000/sem", pro: "₹30,000/sem" },
         semesters: 4,
-        note: "Online learning platform access included. EMI options available."
+        note: "Flexible semester payment schedules available."
       },
       image: courseImageForTitle("Online M.Com")
     },
     {
-      id: 7,
+      id: 9,
       slug: "online-bcom-amity-university",
-      title: "Online B.Com",
+      title: "Bachelor of Commerce (B.Com)",
       shortTitle: "Online B.Com",
-      category: "commerce",
+      category: "Commerce",
       university: "Amity University",
+      universitySlug: "amity-university",
       duration: "3 Years",
       level: "Undergraduate",
-      description: "Bachelor of Commerce program providing comprehensive knowledge in commerce, accounting, and business.",
-      fullDescription: "The Online B.Com program is a comprehensive undergraduate program designed to provide students with a strong foundation in commerce, accounting, finance, and business management. This three-year program covers various aspects of commerce including financial accounting, cost accounting, taxation, business law, economics, and management principles.",
-      highlights: [
-        "Strong foundation in commerce and accounting",
-        "Industry-relevant curriculum",
-        "Flexible online learning format",
-        "Career support and placement assistance",
-        "Practical knowledge through case studies"
-      ],
+      mode: "100% Online (UGC Approved)",
+      description: "Rigorous 3-year commerce education covering financial accounting, auditing, corporate governance, and digital commerce.",
+      fullDescription: "Amity Online B.Com gives students deep foundational knowledge in business arithmetic, commercial law, corporate financial management, and taxation.",
+      highlights: ["ACCA Aligned Curriculum Options", "Affordable Fee under ₹1 Lakh total", "Flexible Online Examinations", "Recognized Globally"],
+      careerRoles: ["Accountant", "Audit Assistant", "Financial Analyst", "Tax Consultant"],
       rating: 4.7,
-      students: "3K+",
+      reviewsCount: 1280,
+      students: "12,000+",
       programStructure: [
         {
-          semester: "Year 1",
+          semester: "Year 1 to 3",
           subjects: [
-            { name: "Financial Accounting", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Business Mathematics", credits: 3 },
-            { name: "Business Communication", credits: 3 }
+            { name: "Financial Accounting & Reporting", credits: 12 },
+            { name: "Business Law & Company Law", credits: 8 },
+            { name: "Income Tax & GST", credits: 8 },
+            { name: "Auditing & Corporate Governance", credits: 8 }
           ]
-        },
+        }
+      ],
+      eligibility: "10+2 from a recognized board with minimum 50% aggregate marks (Commerce/Science stream preferred).",
+      feeStructure: {
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹99,000", pro: "₹99,000" },
+        annualFee: { prime: "₹33,000/year", pro: "₹33,000/year" },
+        semesterFee: { prime: "₹16,500/sem", pro: "₹16,500/sem" },
+        semesters: 6,
+        note: "0% interest EMI starts at ₹1,375/month."
+      },
+      image: courseImageForTitle("Online B.Com")
+    },
+    {
+      id: 10,
+      slug: "online-ba-amity-university",
+      title: "Bachelor of Arts (BA)",
+      shortTitle: "Online BA",
+      category: "Humanities",
+      university: "Amity University",
+      universitySlug: "amity-university",
+      duration: "3 Years",
+      level: "Undergraduate",
+      mode: "100% Online (UGC Entitled)",
+      description: "Interdisciplinary bachelor's degree in humanities, political science, sociology, and English literature.",
+      fullDescription: "The Online BA program offers a flexible foundation in humanities, making it an excellent choice for students preparing for civil services and government competitive exams.",
+      highlights: ["Ideal Foundation for UPSC / State PSC", "Self-Paced Study with Digital LMS", "Affordable ₹16,500/Sem", "UGC-DEB Approved"],
+      careerRoles: ["Content Writer", "Civil Services Aspirant", "Public Relations Officer", "Social Worker"],
+      rating: 4.6,
+      reviewsCount: 750,
+      students: "7,000+",
+      programStructure: [
         {
-          semester: "Year 2",
+          semester: "Year 1 to 3",
           subjects: [
-            { name: "Cost Accounting", credits: 4 },
-            { name: "Taxation", credits: 4 },
-            { name: "Business Law", credits: 3 },
-            { name: "Management Principles", credits: 3 }
-          ]
-        },
-        {
-          semester: "Year 3",
-          subjects: [
-            { name: "Auditing", credits: 4 },
-            { name: "Corporate Finance", credits: 4 },
-            { name: "Project Work", credits: 4 }
+            { name: "English Literature & Communication", credits: 12 },
+            { name: "Political Science & Indian Polity", credits: 12 },
+            { name: "Sociology & Social Thought", credits: 12 },
+            { name: "History & Cultural Heritage", credits: 12 }
           ]
         }
       ],
       eligibility: "10+2 in any stream with minimum 50% marks from a recognized board.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 99,000/-",
-          pro: "INR 99,000/-"
-        },
-        annualFee: {
-          prime: "INR 33,000/-",
-          pro: "INR 33,000/-"
-        },
-        semesterFee: {
-          prime: "INR 16,500/-",
-          pro: "INR 16,500/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹95,000", pro: "₹95,000" },
+        annualFee: { prime: "₹31,600/year", pro: "₹31,600/year" },
+        semesterFee: { prime: "₹16,500/sem", pro: "₹16,500/sem" },
         semesters: 6,
-        note: "Online learning platform access included. EMI options available."
+        note: "EMI starts from ₹1,320/month."
       },
-      image: courseImageForTitle("Online B.Com")
-    },
-    {
-      id: 8,
-      slug: "online-ma-amity-university",
-      title: "Online MA",
-      shortTitle: "Online MA",
-      category: "arts",
-      university: "Amity University",
-      duration: "2 Years",
-      level: "Postgraduate",
-      description: "Master of Arts program offering specialization in various humanities and social science disciplines.",
-      fullDescription: "The Online MA program is designed for graduates who want to pursue advanced studies in humanities and social sciences. This two-year program offers specializations in various disciplines including English, History, Political Science, Sociology, and Psychology. Students will develop critical thinking, research skills, and analytical abilities through comprehensive coursework and research projects.",
-      highlights: [
-        "Advanced knowledge in humanities and social sciences",
-        "Multiple specialization options",
-        "Research-oriented curriculum",
-        "Expert faculty with academic excellence",
-        "Flexible online learning format"
-      ],
-      rating: 4.6,
-      students: "800+",
-      programStructure: [
-        {
-          semester: "Semester-1",
-          subjects: [
-            { name: "Research Methodology", credits: 4 },
-            { name: "Core Subject 1", credits: 4 },
-            { name: "Core Subject 2", credits: 4 },
-            { name: "Elective 1", credits: 3 }
-          ]
-        },
-        {
-          semester: "Semester-2",
-          subjects: [
-            { name: "Core Subject 3", credits: 4 },
-            { name: "Core Subject 4", credits: 4 },
-            { name: "Elective 2", credits: 3 },
-            { name: "Dissertation", credits: 4 }
-          ]
-        }
-      ],
-      eligibility: "Bachelor's degree in any discipline with minimum 50% marks from a recognized university.",
-      feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,30,000/-",
-          pro: "INR 1,30,000/-"
-        },
-        annualFee: {
-          prime: "INR 65,000/-",
-          pro: "INR 65,000/-"
-        },
-        semesterFee: {
-          prime: "INR 32,500/-",
-          pro: "INR 32,500/-"
-        },
-        semesters: 4,
-        note: "Online learning platform access included. EMI options available."
-      },
-      image: courseImageForTitle("Online MA")
-    },
-    {
-      id: 9,
-      slug: "online-mba-sikkim-manipal-university",
-      title: "Online MBA",
-      shortTitle: "Online MBA",
-      category: "business",
-      university: "Manipal University Jaipur",
-      duration: "2 Years",
-      level: "Postgraduate",
-      description: "UGC-recognized online MBA program with NAAC A++ accreditation, offering flexible learning for working professionals.",
-      fullDescription: "The Online MBA program from Manipal University Jaipur is designed for working professionals who want to advance their careers without interrupting their work. This UGC-recognized program offers 13 career-focused specializations including Digital Marketing, Analytics, Supply Chain, International Business, IT and FinTech. Students can choose super or dual specialization options and benefit from Manipal University Jaipur's prestigious global alumni network.",
-      highlights: [
-        "UGC-recognized and NAAC A++ accredited",
-        "13 career-focused specializations available",
-        "Super or dual specialization options",
-        "Global networking and alumni access",
-        "100% online learning with campus immersion events"
-      ],
-      rating: 4.8,
-      students: "2K+",
-      programStructure: [
-        {
-          semester: "Semester-1",
-          subjects: [
-            { name: "Management Theory and Practice", credits: 4 },
-            { name: "Organizational Behavior", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Financial Accounting", credits: 4 }
-          ]
-        },
-        {
-          semester: "Semester-2",
-          subjects: [
-            { name: "Marketing Management", credits: 4 },
-            { name: "Human Resource Management", credits: 4 },
-            { name: "Operations Management", credits: 4 },
-            { name: "Strategic Management", credits: 4 }
-          ]
-        }
-      ],
-      eligibility: "Bachelor's degree in any discipline with minimum 50% marks from a recognized university. Work experience preferred but not mandatory.",
-      feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,75,000/-",
-          pro: "INR 1,75,000/-"
-        },
-        annualFee: {
-          prime: "INR 87,500/-",
-          pro: "INR 87,500/-"
-        },
-        semesterFee: {
-          prime: "INR 43,750/-",
-          pro: "INR 43,750/-"
-        },
-        semesters: 4,
-        note: "Online learning platform access included. EMI options available. Campus immersion events included."
-      },
-      image: courseImageForTitle("Online MBA")
-    },
-    {
-      id: 10,
-      slug: "online-mba-uttaranchal-university",
-      title: "Online MBA",
-      shortTitle: "Online MBA",
-      category: "business",
-      university: "Sikkim Manipal University",
-      duration: "2 Years",
-      level: "Postgraduate",
-      description: "NAAC A+ accredited online MBA program from Sikkim Manipal University, established in 1995.",
-      fullDescription: "The Online MBA program from Sikkim Manipal University is designed for working professionals seeking career advancement. Established in 1995 through a partnership between the Manipal Pai Foundation and the Government of Sikkim, SMU is the first Public-Private Partnership (PPP) in the region. The program is UGC-recognized, NAAC A+ accredited, and offers flexible learning options for working professionals.",
-      highlights: [
-        "NAAC A+ accredited and UGC-recognized",
-        "First Public-Private Partnership (PPP) in the region",
-        "Ranked 51st among India's Best Multidisciplinary Universities",
-        "Flexible distance education mode",
-        "Affordable fee structure"
-      ],
-      rating: 4.6,
-      students: "1.5K+",
-      programStructure: [
-        {
-          semester: "Semester-1",
-          subjects: [
-            { name: "Management Principles", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Financial Accounting", credits: 4 },
-            { name: "Marketing Management", credits: 4 }
-          ]
-        },
-        {
-          semester: "Semester-2",
-          subjects: [
-            { name: "Human Resource Management", credits: 4 },
-            { name: "Financial Management", credits: 4 },
-            { name: "Operations Management", credits: 4 },
-            { name: "Strategic Management", credits: 4 }
-          ]
-        }
-      ],
-      eligibility: "Bachelor's degree in any discipline with minimum 50% marks from a recognized university.",
-      feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 1,10,000/-",
-          pro: "INR 1,10,000/-"
-        },
-        annualFee: {
-          prime: "INR 55,000/-",
-          pro: "INR 55,000/-"
-        },
-        semesterFee: {
-          prime: "INR 27,500/-",
-          pro: "INR 27,500/-"
-        },
-        semesters: 4,
-        note: "Distance education mode with flexible learning. EMI options available."
-      },
-      image: courseImageForTitle("Online MBA")
+      image: courseImageForTitle("Online BA")
     },
     {
       id: 11,
-      slug: "online-mba-mangalayatan-university",
-      title: "Online MBA",
-      shortTitle: "Online MBA",
-      category: "business",
-      university: "Uttaranchal University",
+      slug: "online-ma-amity-university",
+      title: "Master of Arts (MA)",
+      shortTitle: "Online MA",
+      category: "Humanities",
+      university: "Amity University",
+      universitySlug: "amity-university",
       duration: "2 Years",
       level: "Postgraduate",
-      description: "Affordable online MBA program from Uttaranchal University, NAAC A+ accredited.",
-      fullDescription: "The Online MBA program from Uttaranchal University is designed for working professionals seeking quality education at an affordable price. Established in 2013, Uttaranchal University is recognized by NAAC as an esteemed institution offering quality higher education through affordable online programs. The program is UGC and AICTE recognized, making it a valuable choice for career advancement.",
-      highlights: [
-        "NAAC A+ accredited and UGC-recognized",
-        "Affordable fee structure",
-        "AICTE approved programs",
-        "Quality education with flexible learning",
-        "Strong placement support"
-      ],
-      rating: 4.7,
-      students: "1K+",
+      mode: "100% Online (UGC Approved)",
+      description: "Advanced master's degree in humanities with specializations in English, Sociology, and Public Administration.",
+      fullDescription: "Amity Online MA is structured for students seeking higher research credentials, academic careers, or specialization in literature, sociology, and governance.",
+      highlights: ["Specializations in English & Sociology", "UGC-NET & Higher Education Eligible", "Comprehensive e-Library Access", "UGC Entitled"],
+      careerRoles: ["Lecturer / Academician", "Editorial Lead", "Policy Analyst", "NGO Project Manager"],
+      rating: 4.6,
+      reviewsCount: 680,
+      students: "5,500+",
       programStructure: [
         {
-          semester: "Semester-1",
+          semester: "Semester 1 to 4",
           subjects: [
-            { name: "Management Principles", credits: 4 },
-            { name: "Business Economics", credits: 4 },
-            { name: "Financial Accounting", credits: 4 },
-            { name: "Organizational Behavior", credits: 4 }
-          ]
-        },
-        {
-          semester: "Semester-2",
-          subjects: [
-            { name: "Marketing Management", credits: 4 },
-            { name: "Human Resource Management", credits: 4 },
-            { name: "Financial Management", credits: 4 },
-            { name: "Operations Management", credits: 4 }
+            { name: "Literary Theory & Criticism", credits: 8 },
+            { name: "Sociological Theories & Research", credits: 8 },
+            { name: "Public Policy & Administration", credits: 8 },
+            { name: "Master's Thesis Project", credits: 6 }
           ]
         }
       ],
-      eligibility: "Bachelor's degree in any discipline with minimum 50% marks from a recognized university.",
+      eligibility: "Bachelor's Degree in any discipline with minimum 50% marks from a recognized university.",
       feeStructure: {
-        admissionFee: "INR 1,200/-",
-        fullFee: {
-          prime: "INR 98,000/-",
-          pro: "INR 98,000/-"
-        },
-        annualFee: {
-          prime: "INR 49,000/-",
-          pro: "INR 49,000/-"
-        },
-        semesterFee: {
-          prime: "INR 24,500/-",
-          pro: "INR 24,500/-"
-        },
+        admissionFee: "₹1,200",
+        fullFee: { prime: "₹1,30,000", pro: "₹1,30,000" },
+        annualFee: { prime: "₹65,000/year", pro: "₹65,000/year" },
+        semesterFee: { prime: "₹32,500/sem", pro: "₹32,500/sem" },
         semesters: 4,
-        note: "Affordable online programs with flexible learning. EMI options available."
+        note: "0% interest EMI options available."
       },
-      image: courseImageForTitle("Online MBA")
+      image: courseImageForTitle("Online MA")
     }
   ];
 
@@ -762,11 +613,13 @@ export default function CourseDetail() {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-50 mb-4">Course Not Found</h1>
-          <Link href="/courses" className="text-[#0f4c75] dark:text-[#1e7aa8] hover:underline">
-            Go back to Courses
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-6">
+        <div className="text-center max-w-md bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+          <div className="text-4xl mb-4">📚</div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Course Not Found</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">The course you are looking for might have been moved or updated.</p>
+          <Link href="/courses" className="inline-block px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl text-sm shadow-md">
+            Browse All Courses
           </Link>
         </div>
       </div>
@@ -783,25 +636,22 @@ export default function CourseDetail() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      const response = await fetch('/api/submit-student-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/submit-student-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           university: course.university,
           course: course.title,
           source: `Course Page - ${course.title}`
-        }),
+        })
       });
 
       const data = await response.json();
-      
       if (data.success) {
-        toast.success("🎉 Thank you for your interest! We'll contact you soon.", { icon: false });
+        toast.success("🎉 Consultation booked! Our advisor will contact you shortly.", { icon: false });
         setFormData({
           name: "",
           email: "",
@@ -813,330 +663,370 @@ export default function CourseDetail() {
       } else {
         toast.error("❌ Something went wrong. Please try again.", { icon: false });
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error("❌ Something went wrong. Please try again.", { icon: false });
+    } catch {
+      toast.error("❌ Submission failed. Please try again.", { icon: false });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
-      {/* Hero Section */}
-      <section className="relative py-24 md:py-20 overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-[600px] h-[600px] bg-gradient-to-br from-[#0f4c75]/15 to-[#dc2626]/15 rounded-full blur-[100px] -top-[200px] -right-[200px] animate-pulse"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className={`text-center mb-8 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-slate-50 mb-6">
-              {course.title}
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="px-4 py-2 bg-[#0f4c75]/10 dark:bg-[#1e7aa8]/10 rounded-lg text-[#0f4c75] dark:text-[#1e7aa8] font-semibold">
-                Duration: {course.duration}
-              </div>
-              <div className="px-4 py-2 bg-[#dc2626]/10 dark:bg-[#ea580c]/10 rounded-lg text-[#dc2626] dark:text-[#ea580c] font-semibold">
-                {course.university}
-              </div>
-            </div>
-            <div className="mt-8">
-              <button
-                onClick={() => {
-                  const formSection = document.getElementById('course-form');
-                  formSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="px-8 py-4 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-              >
-                GET STARTED
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-[#0f4c75] selection:text-white">
+      {/* Course Hero Banner */}
+      <section className="relative pt-28 pb-14 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-blue-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#0f4c75]/10 to-[#dc2626]/10 blur-3xl pointer-events-none -z-10"></div>
 
-      {/* Tabs Section */}
-      <section className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-4 py-4">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'overview'
-                  ? 'bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white shadow-lg'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              Overview
-            </button>
-            <button
-              onClick={() => setActiveTab('eligibility')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'eligibility'
-                  ? 'bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white shadow-lg'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              Eligibility
-            </button>
-            <button
-              onClick={() => setActiveTab('fees')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'fees'
-                  ? 'bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white shadow-lg'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              Fee Structure
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Tab Content */}
-      <section className="py-24 md:py-20 bg-white dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          {activeTab === 'overview' && (
-            <div className={`max-w-4xl mx-auto transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="space-y-6 text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-12">
-                <p>{course.fullDescription}</p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 mb-8">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-6">
-                  Program at a glance
-                </h3>
-                <ol className="space-y-3">
-                  {course.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="text-[#0f4c75] dark:text-[#1e7aa8] font-bold text-xl">{index + 1}.</span>
-                      <span className="text-slate-700 dark:text-slate-300">{highlight}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'eligibility' && (
-            <div className={`max-w-4xl mx-auto transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-6">
-                  Eligibility Criteria
-                </h3>
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {course.eligibility}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'fees' && (
-            <div className={`max-w-5xl mx-auto transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-4">
-                  Fee Structure
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  Students have the following options for paying the program fee:
-                </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content */}
+            <div className={`lg:col-span-8 space-y-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              {/* Badges */}
+              <div className="flex flex-wrap items-center gap-2">
+                <Link href="/courses" className="text-xs font-semibold text-[#0f4c75] dark:text-[#38bdf8] hover:underline">
+                  ← Back to Courses
+                </Link>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[11px] font-bold text-[#0f4c75] dark:text-[#38bdf8]">
+                  {course.category}
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
+                  ✓ UGC-DEB Approved
+                </span>
               </div>
 
-              <div className="space-y-8">
-                {/* Option 1: Full Fee */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white px-6 py-4">
-                    <h4 className="text-xl font-bold">Option 1: Full fee payment</h4>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="bg-slate-50 dark:bg-slate-700">
-                        <tr>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Programs</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Admission Processing Fee</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Full Fee Payment (Prime)</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Full Fee Payment (Pro)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b border-slate-200 dark:border-slate-700">
-                          <td className="px-6 py-4 font-semibold text-slate-900 dark:text-slate-50">{course.shortTitle}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.admissionFee}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.fullFee.prime}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.fullFee.pro}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                {course.title}
+              </h1>
+
+              <div className="flex items-center gap-3 text-sm">
+                <span className="font-bold text-[#0f4c75] dark:text-[#38bdf8]">
+                  Offered by {course.university}
+                </span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="text-amber-500 font-bold">★ {course.rating} ({course.reviewsCount} reviews)</span>
+              </div>
+
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                {course.description}
+              </p>
+
+              {/* Meta Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-base font-bold text-[#0f4c75] dark:text-[#38bdf8]">{course.duration}</div>
+                  <div className="text-[11px] text-slate-500">Duration</div>
                 </div>
-
-                {/* Option 2: Annual */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white px-6 py-4">
-                    <h4 className="text-xl font-bold">Option 2: Annual payment</h4>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="bg-slate-50 dark:bg-slate-700">
-                        <tr>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Programs</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Admission Processing Fee</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Program Duration (Years)</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Program fee per Year (Prime)</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Program fee per Year (Pro)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b border-slate-200 dark:border-slate-700">
-                          <td className="px-6 py-4 font-semibold text-slate-900 dark:text-slate-50">{course.shortTitle}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.admissionFee}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.duration.split(' ')[0]}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.annualFee.prime}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.annualFee.pro}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-base font-bold text-slate-900 dark:text-white">{course.level}</div>
+                  <div className="text-[11px] text-slate-500">Program Level</div>
                 </div>
-
-                {/* Option 3: Semester */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white px-6 py-4">
-                    <h4 className="text-xl font-bold">Option 3: Semester wise fee payment</h4>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="bg-slate-50 dark:bg-slate-700">
-                        <tr>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Programs</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Admission Processing Fee</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">No. of semesters</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Program fee per semester (Prime)</th>
-                          <th className="px-6 py-3 text-left font-semibold text-slate-900 dark:text-slate-50">Program fee per semester (Pro)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b border-slate-200 dark:border-slate-700">
-                          <td className="px-6 py-4 font-semibold text-slate-900 dark:text-slate-50">{course.shortTitle}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.admissionFee}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.semesters}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.semesterFee.prime}</td>
-                          <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{course.feeStructure.semesterFee.pro}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-base font-bold text-[#dc2626] dark:text-rose-400">100% Online</div>
+                  <div className="text-[11px] text-slate-500">Study Mode</div>
                 </div>
-
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
-                    {course.feeStructure.note}
-                  </p>
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                  <div className="text-base font-bold text-emerald-600 dark:text-emerald-400">0% EMI</div>
+                  <div className="text-[11px] text-slate-500">Financial Aid</div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* Request Call Back Form */}
-      <section id="course-form" className="py-24 md:py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className={`bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-6 text-center">
-              Request a Call Back
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("course-lead-form");
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md hover:opacity-95 transition-all"
+                >
+                  Apply & Talk to Counselor
+                </button>
+                <a
+                  href={`https://wa.me/919335512881?text=Hi%2C%20I%20want%20to%20know%20the%20complete%20syllabus%20and%20fee%20structure%20for%20${encodeURIComponent(course.title)}%20at%20${encodeURIComponent(course.university)}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md hover:bg-emerald-700 transition-all flex items-center gap-2"
+                >
+                  <span>💬 Enquire on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Course Form Box */}
+            <div id="course-lead-form" className="lg:col-span-4 bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200 dark:border-slate-800">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
+                Download Brochure & Fees
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                Get full syllabus, fee installment breakdown, and career guidance.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                  placeholder="Your Name"
+                  placeholder="Full Name *"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
                 />
-              </div>
-              <div>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                  placeholder="Email Address"
+                  placeholder="Email Address *"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
                 />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                  Phone <span className="text-[#dc2626]">*</span>
-                </label>
                 <input
                   type="tel"
-                  id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                  placeholder="+91 Phone Number"
+                  placeholder="Phone (+91) *"
+                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0f4c75]"
                 />
-              </div>
-              <div>
-                <label htmlFor="university" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                  University <span className="text-[#dc2626]">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="university"
-                  name="university"
-                  value={formData.university || course?.university || ""}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                  placeholder="University Name"
-                />
-              </div>
-              <div>
-                <label htmlFor="course-field" className="block text-sm font-semibold text-slate-900 dark:text-slate-50 mb-2">
-                  Course <span className="text-[#dc2626]">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="course-field"
-                  name="course"
-                  value={formData.course || course?.title || ""}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all"
-                  placeholder="Course Name"
-                />
-              </div>
-              <div>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-[#0f4c75] focus:border-[#0f4c75] transition-all resize-none"
-                  placeholder="Message (Optional)"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              >
-                {isSubmitting ? "Submitting..." : "Request Call Back"}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-gradient-to-r from-[#0f4c75] to-[#dc2626] text-white font-semibold text-xs sm:text-sm rounded-xl shadow-md hover:opacity-95 transition-all disabled:opacity-50"
+                >
+                  {isSubmitting ? "Submitting..." : "Get Free Course Brochure"}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* Tabs Navigation */}
+      <section className="sticky top-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 overflow-x-auto py-3 scrollbar-none">
+            {[
+              { id: "overview", label: "📖 Overview & Career Scope" },
+              { id: "curriculum", label: "📑 Syllabus & Curriculum" },
+              { id: "fees", label: "💰 Fee Structure & EMI" },
+              { id: "eligibility", label: "🎓 Eligibility & Criteria" }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                  activeTab === tab.id
+                    ? "bg-[#0f4c75] text-white shadow-sm"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tab Contents */}
+      <section className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tab 1: Overview & Career Scope */}
+        {activeTab === "overview" && (
+          <div className="space-y-10 max-w-5xl mx-auto">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                About the Program
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                {course.fullDescription}
+              </p>
+
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3">
+                Key Learning Outcomes & Program Highlights
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {course.highlights.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                    <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Target Career Roles */}
+            {course.careerRoles && (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                  Target Career Pathways & Job Roles
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-4">
+                  Graduates of this program typically secure high-impact roles in top corporations
+                </p>
+                <div className="flex flex-wrap gap-2.5">
+                  {course.careerRoles.map((role, ri) => (
+                    <span
+                      key={ri}
+                      className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800 text-[#0f4c75] dark:text-[#38bdf8] text-xs sm:text-sm font-semibold rounded-xl border border-blue-200/50 dark:border-slate-700"
+                    >
+                      💼 {role}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tab 2: Curriculum & Syllabus */}
+        {activeTab === "curriculum" && (
+          <div className="max-w-5xl mx-auto space-y-6">
+            <div className="text-center max-w-xl mx-auto mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Detailed Course Curriculum
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Industry-aligned semester subjects, credits, and practical modules
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {course.programStructure.map((sem, si) => (
+                <div
+                  key={si}
+                  className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm"
+                >
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
+                    <h3 className="text-base font-bold text-[#0f4c75] dark:text-[#38bdf8]">
+                      {sem.semester}
+                    </h3>
+                    <span className="text-xs text-slate-400 font-medium">
+                      {sem.subjects.length} Subjects
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2.5">
+                    {sem.subjects.map((sub, sidx) => (
+                      <li key={sidx} className="flex items-center justify-between text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                        <span className="font-medium">{sub.name}</span>
+                        <span className="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
+                          {sub.credits} Credits
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Fee Structure & EMI */}
+        {activeTab === "fees" && (
+          <div className="max-w-5xl mx-auto space-y-8">
+            <div className="text-center max-w-xl mx-auto mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Fee Structure & Payment Options
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Transparent pricing with no hidden charges. All fees in Indian Rupees (INR).
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Option 1: Full Payment */}
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                <div>
+                  <span className="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 text-[#0f4c75] dark:text-[#38bdf8] text-xs font-bold rounded-md">
+                    Option 1
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-3">
+                    One-Time Full Payment
+                  </h3>
+                  <div className="text-2xl font-black text-slate-900 dark:text-white mt-2">
+                    {course.feeStructure.fullFee.prime}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">One-time payment upfront with special discounted pricing.</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  Admission Fee: {course.feeStructure.admissionFee}
+                </div>
+              </div>
+
+              {/* Option 2: Annual Payment */}
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border-2 border-[#0f4c75] dark:border-[#38bdf8] shadow-md flex flex-col justify-between relative">
+                <span className="absolute -top-3 right-4 px-2 py-0.5 bg-[#0f4c75] text-white text-[10px] font-bold rounded-full">
+                  Recommended
+                </span>
+                <div>
+                  <span className="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 text-xs font-bold rounded-md">
+                    Option 2
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-3">
+                    Annual Installments
+                  </h3>
+                  <div className="text-2xl font-black text-[#0f4c75] dark:text-[#38bdf8] mt-2">
+                    {course.feeStructure.annualFee.prime}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">Pay per academic year with easy installments.</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  Admission Fee: {course.feeStructure.admissionFee}
+                </div>
+              </div>
+
+              {/* Option 3: Semester Wise */}
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                <div>
+                  <span className="px-2.5 py-1 bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 text-xs font-bold rounded-md">
+                    Option 3
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-3">
+                    Semester-Wise Fee
+                  </h3>
+                  <div className="text-2xl font-black text-slate-900 dark:text-white mt-2">
+                    {course.feeStructure.semesterFee.prime}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">Pay before each semester begins ({course.feeStructure.semesters} total semesters).</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  Admission Fee: {course.feeStructure.admissionFee}
+                </div>
+              </div>
+            </div>
+
+            {/* Note */}
+            <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              💡 <strong>Fee Note & EMI:</strong> {course.feeStructure.note}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 4: Eligibility & Criteria */}
+        {activeTab === "eligibility" && (
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                Eligibility Criteria
+              </h2>
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                {course.eligibility}
+              </p>
+
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3">
+                Documents Required for Digital Admission
+              </h3>
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                <li className="flex items-center gap-2">✓ Class 10th Marksheet & Passing Certificate</li>
+                <li className="flex items-center gap-2">✓ Class 12th Marksheet & Passing Certificate</li>
+                <li className="flex items-center gap-2">✓ Graduation Marksheet & Degree Certificate (for PG programs)</li>
+                <li className="flex items-center gap-2">✓ Government Photo Identity Proof (Aadhaar / Passport / Voter ID)</li>
+                <li className="flex items-center gap-2">✓ Recent Passport Size Colored Photograph</li>
+              </ul>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );
 }
-

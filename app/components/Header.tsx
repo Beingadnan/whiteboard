@@ -25,9 +25,9 @@ export default function Header() {
   };
 
   return (
-    <header 
-      className={`modern-header ${isScrolled ? "scrolled" : ""}`} 
-      role="banner" 
+    <header
+      className={`modern-header ${isScrolled ? "scrolled" : ""}`}
+      role="banner"
       aria-label="Primary"
     >
       <div className="header-container">
@@ -60,13 +60,13 @@ export default function Header() {
               <Link href="/" onClick={closeMenu}>Home</Link>
             </li>
             <li>
-              <Link href="/about" onClick={closeMenu}>About Us</Link>
-            </li>
-            <li className="nav-drawer-only">
               <Link href="/courses" onClick={closeMenu}>Courses</Link>
             </li>
             <li>
               <Link href="/universities" onClick={closeMenu}>Universities</Link>
+            </li>
+            <li>
+              <Link href="/about" onClick={closeMenu}>About Us</Link>
             </li>
             <li>
               <Link href="/collaborate" onClick={closeMenu}>Partner collaboration</Link>
@@ -83,18 +83,18 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
-          <Link 
-            href="/career-counselling" 
+          <Link
+            href="/career-counselling"
             className="cta-link"
             onClick={closeMenu}
           >
             Free Counselling
           </Link>
-          <a 
-            href="https://wa.me/919335512881" 
+          <a
+            href="https://wa.me/919335512881"
             target="_blank"
             rel="noopener noreferrer"
-            className="cta-button-primary" 
+            className="cta-button-primary"
             aria-label="Enquire Now"
             onClick={closeMenu}
           >
