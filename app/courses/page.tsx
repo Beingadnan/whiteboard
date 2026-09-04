@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import StructuredData from "../components/StructuredData";
@@ -29,11 +30,28 @@ interface Course {
   tag: string;
 }
 
-export default function Courses() {
+function CoursesContent() {
+  const searchParams = useSearchParams();
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  useEffect(() => {
+    const search = searchParams.get("search");
+    const category = searchParams.get("category");
+    const level = searchParams.get("level");
+
+    if (search !== null) {
+      setSearchQuery(search);
+    }
+    if (category !== null) {
+      setSelectedCategory(category);
+    }
+    if (level !== null) {
+      setSelectedLevel(level);
+    }
+  }, [searchParams]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -294,13 +312,27 @@ export default function Courses() {
     return courses.filter((course) => {
       const matchesCategory = selectedCategory === "all" || course.category === selectedCategory;
       const matchesLevel = selectedLevel === "all" || course.level === selectedLevel;
-      const matchesSearch =
-        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.university.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.highlights.some(h => h.toLowerCase().includes(searchQuery.toLowerCase()));
 
-      return matchesCategory && matchesLevel && matchesSearch;
+      const q = searchQuery.trim().toLowerCase();
+      if (!q) return matchesCategory && matchesLevel;
+
+      const cleanQ = q.replace(/[\.\s]/g, "");
+      const cleanTitle = course.title.toLowerCase().replace(/[\.\s]/g, "");
+      const cleanShortTitle = course.shortTitle.toLowerCase().replace(/[\.\s]/g, "");
+
+      const escapedQ = q.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      const wordBoundaryRegex = new RegExp(`(^|[^a-zA-Z0-9])${escapedQ}([^a-zA-Z0-9]|$)`, 'i');
+
+      const isKeywordMatch =
+        wordBoundaryRegex.test(course.title) ||
+        wordBoundaryRegex.test(course.shortTitle) ||
+        cleanTitle.includes(cleanQ) ||
+        cleanShortTitle.includes(cleanQ) ||
+        course.university.toLowerCase().includes(q) ||
+        course.description.toLowerCase().includes(q) ||
+        course.highlights.some(h => h.toLowerCase().includes(q));
+
+      return matchesCategory && matchesLevel && isKeywordMatch;
     });
   }, [courses, selectedCategory, selectedLevel, searchQuery]);
 
@@ -677,5 +709,13 @@ export default function Courses() {
         </section>
       </div>
     </>
+  );
+}
+
+export default function Courses() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-500">Loading courses...</div>}>
+      <CoursesContent />
+    </Suspense>
   );
 }

@@ -155,7 +155,7 @@ export default function Home() {
       slug: "mba-amity-university",
       title: "Online MBA (Leadership & Dual Specialization)",
       duration: "2 Years",
-      tag: "Highest Salary ROI",
+      tag: "Popular Career-Focused Program",
       fee: "₹1,99,000",
       emi: "₹4,150/mo",
       image: "/courses/mba_premium.jpg",
@@ -300,7 +300,7 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-3 pt-2 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-                    <span>100% Valid for Govt & MNC Jobs</span>
+                    <span>UGC-Recognized Online Degree Programs</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
@@ -752,9 +752,9 @@ export default function Home() {
 
             <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
               <div className="text-3xl mb-3">📜</div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">100% Equal Degree Validity</h3>
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">UGC-Recognized Degree Validity</h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                UGC-DEB recognized online degrees are legally equivalent to on-campus degrees for all Central/State Govt exams, UPSC, and global higher education.
+                UGC-recognized online degrees are generally eligible for applicable government and private-sector opportunities, subject to the specific employer/exam eligibility criteria.
               </p>
             </div>
           </div>
@@ -820,7 +820,7 @@ export default function Home() {
                   Still Confused Which Degree or University Is Best For You?
                 </h2>
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl">
-                  Talk directly with our senior academic counselors. We map your current job profile, budget, and career goals to recommend the right program with guaranteed direct admission.
+                  Talk directly with our senior academic counselors. We map your current job profile, budget, and career goals to recommend the right program with complete admission guidance and application support.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2 text-xs font-medium text-slate-200">
                   <span className="flex items-center gap-1.5">✓ 15-Minute Callback</span>

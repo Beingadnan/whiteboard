@@ -16,14 +16,12 @@ const FOOTER_UNIVERSITIES = [
 
 
 const FOOTER_COURSES = [
-  { name: "MBA", href: "/courses/mba-amity-university" },
-  { name: "BBA", href: "/courses/online-bba-amity-university" },
-  { name: "MCA", href: "/courses/online-mca-amity-university" },
-  { name: "B.Com", href: "/courses/online-bcom-amity-university" },
-  { name: "M.Sc", href: "/courses" },
-  { name: "B.Sc", href: "/courses" },
-  { name: "MA", href: "/courses/online-ma-amity-university" },
-  { name: "BA", href: "/courses" },
+  { name: "MBA", href: "/courses?search=MBA" },
+  { name: "BBA", href: "/courses?search=BBA" },
+  { name: "MCA", href: "/courses?search=MCA" },
+  { name: "BCA", href: "/courses?search=BCA" },
+  { name: "B.Com", href: "/courses?search=B.Com" },
+  { name: "M.Com", href: "/courses?search=M.Com" },
 ];
 
 const FOOTER_QUICK_LINKS = [

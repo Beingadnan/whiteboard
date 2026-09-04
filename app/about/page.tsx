@@ -165,7 +165,7 @@ export default function AboutUs() {
                 Choosing the right higher education degree in today’s digital era is a pivotal decision. With hundreds of online degrees available, students often face misinformation, high costs, and confusing admission portals.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                At <strong>SuccessMentorix</strong>, we simplify your entire academic journey. We provide personalized career profiling, side-by-side fee comparisons, 0% EMI financing, and direct guaranteed admission support for India’s highest-ranked UGC-DEB entitled universities.
+                At <strong>SuccessMentorix</strong>, we simplify your entire academic journey. We provide personalized career profiling, side-by-side fee comparisons, 0% EMI financing, and complete admission guidance and application support for India’s highest-ranked UGC-DEB entitled universities.
               </p>
 
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-semibold text-slate-800 dark:text-slate-200">

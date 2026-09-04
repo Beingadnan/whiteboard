@@ -39,22 +39,25 @@ export default function ScrollLeadPopup() {
     }
   }, []);
 
-  const start5SecTimer = useCallback(() => {
+  const start3MinTimer = useCallback(() => {
     if (isSubmitted || isOpen || isTimerActiveRef.current) return;
 
     isTimerActiveRef.current = true;
     timerRef.current = setTimeout(() => {
       openPopup();
-    }, 10000);
+    }, 180000); // 3 minutes (180,000 ms)
   }, [isSubmitted, isOpen, openPopup]);
 
-  // Listen to scroll events
+  // Start timer on component mount and handle scroll/activity
   useEffect(() => {
     if (isSubmitted) return;
 
+    // Start 3-minute timer on page load
+    start3MinTimer();
+
     const handleScroll = () => {
       if (!isOpen && !isTimerActiveRef.current && !isSubmitted) {
-        start5SecTimer();
+        start3MinTimer();
       }
     };
 
@@ -66,7 +69,7 @@ export default function ScrollLeadPopup() {
         clearTimeout(timerRef.current);
       }
     };
-  }, [isSubmitted, isOpen, start5SecTimer]);
+  }, [isSubmitted, isOpen, start3MinTimer]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -75,7 +78,8 @@ export default function ScrollLeadPopup() {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
-    // Next scroll will trigger the 5-second timer again!
+    // Re-arm timer for 3 minutes after user dismisses
+    start3MinTimer();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -103,7 +107,7 @@ export default function ScrollLeadPopup() {
           email: formData.email || "popup-user@mentorix.com",
           course: formData.course,
           university: formData.university,
-          source: "Auto Scroll 5-Sec Lead Popup"
+          source: "Auto 3-Min Lead Popup"
         })
       });
 
