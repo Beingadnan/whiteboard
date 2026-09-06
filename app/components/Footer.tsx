@@ -16,12 +16,14 @@ const FOOTER_UNIVERSITIES = [
 
 
 const FOOTER_COURSES = [
-  { name: "MBA", href: "/courses?search=MBA" },
-  { name: "BBA", href: "/courses?search=BBA" },
-  { name: "MCA", href: "/courses?search=MCA" },
-  { name: "BCA", href: "/courses?search=BCA" },
-  { name: "B.Com", href: "/courses?search=B.Com" },
-  { name: "M.Com", href: "/courses?search=M.Com" },
+  { name: "MBA", href: "/courses/mba-online" },
+  { name: "BBA", href: "/courses/bba-online" },
+  { name: "MCA", href: "/courses/mca-online" },
+  { name: "BCA", href: "/courses/bca-online" },
+  { name: "B.Com", href: "/courses/bcom-online" },
+  { name: "M.Com", href: "/courses/mcom-online" },
+  { name: "BA", href: "/courses/ba-online" },
+  { name: "MA", href: "/courses/ma-online" },
 ];
 
 const FOOTER_QUICK_LINKS = [
