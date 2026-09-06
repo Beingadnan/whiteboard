@@ -638,7 +638,7 @@ export default function CourseDetail() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/submit-student-lead", {
+      const response = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

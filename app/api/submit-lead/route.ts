@@ -1,0 +1,171 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+// Helper function to get current timestamp in Indian Standard Time (IST)
+function getISTTimestamp(): string {
+  const now = new Date();
+  
+  const istString = now.toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  
+  const parts = istString.split(', ');
+  const datePart = (parts[0] || '').split('/');
+  const timePart = parts[1] || '';
+  
+  const year = datePart[2] || '';
+  const month = datePart[1] || '';
+  const day = datePart[0] || '';
+  
+  return `${year}-${month}-${day} ${timePart} IST`.trim();
+}
+
+function getUnifiedLeadScriptUrl(): string {
+  let envUrl = 
+    process.env.GOOGLE_SHEET_SCRIPT_URL ||
+    process.env.LEAD_SCRIPT_URL ||
+    process.env.STUDENT_LEAD_SCRIPT_URL || 
+    process.env.PARTNER_LEAD_SCRIPT_URL || 
+    process.env.GOOGLE_SCRIPT_URL || 
+    process.env.GOOGLE_SHEET_URL || 
+    process.env.GOOGLE_SHEETS_URL ||
+    process.env.GOOGLE_APPS_SCRIPT_URL ||
+    process.env.NEXT_PUBLIC_LEAD_SCRIPT_URL ||
+    process.env.NEXT_PUBLIC_STUDENT_LEAD_SCRIPT_URL ||
+    process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL ||
+    '';
+
+  envUrl = envUrl.trim().replace(/^["']|["']$/g, '');
+  if (envUrl.includes('=')) {
+    envUrl = envUrl.substring(envUrl.lastIndexOf('=') + 1).trim();
+  }
+  if (envUrl.startsWith('hhttp://')) {
+    envUrl = envUrl.replace('hhttp://', 'http://');
+  }
+  if (envUrl.startsWith('hhttps://')) {
+    envUrl = envUrl.replace('hhttps://', 'https://');
+  }
+  return envUrl;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const scriptUrl = getUnifiedLeadScriptUrl();
+    
+    // Check if Google Apps Script URL is configured
+    if (!scriptUrl || scriptUrl.includes('YOUR_SCRIPT_ID')) {
+      console.warn('⚠️ Google Apps Script URL is not configured in environment variables.');
+      console.warn('Set GOOGLE_SHEET_SCRIPT_URL or STUDENT_LEAD_SCRIPT_URL in .env.local');
+      
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form submitted successfully (Google Sheets not configured in .env.local)' 
+      });
+    }
+    
+    // Unified lead data mapping
+    const name = body.name || 
+                 body.fullName || 
+                 (body.firstName && body.lastName ? `${body.firstName} ${body.lastName}` : body.firstName || body.lastName || '');
+
+    const courseOrType = body.course || 
+                         body.program || 
+                         body.partnershipType || 
+                         body.experience || 
+                         '';
+
+    const universityOrCompany = body.university || 
+                                body.college || 
+                                body.company || 
+                                body.organization || 
+                                '';
+
+    const stateOrLocation = body.state || 
+                            body.location || 
+                            body.city || 
+                            '';
+
+    const sheetData = {
+      timestamp: getISTTimestamp(),
+      name: name,
+      email: body.email || '',
+      phone: body.phone || body.phoneNumber || body.contact || '',
+      course: courseOrType,
+      university: universityOrCompany,
+      state: stateOrLocation,
+      subject: body.subject || body.inquiryType || '',
+      message: body.message || body.notes || '',
+      source: body.source || 'Website Lead'
+    };
+
+    console.log('📤 Submitting lead to unified Google Sheet:', {
+      url: scriptUrl,
+      data: sheetData
+    });
+
+    // Submit to Google Apps Script Web App
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(sheetData),
+      redirect: 'follow',
+    });
+
+    let responseText = '';
+    try {
+      responseText = await response.text();
+    } catch {
+      responseText = '';
+    }
+
+    const isExplicitAuthError = response.status === 401 || response.status === 403;
+    const isPermissionPage = responseText.includes('accounts.google.com') || 
+                             responseText.includes('Sign in - Google Accounts') ||
+                             responseText.includes('You need access') ||
+                             responseText.includes('Service invoked too many times');
+
+    if (isExplicitAuthError || isPermissionPage) {
+      console.error('❌ Google Sheets Deployment Access Error:', {
+        status: response.status,
+        url: scriptUrl,
+        hint: 'Please ensure "Who has access" is set to "Anyone" in Google Apps Script Web App deployment.'
+      });
+
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Google Sheets permission error. Please set "Who has access" to "Anyone" in Apps Script Web App deployment.',
+        warning: 'Google Sheets access permission issue. Please check deployment settings.'
+      }, { status: 502 });
+    }
+
+    console.log('✅ Google Sheets Response Status:', response.status, responseText.substring(0, 150));
+
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Lead received and recorded successfully.',
+      status: response.status
+    });
+
+  } catch (error: any) {
+    console.error('❌ Error submitting lead:', error);
+    const errorMessage = error.message || 'Failed to submit form. Please try again.';
+    
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: errorMessage,
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
+      { status: 500 }
+    );
+  }
+}

@@ -235,7 +235,7 @@ export default function Universities() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/submit-student-lead", {
+      const res = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

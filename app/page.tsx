@@ -41,7 +41,7 @@ export default function Home() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/submit-student-lead", {
+      const res = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -80,7 +80,7 @@ export default function Home() {
     e.preventDefault();
     setIsCallbackSubmitting(true);
     try {
-      const res = await fetch("/api/submit-student-lead", {
+      const res = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
