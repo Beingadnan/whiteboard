@@ -6,12 +6,12 @@ import { useState, useEffect } from "react";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 const FOOTER_UNIVERSITIES = [
-  { name: "Amity University", href: "/universities/amity-university" },
-  { name: "Uttaranchal University", href: "/universities/uttaranchal-university" },
-  { name: "Sikkim Manipal University", href: "/universities/sikkim-manipal-university" },
-  { name: "Manipal University Jaipur", href: "/universities/manipal-university-jaipur" },
-  { name: "MIT University", href: "/universities/mit-university" },
-  { name: "Mangalayatan University", href: "/universities/mangalayatan-university" },
+  { name: "Amity University", href: "/amity-university-online" },
+  { name: "Uttaranchal University", href: "/uttaranchal-university-online" },
+  { name: "Sikkim Manipal University", href: "/sikkim-manipal-university-online" },
+  { name: "Manipal University Jaipur", href: "/manipal-university-jaipur-online" },
+  { name: "MIT University", href: "/mit-university-online" },
+  { name: "Mangalayatan University", href: "/mangalayatan-university-online" },
 ];
 
 

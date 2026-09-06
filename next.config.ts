@@ -56,6 +56,38 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/amity-university-online',
+        destination: '/universities/amity-university',
+      },
+      {
+        source: '/amity-univeristy-online',
+        destination: '/universities/amity-university',
+      },
+      {
+        source: '/uttaranchal-university-online',
+        destination: '/universities/uttaranchal-university',
+      },
+      {
+        source: '/sikkim-manipal-university-online',
+        destination: '/universities/sikkim-manipal-university',
+      },
+      {
+        source: '/manipal-university-jaipur-online',
+        destination: '/universities/manipal-university-jaipur',
+      },
+      {
+        source: '/mit-university-online',
+        destination: '/universities/mit-university',
+      },
+      {
+        source: '/mangalayatan-university-online',
+        destination: '/universities/mangalayatan-university',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

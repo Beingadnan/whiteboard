@@ -436,10 +436,17 @@ export default function UniversityDetail() {
 
   const idParam = params.id as string;
   const universityId = parseInt(idParam);
-  const university = useMemo(
-    () => universities.find(u => u.slug === idParam || u.id === universityId),
-    [idParam, universityId]
-  );
+  const university = useMemo(() => {
+    const clean = (idParam || "").toLowerCase().trim();
+    const withoutOnline = clean.replace(/-online$/, "");
+    return universities.find(
+      (u) =>
+        u.slug === clean ||
+        u.slug === withoutOnline ||
+        `${u.slug}-online` === clean ||
+        (!isNaN(universityId) && u.id === universityId)
+    );
+  }, [idParam, universityId]);
   const hasInitialized = useRef<string | null>(null);
 
   useEffect(() => {
